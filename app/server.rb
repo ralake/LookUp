@@ -10,6 +10,10 @@ class LookUp < Sinatra::Base
     erb :infopage
   end
 
+  get '/photo' do
+    erb :photo
+  end
+
   run! if app_file == $0
 
 end
