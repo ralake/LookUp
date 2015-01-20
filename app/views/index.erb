@@ -1,82 +1,83 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>The HTML5 Herald</title>
-    <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta name="viewport" content="width=320; user-scalable=no" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>ColorThief Demo</title>
 
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="./camera.js"></script>
-  </head>
+  <script type="text/javascript" charset="utf-8" src="jquery-2.0.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="quantize.js"></script>
+  <script type="text/javascript" charset="utf-8" src="color-thief.js"></script>
 
-  <body>
-    <script src="./test.js"></script>
-    <video id="video"></video>
-    <button id="startbutton">Take photo</button>
-    <canvas id="canvas"></canvas>
-    <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+  <style>
+  #yourimage {
+    width:100%;
+  }
+
+  #swatches {
+    width: 100%;
+    height: 50px;
+  }
+
+  .swatch {
+    width:18%;
+    height: 50px;
+    border-style:solid;
+    border-width:thin;
+    float: left;
+    margin-right: 3px;
+  }
+  </style>
+</head>
+
+<body>
+
+  <input type="file" capture="camera" accept="image/*" id="takePictureField">
+
+  <img id="yourimage">
+
+  <div id="swatches">
+    <div id="swatch0" class="swatch"></div>
+    <div id="swatch1" class="swatch"></div>
+    <div id="swatch2" class="swatch"></div>
+    <div id="swatch3" class="swatch"></div>
+    <div id="swatch4" class="swatch"></div>
+  </div>
+
   <script>
-    (function() {
+  var desiredWidth;
 
-      var streaming = false,
-      video        = document.querySelector('#video'),
-      canvas       = document.querySelector('#canvas'),
-      photo        = document.querySelector('#photo'),
-      startbutton  = document.querySelector('#startbutton'),
-      width = 320,
-      height = 0;
+  $(document).ready(function() {
+    console.log('onReady');
+    $("#takePictureField").on("change",gotPic);
+    $("#yourimage").load(getSwatches);
+    desiredWidth = window.innerWidth;
 
-      navigator.getMedia = ( navigator.getUserMedia ||
-      navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia ||
-      navigator.msGetUserMedia);
+    if(!("url" in window) && ("webkitURL" in window)) {
+      window.URL = window.webkitURL;
+    }
 
-      navigator.getMedia(
-      {
-        video: true,
-        audio: false
-      },
-      function(stream) {
-        if (navigator.mozGetUserMedia) {
-          video.mozSrcObject = stream;
-        } else {
-          var vendorURL = window.URL || window.webkitURL;
-          video.src = vendorURL.createObjectURL(stream);
-        }
-        video.play();
-      },
-      function(err) {
-        console.log("An error occured! " + err);
-      }
-      );
+  });
 
-      video.addEventListener('canplay', function(ev){
-        if (!streaming) {
-          height = video.videoHeight / (video.videoWidth/width);
-          video.setAttribute('width', width);
-          video.setAttribute('height', height);
-          canvas.setAttribute('width', width);
-          canvas.setAttribute('height', height);
-          streaming = true;
-        }
-      }, false);
+  function getSwatches(){
+    var colorArr = createPalette($("#yourimage"), 5);
+    for (var i = 0; i < Math.min(5, colorArr.length); i++) {
+      $("#swatch"+i).css("background-color","rgb("+colorArr[i][0]+","+colorArr[i][1]+","+colorArr[i][2]+")");
+      console.log($("#swatch"+i).css("background-color"));
+    }
+  }
 
-      function takepicture() {
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-        var data = canvas.toDataURL('image/png');
-        photo.setAttribute('src', data);
-      }
+  //Credit: <a href="https://www.youtube.com/watch?v=EPYnGFEcis4&feature=youtube_gdata_player">https://www.youtube.com/watch?v=EPYnGFEcis4&feature=youtube_gdata_player</a>
+  function gotPic(event) {
+    if(event.target.files.length == 1 &&
+    event.target.files[0].type.indexOf("image/") == 0) {
+      $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
+    }
+  }
 
-      startbutton.addEventListener('click', function(ev){
-        takepicture();
-        ev.preventDefault();
-      }, false);
 
-    })();
-    </script>
-  </body>
+
+</script>
+</body>
+
 </html>
