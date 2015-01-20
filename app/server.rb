@@ -23,7 +23,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/shading_data' do
-    raise params
+    redirect to '/roof_angle'
   end
 
   run! if app_file == $0
