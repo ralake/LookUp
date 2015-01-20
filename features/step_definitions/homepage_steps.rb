@@ -4,10 +4,9 @@ Given(/^I visit the homepage$/) do
 end
 
 When(/^I decide to get started$/) do
-  pending # express the regexp above with the code you wish you had
+  click_button('Get started!')
 end
 
 Then(/^I should see the introductory page$/) do
   pending # express the regexp above with the code you wish you had
 end
-
