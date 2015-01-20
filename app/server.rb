@@ -18,6 +18,14 @@ class LookUp < Sinatra::Base
     erb :photo
   end
 
+  get '/shading' do
+    erb :shading
+  end
+
+  post '/shading_data' do
+    raise params
+  end
+
   run! if app_file == $0
 
 end
