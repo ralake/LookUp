@@ -3,7 +3,6 @@ require 'sinatra'
 
 class LookUp < Sinatra::Base
 
-  # set :views, Proc.new{File.join(root, "views")}
   set :public_dir, File.join(root, '..', 'public')
 
   get '/' do
@@ -24,6 +23,10 @@ class LookUp < Sinatra::Base
 
   post '/shading_data' do
     redirect to '/roof_angle'
+  end
+
+  get '/roof_angle' do
+    erb :roof_angle
   end
 
   run! if app_file == $0

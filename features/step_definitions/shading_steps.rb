@@ -9,5 +9,5 @@ When(/^I choose shade value$/) do
 end
 
 Then(/^I should see roof angle page$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("Roof Angle")
 end
