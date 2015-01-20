@@ -6,8 +6,8 @@ class LookUp < Sinatra::Base
   # set :views, Proc.new{File.join(root, "views")}
   set :public_dir, File.join(root, '..', 'public')
 
-  get '/' do
-    erb :index
+  get '/gyroscope' do
+    erb :gyroscope
   end
 
   get '/compass' do
