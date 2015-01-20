@@ -6,4 +6,5 @@ group :development, :test do
   gem 'launchy'
   gem 'cucumber'
   gem 'rspec'
+  gem 'capybara'
 end
