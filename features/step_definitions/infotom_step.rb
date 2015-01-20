@@ -1,5 +1,5 @@
 Given(/^I am on infopage$/) do
-  visit '/'
+  visit '/infopage'
 end
 
 Then(/^I shoud see text about Tom Parker$/) do
