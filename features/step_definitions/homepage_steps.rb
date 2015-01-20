@@ -8,5 +8,5 @@ When(/^I decide to get started$/) do
 end
 
 Then(/^I should see the introductory page$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content("Hi, I'm Tom Parker")
 end
