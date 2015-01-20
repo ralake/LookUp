@@ -8,5 +8,5 @@ When(/^I read information I want to move to next page$/) do
 end
 
 Then(/^I should see take photo page$/) do
- expect(page).to have_content("Fuck off")
+ expect(page).to have_content("Stand nearby")
 end
