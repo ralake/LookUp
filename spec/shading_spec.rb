@@ -1,14 +1,20 @@
 require 'spec_helper'
 
-describe 'Shading value' do
-  context 'user select shading value' do
-
-    it "saves shading data to database" do
-      expect(RoofRecord.count).to eq 0
+describe RoofRecord do
+  context 'Shading value' do
+    
+    before :each do
       visit '/shading'
       click_on "Next"
-      expect(RoofRecord.count).to eq 1
+    end
+
+    it "creates record in the database" do
+      expect(RoofRecord.count).to_change.by 1
+    end
+
+    it 'holds the specific shade value set by the user' do
       expect(RoofRecord.first.shading_data).to eq 0
     end
+    
   end
 end
