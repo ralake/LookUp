@@ -1,7 +1,9 @@
 require 'sinatra'
-require 'data_mapper'
+# require 'data_mapper'
 
-require_relative 'data_mapper_setup' 
+# require_relative 'data_mapper_setup' 
+
+require_relative 'models/roof_record'
 
 class LookUp < Sinatra::Base
 
