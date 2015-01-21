@@ -24,7 +24,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/material_data' do
-    puts params[:material]
+    Roof.create(material: params[:material])
     redirect to '/shading'
   end
 
