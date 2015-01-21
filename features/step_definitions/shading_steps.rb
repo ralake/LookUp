@@ -5,6 +5,7 @@ Given(/^I am on shading page$/) do
 end
 
 When(/^I choose shade value$/) do
+  fill_in "shade_value", with: "1"
   click_on "Next"
 end
 

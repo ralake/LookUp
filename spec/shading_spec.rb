@@ -6,6 +6,7 @@ describe Roof do
 
     def create_shade_value
       visit '/shading'
+      fill_in "shade_value", with: "1"
       click_on "Next"
     end
 
@@ -15,7 +16,7 @@ describe Roof do
 
     it 'holds the specific shade value set by the user' do
       create_shade_value
-      expect(Roof.first.shade_value).to eq 0
+      expect(Roof.first.shade_value).to eq 1
     end
     
   end
