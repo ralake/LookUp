@@ -1,6 +1,6 @@
 Feature: Material
-  In order to find give information about the material of my roof
-  As a user of look up
+  In order to give information about the material of my roof
+  As a person who can see the roof in question
   I want to select the roof material
 
   Scenario: Selecting roof material

@@ -4,12 +4,12 @@ Given(/^I am on shading page$/) do
   expect(page).to have_content("Use the slider to estimate how much shade")
 end
 
-When(/^I choose shade value$/) do
+When(/^I choose a shade value$/) do
   fill_in "shade_value", with: "1"
   click_on "Next"
 end
 
-Then(/^I should see roof angle page$/) do
+Then(/^I should see the roof angle page$/) do
   expect(page).to have_content("Roof Angle")
 end
 
@@ -23,6 +23,6 @@ Given(/^I need more information$/) do
   page.should have_selector('#shade_info', visible: true)
 end
 
-Then(/^I should see Tom's information$/) do
+Then(/^I should see Tom's information about shading impact$/) do
   expect(page).to have_content("Is there anything up on the building itself")
 end

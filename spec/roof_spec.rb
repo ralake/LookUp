@@ -19,7 +19,6 @@ describe Roof do
     end
 
     it "knows the material that the roof is made out of" do
-      submit_material
       expect(Roof.first.material).to eq "tiles"
     end
 
@@ -27,16 +26,11 @@ describe Roof do
 
   context 'Shading value' do
 
-    def create_shade_value
+    it 'holds the specific shade value set by the user' do
       visit '/shading'
       fill_in "shade_value", with: "1"
       click_on "Next"
-    end
-
-    it 'holds the specific shade value set by the user' do
-      create_shade_value
-      roof = Roof.first
-      expect(roof.shade_value).to eq 1
+      expect(Roof.first.shade_value).to eq 1
     end
 
   end
