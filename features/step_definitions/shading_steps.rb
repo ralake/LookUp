@@ -14,12 +14,14 @@ end
 
 Given(/^I am on the shading page$/) do
   visit '/shading'
+  page.should have_selector('#shade_info', visible: false)
 end
 
 Given(/^I need more information$/) do
-  click_on '#shade_info'
+  click_on 'shade_button'
+  page.should have_selector('#shade_info', visible: true)
 end
 
 Then(/^I should see Tom's information$/) do
-
+  expect(page).to have_content("Is there anything up on the building itself")
 end
