@@ -6,5 +6,4 @@ class Roof
   property :shade_value, Integer
   property :material,    String
 
-
 end

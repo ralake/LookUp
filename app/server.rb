@@ -6,6 +6,7 @@ require_relative 'data_mapper_setup'
 class LookUp < Sinatra::Base
 
   set :public_dir, File.join(root, '..', 'public')
+  enable :sessions
 
   get '/' do
     erb :index
@@ -24,7 +25,8 @@ class LookUp < Sinatra::Base
   end
 
   post '/material_data' do
-    Roof.create(material: params[:material])
+    roof = Roof.create(material: params[:material])
+    session[:roof_id] = roof.id
     redirect to '/shading'
   end
 
@@ -33,7 +35,8 @@ class LookUp < Sinatra::Base
   end
 
   post '/shading_data' do
-    Roof.create(shade_value: params[:shade_value].to_i)
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(shade_value: params[:shade_value].to_i)
     redirect to '/roof_angle'
   end
 

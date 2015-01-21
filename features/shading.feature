@@ -3,6 +3,11 @@ Feature: Shading
   As a user of look up
   I want to get some information and enter the data
 
+  Background: Selecting roof material
+    Given I am on the material page
+    When I choose a roof material
+    Then I should see the shading page
+
   Scenario: Assessing shade
     Given I am on shading page
     When I choose shade value
