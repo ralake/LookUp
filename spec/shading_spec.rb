@@ -1,12 +1,8 @@
 require 'spec_helper'
 
 describe Roof do
+
   context 'Shading value' do
-    
-    # before :each do
-    #   visit '/shading'
-    #   click_on "Next"
-    # end
 
     def create_shade_value
       visit '/shading'
@@ -18,8 +14,10 @@ describe Roof do
     end
 
     it 'holds the specific shade value set by the user' do
+      create_shade_value
       expect(Roof.first.shade_value).to eq 0
     end
     
   end
+  
 end
