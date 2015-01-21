@@ -19,6 +19,15 @@ class LookUp < Sinatra::Base
     erb :photo
   end
 
+  get '/material' do
+    erb :material
+  end
+
+  post '/material_data' do
+    puts params[:material]
+    redirect to '/shading'
+  end
+
   get '/shading' do
     erb :shading
   end
