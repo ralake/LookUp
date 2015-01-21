@@ -7,7 +7,7 @@ class LookUp < Sinatra::Base
   set :public_dir, File.join(root, '..', 'public')
 
   get '/' do
-    erb :index
+    erb :index, layout: :layout_index
   end
 
   get '/infopage' do
