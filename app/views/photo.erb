@@ -1,4 +1,4 @@
-This is the photo taking page
+
 
 <div id="PhotoInfo">
   <p><br><br>Stand nearby and square on<br>
@@ -7,5 +7,9 @@ This is the photo taking page
     Ok, I got it.
   </p>
 </div>
+
+<input type="file" capture="camera" accept="image/*" id="takePictureField">
+
+<img id="yourimage">
 
 <script>$( document ).ready(function(){ greyOut('#PhotoInfo'); });</script>
