@@ -1,10 +1,10 @@
 ENV["RACK_ENV"] = "test"
 
 require './app/server'
-# require 'database_cleaner'
+require 'database_cleaner'
 require 'capybara'
 require 'capybara/rspec'
-require 'capybara/dsl'
+require 'dm-migrations'
 
 Capybara.app = LookUp.new
 
@@ -25,6 +25,8 @@ Capybara.app = LookUp.new
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+  config.include Capybara::DSL
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -98,16 +100,17 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
-  # config.before(:suite) do
-  #   DatabaseCleaner.strategy = :truncation
-  #   DatabaseCleaner.clean_with(:truncation)
-  # end
+  config.before(:suite) do
+    DataMapper.auto_migrate!
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
 
-  # config.before(:each) do
-  #   DatabaseCleaner.start
-  # end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
 
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  # end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

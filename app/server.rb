@@ -1,9 +1,9 @@
 require 'sinatra'
-# require 'data_mapper'
+require 'data_mapper'
 
-# require_relative 'data_mapper_setup' 
+require_relative 'data_mapper_setup' 
 
-require_relative 'models/roof_record'
+require_relative 'models/roof'
 
 class LookUp < Sinatra::Base
 
@@ -26,6 +26,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/shading_data' do
+    Roof.create(shade_value: params[:shade_value].to_i)
     redirect to '/roof_angle'
   end
 
