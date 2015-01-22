@@ -9,7 +9,6 @@ class LookUp < Sinatra::Base
   enable :sessions
 
   get '/' do
-    # erb :index, layout: :layout_index
     erb :index 
   end
 
@@ -46,7 +45,12 @@ class LookUp < Sinatra::Base
   end
 
   post '/roof_angle_data' do
-    redirect to '/summary'
+    roof = Roof.first(:id => session[:roof_id])
+    if params[:roof_type] == "Flat"
+      roof.update(roof_angle: 90)
+      redirect to '/summary'
+    else
+    end
   end
 
   get '/summary' do

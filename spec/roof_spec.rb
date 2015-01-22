@@ -35,5 +35,15 @@ describe Roof do
 
   end
 
+  context 'Roof angle' do
+
+    it 'records a 90 degree angle for flat roofs' do
+      visit '/roof_angle'
+      click_on 'Flat'
+      expect(Roof.first.roof_angle).to eq 90
+    end
+
+  end
+
 end
 
