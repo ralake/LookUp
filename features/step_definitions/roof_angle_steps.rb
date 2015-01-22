@@ -20,7 +20,7 @@ When(/^I choose slope roof option$/) do
   click_on "Sloped"
 end
 
-When(/^angle my phone to the direction it faces$/) do
+When(/^I angle my phone and proceed to the next page$/) do
   click_on "Capture"
   expect(page).to have_content "Summary"
 end

@@ -19,6 +19,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/sloped_roof_angle' do
+    p params
     redirect to '/summary'
   end 
 

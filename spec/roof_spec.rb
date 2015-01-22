@@ -43,6 +43,12 @@ describe Roof do
       expect(Roof.first.roof_angle).to eq 90
     end
 
+    it 'records the specific angle of the roof if it is sloped' do
+      visit '/sloped_roof'
+      click_on 'Capture'
+      expect(Roof.first.roof_angle).to eq 0
+    end
+
   end
 
 end

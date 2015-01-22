@@ -16,4 +16,4 @@ Feature: Taking roof angle
   Scenario: As angle curious person
     Given I am on Roof Angle page and my roof is sloped
     When I choose slope roof option
-    And angle my phone to the direction it faces
+    Then I angle my phone and proceed to the next page
