@@ -7,7 +7,7 @@ class LookUp < Sinatra::Base
   post '/roof_type' do
     roof = Roof.first(:id => session[:roof_id])
     if params[:roof_type] == "Flat"
-      roof.update(roof_angle: 90)
+      roof.update(roof_angle: 0)
       redirect to '/summary'
     else
       redirect to '/sloped_roof'
