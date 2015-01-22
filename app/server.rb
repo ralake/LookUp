@@ -45,6 +45,14 @@ class LookUp < Sinatra::Base
     erb :roof_angle
   end
 
+  post '/roof_angle_data' do
+    redirect to '/summary'
+  end
+
+  get '/summary' do
+    erb :summary
+  end
+
   run! if app_file == $0
 
 end
