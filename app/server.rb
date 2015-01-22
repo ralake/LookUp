@@ -10,7 +10,7 @@ class LookUp < Sinatra::Base
 
   get '/' do
     # erb :index, layout: :layout_index
-    erb :index
+    erb :index 
   end
 
   get '/infopage' do
