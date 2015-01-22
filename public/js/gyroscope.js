@@ -15,12 +15,8 @@ function init() {
 
   $('#capture').click(function(event){
     event.preventDefault();
-      $.post('/sloped_roof_angle',{ roof_angle: angle }, function(err){
-        // if (err) {
-        //   // console.log(err);
-        // }
-      });
-      window.location.href = '/summary'
+    $.post('/sloped_roof_angle',{ roof_angle: angle });
+    window.location.href = '/summary'
   });
 }
 
