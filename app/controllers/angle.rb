@@ -19,7 +19,8 @@ class LookUp < Sinatra::Base
   end
 
   post '/sloped_roof_angle' do
-    p params
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(roof_angle: params[:roof_angle].to_i)
     redirect to '/summary'
   end 
 
