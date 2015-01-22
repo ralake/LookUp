@@ -23,9 +23,30 @@ body {
   border-radius: 20px;
 }
 
+.container-material{
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.panel-material{
+  max-height: 20px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
 .panel p{
   color: #334d5c;
   font-family: 'Baron Neue';
+}
+
+.panel h4{
+  color: #334d5c;
+  font-family: 'Baron Neue';
+}
+
+.material-centered{
+  margin-top: 5%;
+  float: center;
 }
 
 @font-face {  
@@ -67,7 +88,8 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 }
 
 .material_img {
-  height: 40px;
+  height: 150px;
+  width: 150px;
 }
 
 .material_img:active {
