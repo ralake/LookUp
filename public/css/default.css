@@ -1,5 +1,6 @@
 body {
-  background-color: green;
+  background-color: #ffc900;
+  font-family: helvetica;
   font-size: 40px;
   text-align: center;
 }
@@ -23,4 +24,13 @@ label > input + img{ /* IMAGE STYLES */
 }
 label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border:2px solid #f00;
+}
+
+.material_img {
+  height: 40px;
+}
+
+.material_img:active {
+  border-style: solid;
+  border-width: 10px;
 }

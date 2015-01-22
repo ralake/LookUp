@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'data_mapper'
-gem 'dm-postgres-adapcrter'
+gem 'dm-postgres-adapter'
 
 group :development, :test do 
   gem 'launchy'
