@@ -9,7 +9,8 @@ class LookUp < Sinatra::Base
   enable :sessions
 
   get '/' do
-    erb :index, layout: :layout_index
+    # erb :index, layout: :layout_index
+    erb :index
   end
 
   get '/infopage' do
