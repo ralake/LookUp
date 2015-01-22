@@ -2,36 +2,66 @@
 
 <form action="/material_data" method="post" name="materials">
 
-  <label>
-    <input type="radio" value="metal" name="material">Metal<br>
-    <img class="material_img" src="/images/metal_roof.jpg">
-  </label>
+  <div class="row">
 
-  <label>
-    <input type="radio" id="tiles" value="tiles" name="material">Tiles<br>
-    <img class="material_img" src="/images/tiled_roof.jpg">
-  </label>
+    <div class="small-6 columns">
+      <label>
+        <input type="radio" value="metal" name="material">Metal<br>
+        <img class="material_img" src="/images/metal_roof.jpg">
+      </label>
+    </div>
 
-  <label>
-    <input type="radio" id="concrete"value="concrete" name="material">Concrete<br>
-    <img class="material_img" src="/images/concrete_roof.jpg">
-  </label>
+    <div class="small-6 columns">
+      <label>
+        <input type="radio" id="tiles" value="tiles" name="material">Tiles<br>
+        <img class="material_img" src="/images/tiled_roof.jpg">
+      </label>
+    </div>
 
-  <label>
-    <input type="radio" id="asphalt"value="asphalt" name="material">Asphalt<br>
-    <img class="material_img" src="/images/Asphalt_roof.jpg">
-  </label>
+  </div>
 
-  <label>
-    <input type="radio" id="asbestos"value="asbestos" name="material">Asbestos<br>
-    <img class="material_img" src="/images/asbestos_roof.jpg">
-  </label>
+  <div class="row">
 
-  <label>
-    <input type="radio" id="unknown" value="unknown" name="material">Unknown<br>
-    <!-- <img src="/images/"> -->
-  </label>
+    <div class="small-6 columns">
+      <label>
+        <input type="radio" id="concrete"value="concrete" name="material">Concrete<br>
+        <img class="material_img" src="/images/concrete_roof.jpg">
+      </label> 
+    </div>
 
-  <input type="submit" value="Next"/>
+    <div class="small-6 columns">
+      <label>
+        <input type="radio" id="asbestos"value="asbestos" name="material">Asbestos<br>
+        <img class="material_img" src="/images/asbestos_roof.jpg">
+      </label>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="small-6 columns end">
+      <label>
+        <input type="radio" id="unknown" value="unknown" name="material">Unknown<br>
+        <!-- <img src="/images/"> -->
+      </label>
+    </div>
+    
+    <input type="submit" value="Next"/>
+
+  </div>
 
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+

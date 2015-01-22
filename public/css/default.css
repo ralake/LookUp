@@ -1,8 +1,16 @@
 body {
   background-color: #ffc900;
-  font-family: helvetica;
+  font-family: 'Baron Neue';
+  font-style: normal;
   font-size: 40px;
   text-align: center;
+}
+
+@font-face {  
+  font-family: 'Baron Neue';   
+  src: local('Baron Neue Regular'),   
+  url('fonts/baron.otf');  
+  font-weight: 400; 
 }
 
 #PhotoInfo {
