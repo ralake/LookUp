@@ -6,7 +6,7 @@ function init() {
     if(window.DeviceOrientationEvent) {
     window.addEventListener('deviceorientation', function(event) {
       
-    angle = Math.round(event.beta);
+    angle = Math.abs(Math.round(event.beta));
 
     if(angle!=null) 
     dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
