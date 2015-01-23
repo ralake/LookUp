@@ -1,6 +1,6 @@
 function init() {
 
-  var angle
+  var angle;
 
   var dataContainerOrientation = document.getElementById('dataContainerOrientation');
     if(window.DeviceOrientationEvent) {
@@ -8,7 +8,7 @@ function init() {
       
     angle = Math.abs(Math.round(event.beta));
 
-    if(angle!=null) 
+    if(angle !== null); 
     dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
     }, false);
   }
@@ -16,7 +16,7 @@ function init() {
   $('#capture').click(function(event){
     event.preventDefault();
     $.post('/sloped_roof_angle',{ roof_angle: angle });
-    window.location.href = '/summary'
+    window.location.href = '/summary';
   });
 }
 
