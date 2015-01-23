@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe Roof do
 
-  def submit_material 
+  def submit_material
+    visit '/'
+    click_on 'Get started!'
+    click_on 'Next'
     visit '/material'
     choose('tiles')
     click_on "Next"
@@ -28,9 +31,9 @@ describe Roof do
 
     it 'holds the specific shade value set by the user' do
       visit '/shading'
-      fill_in "shade_value", with: "1"
+      fill_in "shade_value", with: "10"
       click_on "Next"
-      expect(Roof.first.shade_value).to eq 1
+      expect(Roof.first.shade_value).to eq 10
     end
 
   end

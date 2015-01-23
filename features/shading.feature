@@ -3,10 +3,10 @@ Feature: Shading
   As a person with a view of the roof in question
   I want to get some information and enter the data
 
-  Background: Selecting roof material
-    Given I am on the material page
-    When I choose a roof material
-    Then I should see the shading page
+  Background: Visiting the homepage
+    Given I visit the homepage
+    When I decide to get started
+    Then I should see the introductory page
 
   Scenario: Assessing potential roof shading
     Given I am on shading page
