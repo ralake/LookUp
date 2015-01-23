@@ -2,48 +2,23 @@ require 'sinatra'
 require 'data_mapper'
 require_relative 'models/roof'
 require_relative 'data_mapper_setup' 
+require_relative 'controllers/angle' 
+require_relative 'controllers/index' 
+require_relative 'controllers/infopage' 
+require_relative 'controllers/material' 
+require_relative 'controllers/photo' 
+require_relative 'controllers/shading' 
+require_relative 'controllers/summary' 
 
 class LookUp < Sinatra::Base
 
-  set :public_dir, File.join(root, '..', 'public')
+  set :views, File.join(root, '..', 'views')
+  set :public_dir, File.join(root, '../..', 'public')
   enable :sessions
   set :session_secret, 'super secret'
 
-  get '/' do
-    # erb :index, layout: :layout_index
-    erb :index 
-  end
-
-  get '/infopage' do
-    erb :infopage
-  end
-
-  get '/photo' do
-    erb :photo
-  end
-
-  get '/material' do
-    erb :material
-  end
-
-  post '/material_data' do
-    roof = Roof.create(material: params[:material])
-    session[:roof_id] = roof.id
-    redirect to '/shading'
-  end
-
-  get '/shading' do
-    erb :shading
-  end
-
-  post '/shading_data' do
-    roof = Roof.first(:id => session[:roof_id])
-    roof.update(shade_value: params[:shade_value].to_i)
-    redirect to '/roof_angle'
-  end
-
-  get '/roof_angle' do
-    erb :roof_angle
+  get '/gyroscope' do
+    erb :gyroscope
   end
 
   run! if app_file == $0

@@ -5,5 +5,6 @@ class Roof
   property :id,          Serial
   property :shade_value, Integer
   property :material,    String
+  property :roof_angle,  Integer
 
 end

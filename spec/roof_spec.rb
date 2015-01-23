@@ -35,5 +35,21 @@ describe Roof do
 
   end
 
+  context 'Roof angle' do
+
+    it 'records a 0 degree angle for flat roofs' do
+      visit '/roof_angle'
+      click_on 'Flat'
+      expect(Roof.first.roof_angle).to eq 0
+    end
+
+    it 'records the specific angle of the roof if it is sloped' do
+      visit '/sloped_roof'
+      click_on 'Capture'
+      expect(Roof.first.roof_angle).to eq 0
+    end
+
+  end
+
 end
 
