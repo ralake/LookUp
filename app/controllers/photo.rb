@@ -11,4 +11,8 @@ class LookUp < Sinatra::Base
     redirect to '/material'
   end
 
+  post '/geolocation' do
+    p params
+  end
+
 end

@@ -2,7 +2,9 @@
   No device orientation data
 </section>
 
-</section id="orient"> tbc </section>
+</section id="orient">
+  tbc
+</section>
 
 <form action="/sloped_roof_angle" method="post">
   <button class="button round button_background" type="submit" id="capture">Capture</button>
@@ -10,17 +12,6 @@
 
 <script> 
   $(document).ready(function() {
-    
     init();
-
-    var x = document.getElementById("orient");
-
-    navigator.geolocation.getCurrentPosition(showPosition);
-
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude; 
-    }
-
   });
 </script>

@@ -8,8 +8,30 @@
 </div>
 
 <form action="/photo_capture" method="post" enctype="multipart/form-data">
-<input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input">
-<input class="button round button_background" type="submit">
+  <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input">
+  <input class="button round button_background" id="submit" type="submit">
 </form>
 
-<script>$( document ).ready(function(){ greyOut('#PhotoInfo'); });</script>
+<div id="orient"> this</div>
+<button id="send"></button>
+
+<script>
+  $( document ).ready(function(){
+    greyOut('#PhotoInfo');
+
+    navigator.geolocation.getCurrentPosition(getPosition);
+
+    var lat;
+    var longit;
+
+    function getPosition(position) {
+      lat = position.coords.latitude;
+      longit = position.coords.longitude;
+    }
+
+    $('#submit').click(function() {
+      $.post('/geolocation',{ latitude: lat, longitude: longit });
+    });
+
+  });
+</script>
