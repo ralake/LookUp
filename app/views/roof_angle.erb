@@ -21,20 +21,20 @@
 
 <script>
   $(document).ready(function() {
+    var alpha;
+
     function init() {
-
-      var alpha;
-
+      
       var compass = document.getElementById('compass');
 
       if(window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(event) {
           if(event.webkitCompassHeading) {
-            alpha = event.webkitCompassHeading;
+            alpha = Math.round(event.webkitCompassHeading);
             compass.style.WebkitTransform = 'rotate(-' + alpha + 'deg)';
           }
           else {
-            alpha = event.alpha;
+            alpha = Math.round(event.alpha);
             webkitAlpha = alpha;
             if(!window.chrome) {
               webkitAlpha = alpha-270;
@@ -46,16 +46,17 @@
         }, false);
       }
     }
-        $('#flat').click(function(event){
-          event.preventDefault();
-          $.post('/flat_roof_orientation_angle', { roof_orientation: alpha});
-          window.location.href = '/summary';
-        });
 
-      $('#sloped').click(function(event){
-        event.preventDefault();
-        $.post('/sloped_roof_angle',{ roof_orientation: alpha });
-        // window.location.href = '/sloped_roof';
-      });
+    $('#flat').click(function(event){
+      event.preventDefault();
+      $.post('/flat_roof_orientation_angle', { roof_orientation: alpha });
+      window.location.href = '/summary';
+    });
+
+    $('#sloped').click(function(event){
+      event.preventDefault();
+      $.post('/sloped_roof_angle',{ roof_orientation: alpha });
+      window.location.href = '/sloped_roof';
+    });
   });
 </script>
