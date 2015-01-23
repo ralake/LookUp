@@ -100,8 +100,8 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 }
 
 .material_img {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
 }
 
 .shade_img{
