@@ -101,6 +101,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 .material_img:active {
   border-style: solid;
   border-width: 10px;
+}
 
 /*.custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
