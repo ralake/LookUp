@@ -23,25 +23,24 @@ class LookUp < Sinatra::Base
   end
 
   post '/photo_capture' do
-    p params
-    upload(params[:file][:filename],params[:file][:tempfile])
+    awskey    = ENV['AWS_ACCESS_KEY_ID']
+    awssecret  = ENV['AWS_SECRET_ACCESS_KEY']
+    bucket    = 'lookuptest1'
+    file      = params[:file][:tempfile]
+    filename  = params[:file][:filename]
+    AWS::S3::Base.establish_connection!(
+    :access_key_id    => awskey,
+    :secret_access_key => awssecret
+    )
+    AWS::S3::S3Object.store(
+    filename,
+    open(file.path),
+    bucket,
+    :access => :public_read
+    )
+    url = "https://#{bucket}.s3.amazonaws.com/#{filename}"
+    return url
   end
 
   run! if app_file == $0
-
-end
-
-def upload(filename, file)
-  's3-us-west-1.amazonaws.com'
-  bucket = ENV['S3_BUCKET_NAME']
-  AWS::S3::Base.establish_connection!(
-  :access_key_id    => ENV['AWS_ACCESS_KEY_ID'],
-  :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  )
-  AWS::S3::S3Object.store(
-  filename,
-  open(file.path),
-  bucket
-  )
-  return filename
 end
