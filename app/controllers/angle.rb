@@ -5,6 +5,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roof_type' do
+    p session
     roof = Roof.first(:id => session[:roof_id])
     if params[:roof_type] == "Flat"
       roof.update(roof_angle: 0)

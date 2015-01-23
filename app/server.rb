@@ -18,19 +18,11 @@ class LookUp < Sinatra::Base
   set :public_dir, File.join(root, '../..', 'public')
   enable :sessions
 
-  get '/gyroscope' do
-    erb :gyroscope
-  end
-
-  post '/photo_capture' do
-    photo_url = upload_image(params)
-  end
-
   run! if app_file == $0
+
 end
 
-
-def upload_image (params)
+def upload_image(params)
   AWS::S3::Base.establish_connection!(
     :access_key_id    => ENV['AWS_ACCESS_KEY_ID'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
