@@ -17,6 +17,7 @@ class LookUp < Sinatra::Base
   set :views, File.join(root, '..', 'views')
   set :public_dir, File.join(root, '../..', 'public')
   enable :sessions
+  set :session_secret, 'super secret'
 
   run! if app_file == $0
 
