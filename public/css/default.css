@@ -93,9 +93,20 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border:2px solid #f00;
 }
 
+.shade_info{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 .material_img {
   height: 150px;
   width: 150px;
+}
+
+.shade_img{
+  height: 65px;
+  width: 65px;
 }
 
 .material_img:active {
