@@ -55,4 +55,3 @@ describe Roof do
   end
 
 end
-
