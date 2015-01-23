@@ -4,3 +4,4 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
 			$('#takePictureField').click(); 
 		});
 }
+
