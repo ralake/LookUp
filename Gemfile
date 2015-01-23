@@ -4,10 +4,12 @@ gem 'sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 
-group :development, :test do 
+group :development, :test do
   gem 'launchy'
   gem 'capybara'
   gem 'cucumber'
   gem 'database_cleaner'
   gem 'rspec'
 end
+
+gem 'aws-s3'

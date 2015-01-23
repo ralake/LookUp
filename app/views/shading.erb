@@ -1,25 +1,29 @@
-<div class="large-10 medium-10 small-8 large-centered medium-centered small-centered column panel panel-color">
-   <h4>Use the slider to estimate how much shade the roof might get over the course of a day. <a href="#" data-reveal-id="shade_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a></h4>
+<div class="shade_info">
+  <a href="#" data-reveal-id="shade_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
+</div>
+
+<div class="large-10 medium-10 small-10 large-centered medium-centered small-centered column panel panel-color">
+   <h4>Use the slider to estimate how much shade the roof might get over the course of a day.</h4>
 </div>
 
 <div class="row">
   <div class="large-8 mediun-8 small- columns large-centered medium-centered small-centered">
-    <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-2">
+    <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-3">
       <li>
-          <img class="material_img" src="/images/no_shade.png">
+          <img class="shade_img" src="/images/no_shade.png">
       </li>
       <li>
-          <img class="material_img" src="/images/partly_shade.png">
+          <img class="shade_img" src="/images/partly_shade.png">
       </li>
       <li>
-          <img class="material_img" src="/images/full_shade.png">
+          <img class="shade_img" src="/images/full_shade.png">
       </li>
     </ul>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-8 medium-8 small-10 large-centered medium-centered small-centered column">
+  <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
     <form action="/shading_data" method="post">
       <output for="shader" id="shade">50%</output>
       <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)"><br>

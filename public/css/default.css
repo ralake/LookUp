@@ -93,19 +93,26 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border:2px solid #f00;
 }
 
+.shade_info{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 .material_img {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
+}
+
+.shade_img{
+  height: 65px;
+  width: 65px;
 }
 
 .material_img:active {
   border-style: solid;
   border-width: 10px;
 }
-
-/*.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}*/
 
 .custom-file-input::before {
   content: 'New picture';
@@ -121,7 +128,6 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   text-shadow: 1px 1px #fff;
   font-weight: 700;
   font-size: 10pt;
-  margin: 50%;
 }
 
 .slider-properties{
