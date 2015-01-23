@@ -23,7 +23,7 @@ body {
 }
 
 .custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
+  positon: bottom;
 }
 .custom-file-input::before {
   content: 'New picture';
@@ -39,5 +39,4 @@ body {
   text-shadow: 1px 1px #fff;
   font-weight: 700;
   font-size: 10pt;
-  margin: 50%;
 }

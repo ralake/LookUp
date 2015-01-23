@@ -18,6 +18,10 @@ class LookUp < Sinatra::Base
     erb :photo
   end
 
+  post '/photo_capture' do
+    p params
+  end
+
   run! if app_file == $0
 
 end

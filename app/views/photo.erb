@@ -8,7 +8,9 @@
   </p>
 </div>
 
-<input type="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input">
-
+<form action="/photo_capture" method="post" enctype="multipart/form-data">
+<input type="file" name="test_photo" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input">
+<input type="submit" value="upload">
+</form>
 
 <script>$( document ).ready(function(){ greyOut('#PhotoInfo'); });</script>
