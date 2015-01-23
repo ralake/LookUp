@@ -6,8 +6,8 @@ class LookUp < Sinatra::Base
 
   post '/photo_capture' do
     photo_url = upload_image(params)
-    roof = Roof.create(:photo_url => photo_url)
-    session[:roof_id] = roof.id
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(:photo_url => photo_url)
     redirect to '/material'
   end
 

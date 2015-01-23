@@ -9,5 +9,5 @@ When(/^I choose a roof material$/) do
 end
 
 Then(/^I should see the shading page$/) do
-  expect(page).to have_content("Shading")
+  expect(page).to have_content("Use the slider to estimate how much shade")
 end

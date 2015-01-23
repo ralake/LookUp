@@ -7,6 +7,7 @@ class LookUp < Sinatra::Base
   post '/shading_data' do
     roof = Roof.first(:id => session[:roof_id])
     roof.update(shade_value: params[:shade_value].to_i)
+    p roof
     redirect to '/roof_angle'
   end
 
