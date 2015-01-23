@@ -6,7 +6,7 @@ class LookUp < Sinatra::Base
 
   post '/roof_type' do
     p session
-    roof = Roof.first(:id => session[:roof_id])
+    roof = Roof.first_or_create(:id => session[:roof_id])
     if params[:roof_type] == "Flat"
       roof.update(roof_angle: 0)
       redirect to '/summary'
@@ -20,7 +20,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/sloped_roof_angle' do
-    roof = Roof.first(:id => session[:roof_id])
+    roof = Roof.first_or_create(:id => session[:roof_id])
     roof.update(roof_angle: params[:roof_angle].to_i)
     redirect to '/summary'
   end 
