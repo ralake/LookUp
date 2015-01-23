@@ -7,6 +7,7 @@ class LookUp < Sinatra::Base
 
   set :public_dir, File.join(root, '..', 'public')
   enable :sessions
+  set :session_secret, 'super secret'
 
   get '/' do
     # erb :index, layout: :layout_index
@@ -37,8 +38,7 @@ class LookUp < Sinatra::Base
 
   post '/shading_data' do
     roof = Roof.first(:id => session[:roof_id])
-    p roof
-    # roof.update(shade_value: params[:shade_value].to_i)
+    roof.update(shade_value: params[:shade_value].to_i)
     redirect to '/roof_angle'
   end
 
