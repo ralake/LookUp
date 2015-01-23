@@ -24,10 +24,10 @@ body {
   min-height: 75px;
 }
 
-.container-material{
-  margin-right: 10%;
-  margin-left: 10%;
-}
+/*.container-material{
+  margin-right: px;
+  margin-left: 25px;
+}*/
 
 .panel-material{
   max-height: 20px;
