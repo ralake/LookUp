@@ -1,5 +1,5 @@
 class LookUp < Sinatra::Base
- 
+
   get '/roof_angle' do
     erb :roof_angle
   end
@@ -22,6 +22,6 @@ class LookUp < Sinatra::Base
     roof = Roof.first(:id => session[:roof_id])
     roof.update(roof_angle: params[:roof_angle].to_i)
     redirect to '/summary'
-  end 
+  end
 
 end

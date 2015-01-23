@@ -4,7 +4,7 @@ end
 
 When(/^I have read all the information and entered my details$/) do
   expect(page).to have_content("Summary Tiles 1 0")
-  click_link("Save")
+  click_on("Save")
 end
 
 Then(/^I should see the thank you page$/) do
