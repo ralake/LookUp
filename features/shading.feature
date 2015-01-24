@@ -17,4 +17,3 @@ Feature: Shading
     Given I am on the shading page
     And I need more information
     Then I should see Tom's information about shading impact
-

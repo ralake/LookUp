@@ -20,4 +20,3 @@ Then(/^I angle my phone and proceed to the next page$/) do
   click_on "Capture"
   expect(page).to have_content("Summary")
 end
-

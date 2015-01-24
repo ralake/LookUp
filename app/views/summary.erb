@@ -1,10 +1,17 @@
 Summary
 
-<div>
-  <ul>
-    <li><%= @roof.material %></li>
-    <li><%= @roof.shade_value %></li>
+<form action="/creator" method="post" name="creator">
+  <input type="text" value="Title" name="title">
+  <input type="text" value="Disc_by" name="disc_by">
+
+  <div>
+    <ul>
+      <li><%= @roof.material %></li>
+      <li><%= @roof.shade_value %></li>
       <li><%= @roof.roof_angle %></li>
-        <li><img src="<%= @roof.photo_url %>" class="material_img"></li>
-  </ul>
-</div>
+      <li><img src="<%= @roof.photo_url %>" class="material_img"></li>
+    </ul>
+  </div>
+
+  <input type="submit" class="button round button_background" value="Save"/>
+</form>

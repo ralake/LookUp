@@ -1,7 +1,7 @@
 class LookUp < Sinatra::Base
 
-  get '/' do
-    erb :index
+  get '/thankyou' do
+    erb :thankyou
   end
 
 end

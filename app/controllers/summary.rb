@@ -5,4 +5,8 @@ class LookUp < Sinatra::Base
     erb :summary
   end
 
+  post '/creator' do
+    redirect to '/thankyou'
+  end
+
 end
