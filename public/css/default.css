@@ -6,6 +6,11 @@ body {
   text-align: center;
 }
 
+.summary_header_field{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .button_background {
   background-color: #ed3794;
 }
@@ -38,6 +43,7 @@ body {
 .info-popup{
  color: #334d5c;
  font-family: 'Baron Neue'; 
+ border-radius: 35px;
 }
 
 .panel p{
@@ -93,7 +99,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   border:2px solid #f00;
 }
 
-.shade_info{
+.info_icon{
   position: absolute;
   top: 5px;
   right: 5px;
@@ -128,6 +134,10 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   text-shadow: 1px 1px #fff;
   font-weight: 700;
   font-size: 10pt;
+}
+
+.data_capture_form{
+  display: none;
 }
 
 .slider-properties{
@@ -240,4 +250,34 @@ input[type=range]::-ms-fill-upper {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
+}
+
+body
+{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.welcome-page{
+  margin-top: 40%;
+}
+
+#screen
+{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background: #000;
+  opacity: 0.7;
+}
+
+#screen p
+{
+  top: 50%;
+  text-align: center;
+  color: white;
+  margin: 20%;
 }

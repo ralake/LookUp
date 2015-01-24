@@ -1,17 +1,37 @@
-Summary
-
-<form action="/creator" method="post" name="creator">
-  <input type="text" value="Title" name="title">
-  <input type="text" value="Disc_by" name="disc_by">
-
-  <div>
-    <ul>
-      <li><%= @roof.material %></li>
-      <li><%= @roof.shade_value %></li>
-      <li><%= @roof.roof_angle %></li>
-      <li><img src="<%= @roof.photo_url %>" class="material_img"></li>
-    </ul>
+<summary class="row">
+  <div class="large-12 medium-8 small-6 small-centered medium-centered columns">
+    <div id="page-wrap">
+      <h1>Summary</h1>
+      <form action="/creator" method="post" name="creator">
+        <div class="row">
+          <div class="large-4 medium-4 small-4 column">
+          </div>
+          <div class="large-4 medium-6 small-12 column">
+            <input type="text" value="Title" name="title">
+            <input type="text" value="Disc_by" name="disc_by">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 large-centered">
+            <ul>
+              <li>Material: <%= @roof.material %></li>
+              <li>Shade %: <%= @roof.shade_value %></li>
+              <li>Roof Angle: <%= @roof.roof_angle %></li>
+              <li><img class="summary_img" src="<%= @roof.photo_url %>" class="material_img"></li>
+            </ul>
+          </div>
+          <input type="submit" class="button round button_background" value="Save"/>
+        </div>
+      </form>
+    </div>
   </div>
+  <div class="info_icon">
+  <a href="#" data-reveal-id="summary_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
+</div>
 
-  <input type="submit" class="button round button_background" value="Save"/>
-</form>
+<div id="summary_info" class="reveal-modal info-popup" data-reveal>
+  <p>Well done for getting so far, we're nearly there now. Please just enter your details and press save. We have provided you with a summary of all the information you have captured. If you feel these are not right, you can always press destroy and start again.</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+</summary>
