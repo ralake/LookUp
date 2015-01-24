@@ -1,6 +1,6 @@
-function init() {
+function gyroscope() {
 
-  var angle
+  var angle;
 
   var dataContainerOrientation = document.getElementById('dataContainerOrientation');
     if(window.DeviceOrientationEvent) {
@@ -8,15 +8,13 @@ function init() {
       
     angle = Math.abs(Math.round(event.beta));
 
-    if(angle!=null) 
+    if(angle !== null); 
     dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
     }, false);
-  }
 
-  $('#capture').click(function(event){
-    event.preventDefault();
-    $.post('/sloped_roof_angle',{ roof_angle: angle });
-    window.location.href = '/summary'
-  });
+    $('#capture').click(function(){
+      $('#capture_hidden').attr('value', angle);
+    });
+  }
 }
 

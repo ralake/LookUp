@@ -4,23 +4,27 @@ class LookUp < Sinatra::Base
     erb :roof_angle
   end
 
-  post '/roof_type' do
+  post '/flat_roof_orientation_angle' do
+    roof_facing(set_azimuth(params[:flat_orientation]))
     roof = Roof.first(:id => session[:roof_id])
-    if params[:roof_type] == "Flat"
-      roof.update(roof_angle: 0)
-      redirect to '/summary'
-    else
-      redirect to '/sloped_roof'
-    end
+    roof.update(roof_angle: 0, orientation: set_azimuth(params[:flat_orientation]))
+    redirect to '/summary'
   end
 
   get '/sloped_roof' do
     erb :sloped_roof
   end
 
+  post '/sloped_roof_orientation' do
+    roof_facing(set_azimuth(params[:sloped_orientation]))
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(orientation: set_azimuth(params[:sloped_orientation]))
+    redirect to '/sloped_roof'
+  end
+
   post '/sloped_roof_angle' do
     roof = Roof.first(:id => session[:roof_id])
-    roof.update(roof_angle: params[:roof_angle].to_i)
+    roof.update(roof_angle: params[:sloped_angle].to_i)
     redirect to '/summary'
   end
 

@@ -1,35 +1,23 @@
-<section id="dataContainerOrientation">
-  No device orientation data
-</section>
+<body onload="gyroscope()">
 
-</section id="orient"> tbc </section>
+  <section id="dataContainerOrientation">
+    No device orientation data
+  </section>
 
-<form action="/sloped_roof_angle" method="post">
-  <button class="button round button_background" type="submit" id="capture">Capture</button>
-</form>
+  <form action="/sloped_roof_angle" method="post">
+    <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
+    <input type="submit" value="Capture" id="capture">
+  </form>
 
-<script> 
-  $(document).ready(function() {
-    
-    init();
+  <div class="info_icon">
+    <a href="#" data-reveal-id="roof_angle_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
+  </div>
 
-    var x = document.getElementById("orient");
+  <div id="roof_angle_info" class="reveal-modal info-popup" data-reveal>
+    <p>Aim your phone at the pitch of the roof and press capture. You should see the data updating as you change the angle of your phone.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
-    navigator.geolocation.getCurrentPosition(showPosition);
+</body>
 
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude; 
-    }
 
-  });
-</script>
-
-<div class="info_icon">
-  <a href="#" data-reveal-id="roof_angle_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
-</div>
-
-<div id="roof_angle_info" class="reveal-modal info-popup" data-reveal>
-  <p>Aim your phone at the pitch of the roof and press capture. You should see the data updating as you change the angle of your phone.</p>
-  <a class="close-reveal-modal">&#215;</a>
-</div>

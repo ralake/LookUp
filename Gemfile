@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
+gem 'rack-flash3'
+gem 'require_all'
+
 
 group :development, :test do
   gem 'launchy'

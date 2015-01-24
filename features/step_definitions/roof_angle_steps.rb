@@ -13,10 +13,15 @@ end
 
 Given(/^I am on Roof Angle page and my roof is sloped$/) do
   visit '/roof_angle'
-  click_on "Sloped"
+  expect(page).to have_content("Is your roof sloped or flat?")
 end
 
-Then(/^I angle my phone and proceed to the next page$/) do
+Then(/^I proceed to the next page$/) do
+  click_on "Sloped"
+  expect(page).to have_button("Capture")
+end
+
+Then(/^I angle and proceed$/) do
   click_on "Capture"
   expect(page).to have_content("Summary")
 end

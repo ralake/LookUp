@@ -15,4 +15,5 @@ Feature: Taking roof angle
 
   Scenario: As angle curious person
     Given I am on Roof Angle page and my roof is sloped
-    Then I angle my phone and proceed to the next page
+    When I proceed to the next page
+    Then I angle and proceed

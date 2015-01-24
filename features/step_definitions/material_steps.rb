@@ -4,7 +4,7 @@ Given(/^I am on the material page$/) do
 end
 
 When(/^I choose a roof material$/) do
-  choose('tiles')
+  find("input[value='Tiles']").click
   click_on "Next"
 end
 

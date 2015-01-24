@@ -6,9 +6,14 @@ class LookUp < Sinatra::Base
 
   post '/photo_capture' do
     photo_url = upload_image(params)
-    roof = Roof.first(:id => session[:roof_id])
-    roof.update(:photo_url => photo_url)
+    roof = Roof.first(id: session[:roof_id])
+    roof.update(photo_url: photo_url)
     redirect to '/material'
+  end
+
+  post '/geolocation' do
+    roof = Roof.first(id: session[:roof_id])
+    roof.update(latitude: params[:latitude], longitude: params[:longitude])
   end
 
 end
