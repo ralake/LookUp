@@ -5,10 +5,10 @@ class LookUp < Sinatra::Base
   end
 
   post '/flat_roof_orientation_angle' do
-    p params
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(roof_angle: 0)
+    roof.update(orientation: params[:flat_orientation])
     redirect to '/summary'
-    # roof = Roof.first(:id => session[:roof_id])
-    # roof.update(roof_angle: 0, roof_orientation: params[:roof_orientation])
   end
 
   get '/sloped_roof' do
@@ -16,16 +16,14 @@ class LookUp < Sinatra::Base
   end
 
   post '/sloped_roof_orientation' do
-    p params
-    # roof = Roof.first(:id => session[:roof_id])
-    # roof.update(roof_orientation: params[:roof_orientation])
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(orientation: params[:sloped_orientation])
     redirect to '/sloped_roof'
   end
 
   post '/sloped_roof_angle' do
-    p params
-    # roof = Roof.first(:id => session[:roof_id])
-    # roof.update(roof_angle: params[:roof_angle].to_i)
+    roof = Roof.first(:id => session[:roof_id])
+    roof.update(roof_angle: params[:sloped_angle].to_i)
     redirect to '/summary'
   end 
 

@@ -18,7 +18,6 @@ end
 
 When(/^I choose sloped roof option$/) do
   click_on "Sloped"
-  save_and_open_page
 end
 
 When(/^I angle my phone and proceed to the next page$/) do

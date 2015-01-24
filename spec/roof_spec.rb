@@ -51,15 +51,5 @@ describe Roof do
 
   end
 
-  context 'Roof orientation' do
-
-    it 'records roof orientation if roof is positioned South, South East, or South West' do
-      visit '/roof_angle'
-      click_on 'Flat'
-      expect(Roof.first.orientation).to eq 'South'
-    end
-
-  end
-
 end
 
