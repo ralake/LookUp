@@ -1,4 +1,4 @@
-function init() {
+function gyroscope() {
 
   var angle;
 
