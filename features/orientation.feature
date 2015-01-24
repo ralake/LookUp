@@ -3,10 +3,10 @@ Feature: Orientation
   As a solar curious person 
   I want to be able to check orientation of my roof
 
-  Background: Selecting roof material
-    Given I am on the material page
-    When I choose a roof material
-    Then I should see the shading page
+  Background: As a user who wants to go to the next page
+    Given I am on the information page
+    When I read information I want to move to next page
+    Then I should see take photo page
 
   Scenario: Orientation with phone
     Given I am on the roof angle page

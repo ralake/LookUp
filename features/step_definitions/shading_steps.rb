@@ -9,7 +9,7 @@ When(/^I choose a shade value$/) do
 end
 
 Then(/^I should see the roof angle page$/) do
-  expect(page).to have_content("Is your roof sloped or flat?")
+  expect(page).to have_content("Roof Angle and Orientation Stand with your phone facing the building Select one of the options below")
 end
 
 Given(/^I am on the shading page$/) do
