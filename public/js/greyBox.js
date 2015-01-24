@@ -2,6 +2,15 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
   .click(function() {
       $(this).css("display", "none"); $(styleToApply).css("display", "none");
       $("#submit_button").fadeIn();
-      $('#takePictureField').click(); 
+      $('#takePictureField').click();
+      $("#yourimage").fadeIn();
+      $("#takePictureField").on("change",gotPic); 
     });
 }
+
+function gotPic(event) {
+        if(event.target.files.length == 1 && 
+           event.target.files[0].type.indexOf("image/") == 0) {
+            $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
+        }
+  }
