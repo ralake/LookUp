@@ -1,17 +1,19 @@
 <body onload="orientation()">
 
   <h2>Roof Angle and Orientation</h2>
-  <p>Stand with your phone facing the building</p>
-  <p>And choose your roof type</p>
+  <div class="large-8 medium-8 small-10 large-centered medium-centered small-centered column panel panel-color">
+    <p>Stand with your phone facing the building</p>
+    <p>Select one of the options below<p>
+  </div>
 
   <form action="/flat_roof_orientation_angle" method="post">
     <input type="hidden" value="" name="flat_orientation" id="flat_hidden">
-    <input type="submit" value="Flat" id="flat">
+    <input class="button round button_background" type="submit" value="Flat" id="flat">
   </form>
 
   <form action="/sloped_roof_orientation" method="post">
     <input type="hidden" value="" name="sloped_orientation" id="sloped_hidden">
-    <input type="submit" value="Sloped" id="sloped">
+    <input class="button round button_background"  type="submit" value="Sloped" id="sloped">
   </form>
 
   <section id="compassContainer">

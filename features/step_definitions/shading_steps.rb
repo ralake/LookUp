@@ -1,6 +1,5 @@
 Given(/^I am on shading page$/) do
   visit '/shading'
-  expect(page).to have_content("Shading")
   expect(page).to have_content("Use the slider to estimate how much shade")
 end
 
@@ -10,7 +9,7 @@ When(/^I choose a shade value$/) do
 end
 
 Then(/^I should see the roof angle page$/) do
-  expect(page).to have_content("Roof Angle")
+  expect(page).to have_content("Is your roof sloped or flat?")
 end
 
 Given(/^I am on the shading page$/) do

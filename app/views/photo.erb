@@ -1,14 +1,16 @@
-
-
-<div id="PhotoInfo">
-  <p><br><br>Stand nearby and square on<br>
-    to your building and take a photograph!
-    <br><br><br><br><br>
-    Ok, I got it.
-  </p>
+<div class="page-wrap">
+  <div id="PhotoInfo" class="column panel panel-color">
+    <p>Stand nearby and square on<br>
+        to your building and take a photograph!
+    </p>
+    <a class="button round button_background">Ok, I got it</a>
+  </div>
 </div>
 
-<input type="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input">
+<form action="/photo_capture" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input">
+  <input class="button round button_background" id="submit" type="submit">
+</form>
 
+<script type="text/javascript" src="js/location.js"></script>
 
-<script>$( document ).ready(function(){ greyOut('#PhotoInfo'); });</script>

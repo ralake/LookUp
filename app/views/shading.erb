@@ -1,26 +1,48 @@
-<h2>Shading</h2>
-
-<a href="#" data-reveal-id="shade_info" id="shade_button"><img src="images/info_sign.png"></a>
-<div id="shade_info" class="reveal-modal" data-reveal>
-  Is there anything up on the building itself or nearby that looks like it might cast a shadow on the roof at certain times of day? Things to look out for might include:  
-
-  trees  
-  buildings  
-  chimneys  
-  railings / walls  
-  lampposts / telegraph poles  
-  overhead wires  
-  air conditioning units  
-<a class="close-reveal-modal">&#215;</a>
+<div class="shade_info">
+  <a href="#" data-reveal-id="shade_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
 </div>
-<p>
-  Use the slider to estimate how much shade the roof might get over the course of a day.
-</p>
+
+<div class="large-10 medium-10 small-10 large-centered medium-centered small-centered column panel panel-color">
+   <h4>Use the slider to estimate how much shade the roof might get over the course of a day.</h4>
+</div>
+
+<div class="row">
+  <div class="large-8 mediun-8 small- columns large-centered medium-centered small-centered">
+    <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-3">
+      <li>
+          <img class="shade_img" src="/images/no_shade.png">
+      </li>
+      <li>
+          <img class="shade_img" src="/images/partly_shade.png">
+      </li>
+      <li>
+          <img class="shade_img" src="/images/full_shade.png">
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
+    <form action="/shading_data" method="post">
+      <output for="shader" id="shade">50%</output>
+      <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)"><br>
+      <input type="submit" class="button round button_background" value="Next">
+    </form>
+  </div>
+</div>
+
+<div id="shade_info" class="reveal-modal info-popup" data-reveal>
+  <p>Is there anything up on the building itself or nearby that looks like it might cast a shadow on the roof at certain times of day? Things to look out for might include:  
+  <br><br><br>
+  trees <br>  
+  buildings <br>  
+  chimneys <br> 
+  railings / walls <br>  
+  lampposts / telegraph poles <br> 
+  overhead wires <br>  
+  air conditioning units></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
 
-
-Full shade * Half shade * No shade
-<form action="/shading_data" method="post">
-  <input type="range" min="0" max="2" style="width: 45%" name="shade_value">
-  <input type="submit" value="Next">
-</form>
