@@ -2,17 +2,18 @@ require 'spec_helper'
 
 describe Roof do
 
-  def submit_material
-    visit '/'
-    click_on 'Get started!'
-    click_on 'Next'
-    visit '/material'
-    choose('tiles')
-    click_on "Next"
-  end
-
   before do
     submit_material
+  end
+
+  context 'Time created' do
+
+    it 'records the date and time that the record was created' do
+      visit '/'
+      click_on "Get started!"
+      expect(Roof.first.created_at).to eq "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}"
+    end
+
   end
 
   context 'Roof material' do
@@ -22,7 +23,7 @@ describe Roof do
     end
 
     it "knows the material that the roof is made out of" do
-      expect(Roof.first.material).to eq "tiles"
+      expect(Roof.first.material).to eq "Tiles"
     end
 
   end

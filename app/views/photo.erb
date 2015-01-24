@@ -12,26 +12,5 @@
   <input class="button round button_background" id="submit" type="submit">
 </form>
 
-<div id="orient"> this</div>
-<button id="send"></button>
+<script type="text/javascript" src="js/location.js"></script>
 
-<script>
-  $( document ).ready(function(){
-    greyOut('#PhotoInfo');
-
-    navigator.geolocation.getCurrentPosition(getPosition);
-
-    var lat;
-    var longit;
-
-    function getPosition(position) {
-      lat = position.coords.latitude;
-      longit = position.coords.longitude;
-    }
-
-    $('#submit').click(function() {
-      $.post('/geolocation',{ latitude: lat, longitude: longit });
-    });
-
-  });
-</script>

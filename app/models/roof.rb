@@ -8,5 +8,7 @@ class Roof
   property :material,    String
   property :roof_angle,  Integer
   property :photo_url,   Text
+  property :latitude,    Float
+  property :longitude,   Float
 
 end
