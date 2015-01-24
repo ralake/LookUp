@@ -11,10 +11,10 @@ function init() {
     if(angle !== null); 
     dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
     }, false);
-  }
 
-  $('#capture').click(function(){
-    $()
-  });
+    $('#capture').click(function(){
+      $('#capture_hidden').attr('value', angle);
+    });
+  }
 }
 

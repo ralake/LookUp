@@ -2,8 +2,10 @@
   No device orientation data
 </section>
 
-<button type="submit" id="capture">Capture</button>
-
+<form action="/sloped_roof_angle" method="post">
+  <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
+  <input type="submit" value="Capture" id="capture">
+</form>
 <script> 
   $(document).ready(function() {
     init();
