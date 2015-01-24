@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require 'rack-flash'
 require_relative 'models/roof'
 require_relative 'data_mapper_setup' 
 require_relative 'controllers/angle' 
@@ -12,13 +13,10 @@ require_relative 'controllers/summary'
 
 class LookUp < Sinatra::Base
 
+  use Rack::Flash
   set :views, File.join(root, '..', 'views')
   set :public_dir, File.join(root, '../..', 'public')
   enable :sessions
-
-  get '/compass' do
-    erb :compass
-  end
 
   run! if app_file == $0
 

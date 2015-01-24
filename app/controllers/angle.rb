@@ -5,6 +5,12 @@ class LookUp < Sinatra::Base
   end
 
   post '/flat_roof_orientation_angle' do
+    compass, orient = params[:flat_orientation].to_i, 0
+    compass > 180 ? orient = compass-180 : orient = compass+180
+    if [*(271...360), *(0...90)].include?(orient)
+      flash[:notice] = "Sorry you roof facing north" 
+      redirect to '/'
+    end
     roof = Roof.first(:id => session[:roof_id])
     roof.update(roof_angle: 0)
     roof.update(orientation: params[:flat_orientation])
