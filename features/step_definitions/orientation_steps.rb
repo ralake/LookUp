@@ -1,11 +1,12 @@
 Given(/^I am on the roof angle page$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/roof_angle'
+  expect(page).to have_content 'Roof Angle'
 end
 
 When(/^I happy with my compass position$/) do
-  pending # express the regexp above with the code you wish you had
+  click_on 'Flat'
 end
 
 Then(/^I should be able to use app$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content 'Summary'
 end

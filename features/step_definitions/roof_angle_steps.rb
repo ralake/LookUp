@@ -16,7 +16,7 @@ Given(/^I am on Roof Angle page and my roof is sloped$/) do
   expect(page).to have_content("Roof Angle")
 end
 
-When(/^I choose slope roof option$/) do
+When(/^I choose sloped roof option$/) do
   click_on "Sloped"
 end
 

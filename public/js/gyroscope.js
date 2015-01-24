@@ -13,10 +13,8 @@ function init() {
     }, false);
   }
 
-  $('#capture').click(function(event){
-    event.preventDefault();
-    $.post('/sloped_roof_angle',{ roof_angle: angle });
-    window.location.href = '/summary';
+  $('#capture').click(function(){
+    $()
   });
 }
 

@@ -39,16 +39,26 @@
             compass.style.MozTransform = 'rotate(-' + alpha + 'deg)'; 
           }, false);
         }
-        $('#flat').click(function(event){
-          event.preventDefault();
-          console.log(alpha);
-          $.post('/flat_roof_orientation_angle', { roof_orientation: alpha });
-          // window.location.href = '/summary';
+
+        $('#flat').click(function(){
+          $('#flat_hidden').attr('value', alpha);
         });
+
+
+        $('#sloped').click(function(){
+          $('#sloped_hidden').attr('value', alpha);
+        });
+
+
+        // $('#flat').click(function(event){
+        //   event.preventDefault();
+        //   $.post('/flat_roof_orientation_angle', { roof_orientation: alpha });
+        //   window.location.href = '/summary';
+        // });
 
         // $('#sloped').click(function(event){
         //   event.preventDefault();
-        //   $.post('/sloped_roof_angle',{ roof_orientation: alpha });
+        //   $.post('/sloped_roof_orientation',{ roof_orientation: alpha });
         //   window.location.href = '/sloped_roof';
         // });
       }
@@ -58,12 +68,18 @@
   <body onload="init()">
   <h2>Roof Angle</h2>
 
-  <form>
+  <form action="/flat_roof_orientation_angle" method="post">
+    <input type="hidden" value="" name="flat_orientation" id="flat_hidden">
     <input type="submit" value="Flat" id="flat">
+  </form>
+
+  <form action="/sloped_roof_orientation" method="post">
+    <input type="hidden" value="" name="sloped_orientation" id="sloped_hidden">
     <input type="submit" value="Sloped" id="sloped">
   </form>
-    <div id="compassContainer">
+
+    <section id="compassContainer">
       <img src="/images/compass.png" id="compass"/>
-    </div>
+    </section>
   </body>
 </html>
