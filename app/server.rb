@@ -2,21 +2,13 @@ require 'sinatra'
 require 'data_mapper'
 require 'aws/s3'
 require 'rack-flash'
+require 'require_all'
 
 require_relative 'models/roof'
 require_relative 'data_mapper_setup'
 
-require_relative 'helpers/angle_helper'
-require_relative 'helpers/photo_helper'
-
-require_relative 'controllers/angle'
-require_relative 'controllers/index'
-require_relative 'controllers/infopage'
-require_relative 'controllers/material'
-require_relative 'controllers/photo'
-require_relative 'controllers/shading'
-require_relative 'controllers/summary'
-
+require_rel 'helpers'
+require_rel 'controllers'
 
 class LookUp < Sinatra::Base
 
