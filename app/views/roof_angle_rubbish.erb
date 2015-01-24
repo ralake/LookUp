@@ -1,16 +1,28 @@
-<DOCTYPE html>
-<html>
-  <head>
-    <style>
-      #compass{
-        width:100%;
-        transform-origin: 50% 50%;
-        -webkit-transform-origin: 50% 50%;
-        -moz-transform-origin: 50% 50%;
-      }
-    </style>
-    <script>
-      function init() {
+<body onload="init()">
+<h2>Roof Angle</h2>
+
+<form>
+  <input type="submit" value="Flat" id="flat">
+  <input type="submit" value="Sloped" id="sloped">
+</form>
+
+
+<style>
+  #compass{
+    width: 40%;
+    transform-origin: 50% 50%;
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+  }
+</style>
+
+    <div id="compassContainer">
+      <img src="/images/compass.png" id="compass"/>
+    </div>
+  </body>
+
+<script>
+  function init() {
         var compass = document.getElementById('compass');
         if(window.DeviceOrientationEvent) {
  
@@ -39,11 +51,17 @@
               }, false);
         }
       }
-    </script>
-  </head>
-  <body onload="init()">
-    <div id="compassContainer">
-      <img src="/images/compass.png" id="compass"/>
-    </div>
-  </body>
-</html>
+
+    $('#flat').click(function(event){
+      event.preventDefault();
+      $.post('/flat_roof_orientation_angle', { roof_orientation: alpha });
+      window.location.href = '/summary';
+    });
+
+    $('#sloped').click(function(event){
+      event.preventDefault();
+      $.post('/sloped_roof_angle',{ roof_orientation: alpha });
+      window.location.href = '/sloped_roof';
+    });
+  });
+</script>

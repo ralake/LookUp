@@ -16,8 +16,8 @@ class LookUp < Sinatra::Base
   set :public_dir, File.join(root, '../..', 'public')
   enable :sessions
 
-  get '/gyroscope' do
-    erb :gyroscope
+  get '/compass' do
+    erb :compass
   end
 
   run! if app_file == $0
