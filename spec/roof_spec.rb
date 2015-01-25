@@ -55,4 +55,17 @@ describe Roof do
 
   end
 
+  context 'Saving user data' do
+
+    it "saves the user's name and the site's title" do
+      visit '/summary'
+      fill_in 'title', with: 'Test Roof'
+      fill_in 'discovered_by', with: 'Test User'
+      click_on 'Save'
+      expect(Roof.first.title).to eq 'Test Roof'
+      expect(Roof.first.discovered_by).to eq 'Test User'
+    end 
+
+  end
+
 end
