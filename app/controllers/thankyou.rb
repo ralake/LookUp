@@ -5,7 +5,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/useremail' do
-    Roof.add_user_email(session, params)
+    Roof.find_roof(session[:roof_id]).add_user_email(params[:email])
     redirect to 'http://www.1010global.org/uk'
   end
 

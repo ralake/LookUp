@@ -1,7 +1,8 @@
 class LookUp < Sinatra::Base
 
   get '/infopage' do
-    Roof.create_roof(session)
+    roof = Roof.create_roof
+    session[:roof_id] = roof.id
     erb :infopage
   end
 

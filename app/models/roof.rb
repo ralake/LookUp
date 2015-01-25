@@ -15,49 +15,52 @@ class Roof
   property :discovered_by, String
   property :user_email,    String
 
-  def self.create_roof(session)
-    roof = self.create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
-    session[:roof_id] = roof.id
+  def self.create_roof
+    create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
   end
 
-  def self.add_photo_url(session)
-    first(id: session[:roof_id]).update(photo_url: photo_url)
+  def self.find_roof(id)
+    first(id: id)
   end
 
-  def self.add_geolocation(session, params)
-    first(id: session[:roof_id]).update(latitude: params[:latitude], longitude: params[:longitude])
+  def add_photo_url(url)
+    update(photo_url: url)
   end
 
-  def self.add_material(session, params)
-    first(id: session[:roof_id]).update(material: params[:material])
+  def add_geolocation(latitude, longitude)
+    update(latitude: latitude, longitude: longitude)
   end
 
-  def self.add_flat_roof_data(session, params)
-    first(id: session[:roof_id]).update(roof_angle: 0, orientation: set_azimuth(params[:flat_orientation]))
+  def add_material(material)
+    update(material: material)
   end
 
-  def self.add_sloped_roof_orientation(session, params)
-    first(id: session[:roof_id]).update(orientation: set_azimuth(params[:sloped_orientation]))
+  def add_flat_roof_data(angle, orientation)
+    update(roof_angle: angle, orientation: set_azimuth(orientation))
   end
 
-  def self.add_sloped_roof_angle(session, params)
-    first(id: session[:roof_id]).update(roof_angle: params[:sloped_angle].to_i)
+  def add_sloped_roof_orientation(orientation)
+    update(orientation: set_azimuth(orientation))
   end
 
-  def self.destroy_record(session)
-    first(id: session[:roof_id]).destroy
+  def add_sloped_roof_angle(angle)
+    update(roof_angle: angle)
   end
 
-  def self.add_shade_value(session, params)
-    first(id: session[:roof_id]).update(shade_value: params[:shade_value].to_i)
+  def destroy_record
+    destroy
   end
 
-  def self.add_discovery_data(session, params)
-    first(id: session[:roof_id]).update(title: params[:title], discovered_by: params[:discovered_by])
+  def add_shade_value(shade_value)
+    update(shade_value: shade_value)
   end
 
-  def self.add_user_email(session, params)
-    first(id: session[:roof_id]).update(user_email: params[:email])
+  def add_discovery_data(title, user)
+    update(title: title, discovered_by: user)
+  end
+
+  def add_user_email(email)
+    update(user_email: email)
   end
 
 end
