@@ -13,5 +13,6 @@ class Roof
   property :longitude,     Float
   property :title,         String
   property :discovered_by, String
+  property :user_email,    String
 
 end

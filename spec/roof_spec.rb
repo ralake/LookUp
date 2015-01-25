@@ -66,6 +66,13 @@ describe Roof do
       expect(Roof.first.discovered_by).to eq 'Test User'
     end 
 
+    it "saves the user's email address" do
+      visit '/thankyou'
+      fill_in 'email', with: 'test@test.com'
+      click_on 'Send Link'
+      expect(Roof.first.user_email).to eq 'test@test.com'
+    end
+
   end
 
 end
