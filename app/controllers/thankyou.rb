@@ -4,4 +4,8 @@ class LookUp < Sinatra::Base
     erb :thankyou
   end
 
+  post '/useremail' do
+    redirect to 'http://www.1010global.org/uk'
+  end
+
 end

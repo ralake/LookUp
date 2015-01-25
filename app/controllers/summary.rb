@@ -6,6 +6,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/creator' do
+    p params
     redirect to '/thankyou'
   end
 
