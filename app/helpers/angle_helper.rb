@@ -8,7 +8,7 @@ def set_azimuth(params)
 def roof_facing(azimuth)
   if [*(271...360), *(0...90)].include?(azimuth)
     flash[:notice] = "Sorry you roof facing north" 
-    Roof.first(id: session[:roof_id]).destroy
+    Roof.destroy_record(session)
     redirect to '/'
   end
 end
