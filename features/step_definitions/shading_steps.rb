@@ -23,5 +23,5 @@ Given(/^I need more information$/) do
 end
 
 Then(/^I should see Tom's information about shading impact$/) do
-  expect(page).to have_content("Is there anything up on the building itself")
+  expect(page).to have_content("Shading can make all the difference to a roof’s potential")
 end
