@@ -7,7 +7,7 @@ class LookUp < Sinatra::Base
   post '/flat_roof_orientation_angle' do
     roof_facing(set_azimuth(params[:flat_orientation]))
     Roof.find_roof(session[:roof_id]).add_flat_roof_data(0, params[:flat_orientation])
-    redirect to '/summary'
+    redirect to '/photo'
   end
 
   get '/sloped_roof' do
@@ -22,7 +22,7 @@ class LookUp < Sinatra::Base
 
   post '/sloped_roof_angle' do
     Roof.find_roof(session[:roof_id]).add_sloped_roof_angle(params[:sloped_angle].to_i)
-    redirect to '/summary'
+    redirect to '/photo'
   end
 
 end
