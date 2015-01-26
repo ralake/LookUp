@@ -6,7 +6,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/creator' do
-    Roof.find_roof(session[:roof_id]).add_discovery_data(params[:title], params[:discovered_by])
+    Roof.find_roof(session[:roof_id]).set_discovery_data(params[:title], params[:discovered_by])
     redirect to '/thankyou'
   end
 

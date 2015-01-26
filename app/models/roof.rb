@@ -16,34 +16,36 @@ class Roof
   property :user_email,    String
 
   def self.create_roof
+    # change method name
     create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
   end
 
   def self.find_roof(id)
+    # change method name
     first(id: id)
   end
 
-  def add_photo_url(url)
+  def set_photo_url(url)
     update(photo_url: url)
   end
 
-  def add_geolocation(latitude, longitude)
+  def set_geolocation(latitude, longitude)
     update(latitude: latitude, longitude: longitude)
   end
 
-  def add_material(material)
+  def set_material(material)
     update(material: material)
   end
 
-  def add_flat_roof_data(angle, orientation)
+  def set_flat_roof_data(angle, orientation)
     update(roof_angle: angle, orientation: set_azimuth(orientation))
   end
 
-  def add_sloped_roof_orientation(orientation)
+  def set_sloped_roof_orientation(orientation)
     update(orientation: set_azimuth(orientation))
   end
 
-  def add_sloped_roof_angle(angle)
+  def set_sloped_roof_angle(angle)
     update(roof_angle: angle)
   end
 
@@ -51,15 +53,15 @@ class Roof
     destroy
   end
 
-  def add_shade_value(shade_value)
+  def set_shade_value(shade_value)
     update(shade_value: shade_value)
   end
 
-  def add_discovery_data(title, user)
+  def set_discovery_data(title, user)
     update(title: title, discovered_by: user)
   end
 
-  def add_user_email(email)
+  def set_user_email(email)
     update(user_email: email)
   end
 
