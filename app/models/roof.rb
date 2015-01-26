@@ -25,12 +25,12 @@ class Roof
 
   PANEL_POWER = 250
 
-  def self.create_roof
+  def self.create_record
     # change method name
     create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
   end
 
-  def self.find_roof(id)
+  def self.find(id)
     # change method name
     first(id: id)
   end
@@ -76,15 +76,12 @@ class Roof
   end
 
   def set_panel_capacity
-    if roof_angle == 0
-      update(panel_capacity: (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i )
-    else
-      update(panel_capacity: sloped_roof_area / SLOPED_ROOF_PANEL_AREA)
-    end
+    return update(panel_capacity: flat_roof_panel_capacity) if roof_angle == 0
+    update(panel_capacity: sloped_roof_panel_capacity)
   end
 
   def set_power_capacity
-    update(power_capacity: self.panel_capacity * PANEL_POWER )
+    update(power_capacity: panel_capacity * PANEL_POWER )
   end
 
   private
@@ -95,6 +92,18 @@ class Roof
 
   def sloped_roof_area
     (angled_edge / angle_cos).to_i * gutter_edge
+  end
+
+  def shade_percentage
+    (100 - shade_value) / 100.0
+  end
+
+  def flat_roof_panel_capacity
+    (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i * shade_percentage
+  end
+
+  def sloped_roof_panel_capacity
+    (sloped_roof_area / SLOPED_ROOF_PANEL_AREA) * shade_percentage
   end
 
 end
