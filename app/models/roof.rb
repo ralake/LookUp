@@ -21,6 +21,8 @@ class Roof
 
   FLAT_ROOF_PANEL_AREA = 2.56
 
+  SLOPED_ROOF_PANEL_AREA = 1.6
+
   PANEL_POWER = 250
 
   def self.create_roof
@@ -74,11 +76,25 @@ class Roof
   end
 
   def set_panel_capacity
-    update(panel_capacity: (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i )
+    if roof_angle == 0
+      update(panel_capacity: (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i )
+    else
+      update(panel_capacity: sloped_roof_area / SLOPED_ROOF_PANEL_AREA)
+    end
   end
 
   def set_power_capacity
     update(power_capacity: self.panel_capacity * PANEL_POWER )
+  end
+
+  private
+
+  def angle_cos
+    Math.cos(roof_angle * Math::PI / 180)
+  end
+
+  def sloped_roof_area
+    (angled_edge / angle_cos).to_i * gutter_edge
   end
 
 end
