@@ -78,7 +78,7 @@ describe Roof do
   context 'Results for flat roofs' do
 
     before(:each) do 
-      @roof = Roof.create(:area => 200, :roof_angle => 0)
+      @roof = Roof.create(gutter_edge: 20, angled_edge: 10, roof_angle: 0)
       @roof.set_panel_capacity
     end
 

@@ -14,7 +14,8 @@ class Roof
   property :title,                String
   property :discovered_by,        String
   property :user_email,           String
-  property :area,                 Float
+  property :gutter_edge,          Float
+  property :angled_edge,          Float
   property :panel_capacity,       Integer
   property :power_capacity,       Integer
 
@@ -73,7 +74,7 @@ class Roof
   end
 
   def set_panel_capacity
-    update(panel_capacity: (area / FLAT_ROOF_PANEL_AREA).to_i )
+    update(panel_capacity: (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i )
   end
 
   def set_power_capacity
