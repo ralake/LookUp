@@ -9,6 +9,22 @@ body {
 .summary_header_field{
   margin-top: 10px;
   margin-bottom: 10px;
+  max-height: 150px;
+}
+
+.summary_img{
+  max-height: 150px;
+  border: solid;
+  border-color: black;
+}
+
+.summary-form{
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.summary_form_input{
+  border-radius: 50px;
 }
 
 .button_background {
@@ -300,5 +316,14 @@ body
 
 #submit_button{
   margin-top: 25px;
+}
+
+.summary-table{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.table tr.even, table tr.alt, table tr:nth-of-type(even){
+  background-color: transparent;
 }
   

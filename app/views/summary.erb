@@ -1,5 +1,42 @@
-<summary class="row">
-  <div class="large-12 medium-8 small-6 small-centered medium-centered columns">
+<summary>
+  <h1>Summary</h1>
+  <form action="/creator" method="post" name="creator">
+    <div class="row summary_header_field">
+      <div class="large-3 column">
+        <img class="summary_img" src="/images/metal_roof.jpg" class="material_img">
+      </div>
+      <div class="summary-form large-4 column end">
+        <input class="summary_form_input" type="text" value="Title" name="title">
+        <input class="summary_form_input" type="text" value="Disc_by" name="disc_by">
+      </div>
+    </div>
+    <table class="summary-table">
+      <thead class="summary-table">
+        <tr>
+          <th width="200">Attribute</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Material</td>
+          <td><%= @roof.material %></td>
+        </tr>
+        <tr>
+          <td>Shade Value</td>
+          <td><%= @roof.shade_value %></td>
+        </tr>
+        <tr>
+          <td>Roof Angle</td>
+          <td><%= @roof.roof_angle %></td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit" class="button round button_background" value="Save"/>
+  </form>
+</summary>
+
+<!-- <div class="large-12 medium-8 small-6 small-centered medium-centered columns">
     <div id="page-wrap">
       <h1>Summary</h1>
       <form action="/creator" method="post" name="creator">
@@ -24,14 +61,13 @@
         </div>
       </form>
     </div>
+  </div> -->
+
+<!--   <div class="info_icon">
+    <a href="#" data-reveal-id="summary_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
   </div>
-  <div class="info_icon">
-  <a href="#" data-reveal-id="summary_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
-</div>
 
-<div id="summary_info" class="reveal-modal info-popup" data-reveal>
-  <p>Well done for getting so far, we're nearly there now. Please just enter your details and press save. We have provided you with a summary of all the information you have captured. If you feel these are not right, you can always press destroy and start again.</p>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-</summary>
+  <div id="summary_info" class="reveal-modal info-popup" data-reveal>
+    <p>Well done for getting so far, we're nearly there now. Please just enter your details and press save. We have provided you with a summary of all the information you have captured. If you feel these are not right, you can always press destroy and start again.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div> -->
