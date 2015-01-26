@@ -9,4 +9,5 @@ class LookUp < Sinatra::Base
     roof = Roof.find_roof(params[:id])
     {"latitude" => roof.latitude, "longitude" => roof.longitude}.to_json
   end
+
 end
