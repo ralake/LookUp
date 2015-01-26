@@ -8,14 +8,17 @@ body {
 
 .summary_header_field{
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   max-height: 150px;
+  border-bottom: solid 1px black;
 }
 
 .summary_img{
   max-height: 150px;
   border: solid;
-  border-color: black;
+  border-color: #63D1F4;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .summary-form{
@@ -325,5 +328,24 @@ body
 
 .table tr.even, table tr.alt, table tr:nth-of-type(even){
   background-color: transparent;
+}
+
+input[type="text"]{
+  border-radius: 10px;
+}
+
+.container{
+  border: solid 1px red;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.container-header{
+  border: solid 1px red;
+  margin-top: 20px;
+}
+
+.container-table{
+  margin-left: 15%;
 }
   

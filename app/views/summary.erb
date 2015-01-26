@@ -1,37 +1,41 @@
-<summary>
+<summary class="container">
   <h1>Summary</h1>
   <form action="/creator" method="post" name="creator">
-    <div class="row summary_header_field">
-      <div class="large-3 column">
-        <img class="summary_img" src="/images/metal_roof.jpg" class="material_img">
+    <div class="row summary_header_field container-header">
+        <div class="large-4 column">
+          <img class="summary_img" src="/images/metal_roof.jpg" class="material_img">
+        </div>
+        <div class="summary-form large-6 column end">
+          <input class="summary_form_input round" type="text" value="Title" name="title">
+          <input class="summary_form_input round" type="text" value="Disc_by" name="disc_by">
+        </div>
       </div>
-      <div class="summary-form large-4 column end">
-        <input class="summary_form_input" type="text" value="Title" name="title">
-        <input class="summary_form_input" type="text" value="Disc_by" name="disc_by">
-      </div>
+      <div class="row container-table">
+        <div class="large-8 large-centered column">
+          <table class="summary-table">
+            <thead class="summary-table">
+              <tr>
+                <th width="20%"><h4>Attribute</h4></th>
+                <th width="20%"><h4>Result</h4></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><h5>Material</h5></td>
+                <td><h5><%= @roof.material %></h5></td>
+              </tr>
+              <tr>
+                <td><h5>Shade Value</h5></td>
+                <td><h5><%= @roof.shade_value %></h5></td>
+              </tr>
+              <tr>
+                <td><h5>Roof Angle</h5></td>
+                <td><h5><%= @roof.roof_angle %></h5></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
-    <table class="summary-table">
-      <thead class="summary-table">
-        <tr>
-          <th width="200">Attribute</th>
-          <th>Result</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Material</td>
-          <td><%= @roof.material %></td>
-        </tr>
-        <tr>
-          <td>Shade Value</td>
-          <td><%= @roof.shade_value %></td>
-        </tr>
-        <tr>
-          <td>Roof Angle</td>
-          <td><%= @roof.roof_angle %></td>
-        </tr>
-      </tbody>
-    </table>
     <input type="submit" class="button round button_background" value="Save"/>
   </form>
 </summary>
