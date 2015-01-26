@@ -14,8 +14,11 @@ class Roof
   property :title,                String
   property :discovered_by,        String
   property :user_email,           String
+  property :area,                 Float
   property :solar_panel_capacity, Integer
   property :solar_power_capacity, Integer
+
+  FLAT_ROOF_PANEL_AREA = 2.56
 
   def self.create_roof
     # change method name
@@ -65,6 +68,10 @@ class Roof
 
   def set_user_email(email)
     update(user_email: email)
+  end
+
+  def calculate_panel_capacity
+    (area / FLAT_ROOF_PANEL_AREA).to_i
   end
 
 end

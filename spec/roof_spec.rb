@@ -75,4 +75,13 @@ describe Roof do
 
   end
 
+  context 'Results for flat roofs' do
+
+    it 'calculates the aount of solar panels that the roof can hold' do
+      roof = Roof.create(:area => 200, :roof_angle => 0)
+      expect(roof.calculate_panel_capacity).to eq 78         
+    end
+
+  end
+
 end
