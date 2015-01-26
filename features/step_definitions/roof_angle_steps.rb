@@ -1,6 +1,6 @@
 Given(/^I am on Roof Angle page and my roof is flat$/) do
   visit '/roof_angle'
-  expect(page).to have_content("Is your roof sloped or flat?")
+  expect(page).to have_content("Stand square on and point your phone directly at the building")
 end
 
 When(/^I choose the flat roof option$/) do
@@ -13,7 +13,7 @@ end
 
 Given(/^I am on Roof Angle page and my roof is sloped$/) do
   visit '/roof_angle'
-  expect(page).to have_content("Is your roof sloped or flat?")
+  expect(page).to have_content("Stand square on and point your phone directly at the building")
 end
 
 Then(/^I proceed to the next page$/) do

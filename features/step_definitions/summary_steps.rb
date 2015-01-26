@@ -7,6 +7,7 @@ end
 
 When(/^I decide that my information is correct$/) do
   click_on "Save"
+  expect(page).to have_content("Thankyou Test User!")
   expect(page).to have_content("Please enter your email address")
 end
 
