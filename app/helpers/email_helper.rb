@@ -5,7 +5,7 @@ def send_email_with_link(roof)
                     subject: "Lookup.solar link",
                     text: "Hi #{roof.discovered_by}!\n
                           Please follow the link below on a desktop computer to complete the process.\n
-                          https://lookupdev.herokuapp.com?id=#{roof.id}"
+                          https://localhost:9292/desktop?id=#{roof.id}"
   }
   mg_client.send_message "#{ENV['MAILGUN_SANDBAG']}", message_params
 end
