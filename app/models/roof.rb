@@ -9,7 +9,8 @@ class Roof
   property :roof_angle,    Integer
   property :orientation,   Integer
   property :photo_url,     Text
-  property :geolocation,   String
+  property :latitude,      Float
+  property :longitude,     Float
   property :title,         String
   property :discovered_by, String
   property :user_email,    String
@@ -27,8 +28,7 @@ class Roof
   end
 
   def add_geolocation(latitude, longitude)
-    geolocation = latitude.to_s + ',' + longitude.to_s
-    update(geolocation: geolocation)
+    update(latitude: latitude, longitude: longitude)
   end
 
   def add_material(material)

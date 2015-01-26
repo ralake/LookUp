@@ -6,12 +6,18 @@
   }
 </style>
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<div id="latitude"><%= @roof.latitude %></div>
+<div id="longitude"><%= @roof.longitude %></div>
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing"></script>
 
 <script>
   function initialize() {
-    var myLatlng = new google.maps.LatLng(51.5172558882821,-0.0733122868403776);
+    var latitude = document.getElementById('latitude').innerHTML
+    var longitude = document.getElementById('longitude').innerHTML
+    console.log(latitude)
+    console.log(longitude)
+    var myLatlng = new google.maps.LatLng(latitude, longitude);
     var mapOptions = {
       zoom: 25,
       center: myLatlng
