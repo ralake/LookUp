@@ -1,6 +1,7 @@
 class LookUp < Sinatra::Base
 
   get '/thankyou' do
+    @roof = Roof.find_roof(session[:roof_id])
     erb :thankyou
   end
 
