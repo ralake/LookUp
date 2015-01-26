@@ -79,7 +79,7 @@ describe Roof do
 
     before(:each) do 
       @roof = Roof.create(gutter_edge: 20, angled_edge: 10, roof_angle: 0, shade_value: 20)
-      @roof.set_panel_capacity
+      @roof.set_capacities
     end
 
     it 'calculates the amount of solar panels that a flat roof can hold' do      
@@ -87,7 +87,6 @@ describe Roof do
     end
 
     it 'calculates power outputs of its estimated solar panels' do
-      @roof.set_power_capacity
       expect(@roof.power_capacity).to eq 15500
     end
 
@@ -97,7 +96,7 @@ describe Roof do
 
     before(:each) do
       @roof = Roof.create(roof_angle: 10, gutter_edge: 20, angled_edge: 10, shade_value: 20)
-      @roof.set_panel_capacity
+      @roof.set_capacities
     end
 
     it 'calculates the amount of solar panels that a sloped roof can hold' do
@@ -105,7 +104,6 @@ describe Roof do
     end
 
     it 'calculates power outputs of its estimates solar panels' do
-      @roof.set_power_capacity
       expect(@roof.power_capacity).to eq 25000
     end
 

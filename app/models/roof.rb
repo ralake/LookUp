@@ -75,6 +75,13 @@ class Roof
     update(user_email: email)
   end
 
+  def set_capacities
+    set_panel_capacity
+    set_power_capacity
+  end
+
+  private
+
   def set_panel_capacity
     return update(panel_capacity: flat_roof_panel_capacity) if roof_angle == 0
     update(panel_capacity: sloped_roof_panel_capacity)
@@ -83,8 +90,6 @@ class Roof
   def set_power_capacity
     update(power_capacity: panel_capacity * PANEL_POWER )
   end
-
-  private
 
   def angle_cos
     Math.cos(roof_angle * Math::PI / 180)

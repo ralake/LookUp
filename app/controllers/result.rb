@@ -2,7 +2,7 @@ class LookUp < Sinatra::Base
 
   get '/result' do
     @roof = Roof.find(session[:roof_id])
-    p @roof
+    @roof.set_capacities
     erb :result
   end
 
