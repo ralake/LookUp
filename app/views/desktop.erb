@@ -6,44 +6,40 @@
   }
 </style>
 
-<div id="latitude"><%= @roof.latitude %></div>
-<div id="longitude"><%= @roof.longitude %></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing"></script>
 
 <script>
   function initialize() {
-    var latitude = document.getElementById('latitude').innerHTML
-    var longitude = document.getElementById('longitude').innerHTML
-    console.log(latitude)
-    console.log(longitude)
-    var myLatlng = new google.maps.LatLng(latitude, longitude);
-    var mapOptions = {
-      zoom: 25,
-      center: myLatlng
-    }
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    var id = window.location.href.match(/\d+$/);
+    $.getJSON("/desktop/json/" + id).then(function(data) {
+      var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
+      var mapOptions = {
+        zoom: 25,
+        center: myLatlng
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: 'Hello World!'
+      });
+
+      var drawingManager = new google.maps.drawing.DrawingManager({
+        drawingMode: google.maps.drawing.OverlayType.MARKER,
+        drawingControl: true,
+        drawingControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER,
+          drawingModes: [
+          google.maps.drawing.OverlayType.POLYLINE
+          ]
+        }
+      });
+
+      drawingManager.setMap(map);
     });
-
-    var drawingManager = new google.maps.drawing.DrawingManager({
-      drawingMode: google.maps.drawing.OverlayType.MARKER,
-      drawingControl: true,
-      drawingControlOptions: {
-        position: google.maps.ControlPosition.TOP_CENTER,
-        drawingModes: [
-        google.maps.drawing.OverlayType.POLYLINE
-        ]
-      }
-    });
-
-    drawingManager.setMap(map);
   }
-
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
