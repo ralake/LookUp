@@ -1,7 +1,6 @@
 class LookUp < Sinatra::Base
 
-  get '/desktop' do
-    @roof = Roof.find_roof(params[:id])
+  get '/desktop/:latitude/:longitude' do
     erb :desktop
   end
 

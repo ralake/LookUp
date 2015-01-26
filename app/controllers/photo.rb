@@ -11,7 +11,6 @@ class LookUp < Sinatra::Base
   end
 
   post '/geolocation' do
-    p params
     Roof.find_roof(session[:roof_id]).add_geolocation(params[:latitude], params[:longitude])
   end
 
