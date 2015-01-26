@@ -1,7 +1,7 @@
 $( document ).ready(function(){
   greyOut('#PhotoInfo');
 
-  navigator.geolocation.getCurrentPosition(getPosition, geoError);
+  navigator.geolocation.getCurrentPosition(getPosition);
 
   var lat;
   var longit;
@@ -11,11 +11,7 @@ $( document ).ready(function(){
     longit = position.coords.longitude;
   }
 
-  function geoError(position) {
-    console.log('Error occurred - no GPS data obtained');
-  }
-
-  $('#submit').click(function() {
+  $('#submit_button').click(function() {
     $.post('/geolocation',{ latitude: lat, longitude: longit });
   });
 

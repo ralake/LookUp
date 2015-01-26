@@ -6,6 +6,7 @@ gem 'dm-postgres-adapter'
 gem 'rack-flash3'
 gem 'require_all'
 gem 'aws-s3'
+gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
 
 group :development, :test do
   gem 'launchy'
