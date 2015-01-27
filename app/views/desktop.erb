@@ -6,7 +6,6 @@
   }
 </style>
 
-
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing"></script>
 
 <script>
@@ -16,28 +15,28 @@
       var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
       var mapOptions = {
         zoom: 25,
-        center: myLatlng
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
       };
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
       var marker = new google.maps.Marker({
         position: myLatlng,
-        map: map,
-        title: 'Hello World!'
+        map: map
       });
 
-      var drawingManager = new google.maps.drawing.DrawingManager({
-        drawingMode: google.maps.drawing.OverlayType.MARKER,
-        drawingControl: true,
-        drawingControlOptions: {
-          position: google.maps.ControlPosition.TOP_CENTER,
-          drawingModes: [
-          google.maps.drawing.OverlayType.POLYLINE
-          ]
-        }
-      });
-
-      drawingManager.setMap(map);
+      // var drawingManager = new google.maps.drawing.DrawingManager({
+      //   drawingMode: google.maps.drawing.OverlayType.MARKER,
+      //   drawingControl: true,
+      //   drawingControlOptions: {
+      //     position: google.maps.ControlPosition.TOP_CENTER,
+      //     drawingModes: [
+      //     google.maps.drawing.OverlayType.POLYLINE
+      //     ]
+      //   }
+      // });
+      //
+      // drawingManager.setMap(map);
     });
   }
 
@@ -46,3 +45,9 @@
 </script>
 
 <div id="map-canvas"></div>
+
+<form action='/desktop/data' method="post">
+  <input type="text" placeholder="angled_edge" name="angled_edge">
+  <input type="text" placeholder="gutter_edge" name="gutter_edge">
+  <input type="submit" class="button round button_background" value="Calculate">
+</form>
