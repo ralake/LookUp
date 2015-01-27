@@ -1,0 +1,19 @@
+<div class="page-wrap">
+  <div id="screen">
+    <p>Stand nearby and square on<br>
+        to your building and take a photograph!
+    </p>
+    <a class="button round button_background">Ok, I got it</a>
+  </div>
+</div>
+
+<img id="yourimage">
+
+<form action="/photo_capture" method="post" enctype="multipart/form-data">
+  <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input data_capture_form">
+  <input id="submit_button" style="display:none" class="button round button_background" type="submit">
+</form>
+
+<script>$( document ).ready(function(){ greyOut('#screen'); });</script>
+<script>$( document ).ready(function(){ greyOut(); });</script>
+<script type="text/javascript" src="js/location.js"></script>

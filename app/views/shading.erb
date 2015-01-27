@@ -1,0 +1,40 @@
+<div class="large-10 medium-10 small-10 large-centered medium-centered small-centered column panel panel-color">
+   <h4>Use the slider to estimate how much shade the roof might get over the course of a day.</h4>
+</div>
+
+<div class="row">
+  <div class="large-8 mediun-8 small- columns large-centered medium-centered small-centered">
+    <ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-3">
+      <li>
+          <img class="shade_img" src="/images/no_shade.png">
+      </li>
+      <li>
+          <img class="shade_img" src="/images/partly_shade.png">
+      </li>
+      <li>
+          <img class="shade_img" src="/images/full_shade.png">
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
+    <form action="/shading_data" method="post">
+      <output for="shader" id="shade">50%</output>
+      <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)"><br>
+      <input type="submit" class="button round button_background" value="Next">
+    </form>
+  </div>
+</div>
+
+<div class="info_icon">
+  <a href="#" data-reveal-id="shade_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
+</div>
+
+<div id="shade_info" class="reveal-modal info-popup" data-reveal>
+  <p>“Shading can make all the difference to a roof’s potential, and even a little bit of shading - for instance, like the thin shadow cast by overhead phone cables - can be a big problem for solar panels’ power output. Watch out for things like nearby buildings and trees, and chimneys or air conditioning units on the roof in question. Shading will be different at different times of day, so it’s hard to get this right during a spot check. Just give it your best guess for now.”</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+

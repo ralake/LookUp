@@ -1,0 +1,29 @@
+<summary class="row">
+  <div class="large-12 medium-8 small-6 small-centered medium-centered columns">
+    <div id="page-wrap">
+      <h1>Summary</h1>
+      <form action="/creator" id="user_data" method="post" name="creator">
+        <div class="row">
+          <div class="large-4 medium-4 small-4 column">
+          </div>
+          <div class="large-4 medium-6 small-12 column">
+            <input type="text" placeholder="Title..." name="title">
+            <input type="text" placeholder="Discovered by..." name="discovered_by">
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 large-centered">
+            <ul>
+              <li>Material: <%= @roof.material %></li>
+              <li>Shade: <%= @roof.shade_value %>%</li>
+              <li>Roof Angle: <%= @roof.roof_angle %> degrees</li>
+              <li><img class="summary_img" src="<%= @roof.photo_url %>" class="material_img"></li>
+            </ul>
+          </div>
+          <input type="submit" id="save_data" class="button round button_background" value="Save"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</summary>
+

@@ -1,0 +1,20 @@
+<body onload="gyroscope()">
+
+  <p>Aim your phone at the pitch of the roof and press capture. You should see the data updating as you change the angle of your phone.</p>
+
+  <section id="dataContainerOrientation">
+    No device orientation data
+  </section>
+
+  <form action="/sloped_roof_angle" method="post">
+    <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
+    <input type="submit" value="Capture" id="capture">
+  </form>
+
+  <div class="info_icon">
+    <a href="#" data-reveal-id="roof_angle_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
+  </div>
+
+</body>
+
+
