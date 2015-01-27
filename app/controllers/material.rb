@@ -5,7 +5,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/material_data' do
-    Roof.find(session[:roof_id]).set_material(params[:material])
+    Roof.first(id: session[:roof_id]).update(material: params[:material])
     redirect to '/shading'
   end
 
