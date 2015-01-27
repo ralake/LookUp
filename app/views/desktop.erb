@@ -1,132 +1,16 @@
 <style>
   html, body, #map-canvas {
-    height: 700px;
-    width: 900px;
+    height: 400px;
+    width: 400px;
   }
 </style>
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
 <script type="text/javascript" src="/js/labels.js"></script>
-<!-- <script type="text/javascript" src="/js/ruler.js"></script> -->
-<script>
-  var map;
-  var markers = [];
-
-  function setAllMap(map) {
-    for (var i = 0; i < markers.length; i++) {
-      markers[i].setMap(map);
-    }
-  }
-
-  function clearMarkers() {
-    setAllMap(null);
-  }
-  function deleteMarkers() {
-    clearMarkers();
-    markers = [];
-  }
-
-  function start() {
-    var id = window.location.href.match(/\d+$/);
-    $.getJSON("/desktop/json/" + id).then(function(data) {
-      var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
-      var myOptions = {
-        zoom: 25,
-        center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.SATELLITE
-      };
-      map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-      });
-      markers.push(marker);
-    });
-  }
-  google.maps.event.addDomListener(window, 'load', start);
-
-  function addruler() {
-
-    deleteMarkers();
-
-    ruler1 = new google.maps.Marker({
-      position: map.getCenter() ,
-      map: map,
-      draggable: true
-    });
-
-    ruler2 = new google.maps.Marker({
-      position: map.getCenter() ,
-      map: map,
-      draggable: true
-
-    });
-
-    ruler1label = new Label({ map: map });
-    ruler2label = new Label({ map: map });
-    ruler1label.bindTo('position', ruler1, 'position');
-    ruler2label.bindTo('position', ruler2, 'position');
-
-    var rulerpoly = new google.maps.Polyline({
-      path: [ruler1.position, ruler2.position] ,
-      strokeColor: "#FFFF00",
-      strokeOpacity: 0.7,
-      strokeWeight: 7
-    });
-
-    markers.push(ruler1, ruler2, ruler1label, ruler2label, rulerpoly);
-
-    rulerpoly.setMap(map);
-
-    ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-    ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-
-    google.maps.event.addListener(ruler1, 'drag', function() {
-      rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
-      ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-      ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-      console.log(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-      // dis = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
-      // distance = document.getElementById('distance');
-      // distance.innerHTML = 'Length: ' + dis;
-    });
-
-    google.maps.event.addListener(ruler2, 'drag', function() {
-      rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
-      ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-      ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-      console.log(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-      // console.log(distance( ruler2.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
-    });
-
-  }
-
-  function clearRuller() {
-    ruler1label.set('');
-    ruler2label.set('');
-  }
-   
-
-  function distance(lat1,lon1,lat2,lon2) {
-    var R = 6371; // km (change this constant to get miles)
-    var dLat = (lat2-lat1) * Math.PI / 180;
-    var dLon = (lon2-lon1) * Math.PI / 180; 
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) * 
-      Math.sin(dLon/2) * Math.sin(dLon/2); 
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-    var d = R * c;
-    if (d>1) return Math.round(d)+"km";
-    else if (d<=1) return (d*1000).toFixed(2)+"m";
-    return d;
-  }
-</script>
+<script type="text/javascript" src="/js/mapAndRuler.js"></script>
 
 <div id="map-canvas"></div>
 
-<div id="distance"></div>
-
-<input type='button' id='addruler' onclick='addruler();' value='add a ruler'/>
+<input type='button' id='addRuler' onclick='addruler();' value='Add Ruler' style="color: red"/>
 
 <form action='/desktop/data' method="post">
   <input type="text" placeholder="angled_edge" name="angled_edge">
