@@ -46,23 +46,17 @@ describe Roof do
 
   context 'Saving user data' do
 
-    it "saves the user's name and the site's title" do
-      @roof = Roof.create
-      visit "/roofs/#{@roof.id}/summary/edit"
+    it "saves the user's name, email and the site's title" do
+      @roof = Roof.create(roof_angle: 0, angled_edge: 10, gutter_edge: 20, shade_value: 10)
+      visit "/roofs/#{@roof.id}/capacity/edit"
       fill_in 'title', with: 'Test Roof'
       fill_in 'discovered_by', with: 'Test User'
-      click_on 'Save'
+      fill_in 'email', with: 'test@test.com'
+      click_on 'Send me the results'
       expect(Roof.first.title).to eq 'Test Roof'
       expect(Roof.first.discovered_by).to eq 'Test User'
+      expect(Roof.first.user_email).to eq "test@test.com"
     end 
-
-    it "saves the user's email address" do
-      @roof = Roof.create
-      visit "/roofs/#{@roof.id}/email/edit"
-      fill_in 'email', with: 'test@test.com'
-      click_on 'Send Link'
-      expect(Roof.first.user_email).to eq 'test@test.com'
-    end
 
   end
 

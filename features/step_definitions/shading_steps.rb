@@ -10,7 +10,7 @@ When(/^I choose a shade value$/) do
 end
 
 Then(/^I should see the roof angle page$/) do
-  expect(page).to have_content("Summary")
+  expect(current_url).to eq "http://www.example.com/roofs/#{@roof.id}/area/edit"
 end
 
 Given(/^I am on the shading page$/) do
