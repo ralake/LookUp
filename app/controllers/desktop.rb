@@ -1,6 +1,6 @@
 class LookUp < Sinatra::Base
 
-  get '/desktop/:geolocation' do
+  get '/desktop/?:geolocation' do
     erb :desktop
   end
 

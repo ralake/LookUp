@@ -6,13 +6,12 @@
   }
 </style>
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing"></script>
 
 <script>
   function initialize() {
-
-    var myLatlng = new google.maps.LatLng(51.5172558882821,-0.0733122868403776);
+    var coord = location.search
+    var myLatlng = new google.maps.LatLng(coord);
 
     var mapOptions = {
       zoom: 25,
