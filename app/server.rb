@@ -10,9 +10,8 @@ require_relative 'models/roof'
 require_relative 'data_mapper_setup'
 
 require_rel 'helpers'
-require_rel 'controllers'
 
-class RoofController < Sinatra::Base
+class LookUp < Sinatra::Base
 
   use Rack::Flash
   set :views, File.join(root, 'views')
@@ -48,7 +47,7 @@ class RoofController < Sinatra::Base
 
   post '/roofs/:id/sloped_roof_orientation' do
     roof_facing(set_azimuth(params[:sloped_orientation]))
-    Roof.first(id: session[:roof_id]).update_sloped_roof_orientation(params[:sloped_orientation])
+    Roof.first(id: params[:id]).update_sloped_roof_orientation(params[:sloped_orientation])
     redirect to "/roofs/#{params[:id]}/sloped_roof/edit"
   end
 
@@ -73,8 +72,67 @@ class RoofController < Sinatra::Base
     redirect to "/roofs/#{params[:id]}/material/edit"
   end
 
-  post '/roofs/geolocation' do
+  post '/geolocation' do
+    p params
     Roof.first(id: session[:roof_id]).update(latitude: params[:latitude], longitude: params[:longitude])
+  end
+
+  get '/roofs/:id/material/edit' do
+    @roof = Roof.first(id: params[:id])
+    erb :material
+  end
+
+  post '/roofs/:id/material' do
+    Roof.first(id: params[:id]).update(material: params[:material])
+    redirect to "/roofs/#{params[:id]}/shading/edit"
+  end
+
+  get '/roofs/:id/shading/edit' do
+    @roof = Roof.first(id: params[:id])
+    erb :shading
+  end
+
+  post '/roofs/:id/shading' do
+    Roof.first(id: session[:roof_id]).update(shade_value: params[:shade_value].to_i)
+    redirect to "/roofs/#{params[:id]}/summary/edit"
+  end
+
+  get '/roofs/:id/summary/edit' do
+    @roof = Roof.first(id: params[:id])
+    erb :summary
+  end
+
+  post '/roofs/:id/summary' do
+    Roof.first(id: params[:id]).update(title: params[:title], discovered_by: params[:discovered_by])
+    redirect to "/roofs/#{params[:id]}/email/edit"
+  end
+
+  get '/roofs/:id/email/edit' do
+    @roof = Roof.first(id: params[:id])
+    erb :email
+  end
+
+  post '/roofs/:id/email' do
+    roof = Roof.first(id: params[:id])
+    roof.update(user_email: params[:email])
+    send_email_with_link(roof)
+    redirect to 'http://www.1010global.org/uk'
+  end
+
+  get '/roofs/:id/area/edit' do
+    @roof = Roof.first(id: params[:id])
+    erb :area
+  end
+
+  get '/roofs/:id/area/json' do
+    roof = Roof.first(id: params[:id])
+    {"latitude" => roof.latitude, "longitude" => roof.longitude}.to_json
+  end
+
+  get '/roofs/:id/result' do
+    @roof = Roof.first(id: param[:id])
+    @roof.set_capacities
+    erb :result
   end
 
   run! if app_file == $0

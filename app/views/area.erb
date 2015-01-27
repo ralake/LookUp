@@ -12,7 +12,7 @@
 <script>
   function initialize() {
     var id = window.location.href.match(/\d+$/);
-    $.getJSON("/desktop/json/" + id).then(function(data) {
+    $.getJSON("/roofs/" + id + "/area/json").then(function(data) {
       var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
       var mapOptions = {
         zoom: 25,

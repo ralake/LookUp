@@ -20,7 +20,7 @@
 
 <div class="row">
   <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
-    <form action="/shading_data" method="post">
+    <form action="/roofs/<%=@roof.id%>/shading" method="post">
       <output for="shader" id="shade">50%</output>
       <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)"><br>
       <input type="submit" class="button round button_background" value="Next">
