@@ -6,40 +6,40 @@
   }
 </style>
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=drawing"></script>
 
 <script>
   function initialize() {
+    var id = window.location.href.match(/\d+$/);
+    $.getJSON("/desktop/json/" + id).then(function(data) {
+      var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
+      var mapOptions = {
+        zoom: 25,
+        center: myLatlng
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    var myLatlng = new google.maps.LatLng(51.5172558882821,-0.0733122868403776);
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: 'Hello World!'
+      });
 
-    var mapOptions = {
-      zoom: 25,
-      center: myLatlng
-    }
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      var drawingManager = new google.maps.drawing.DrawingManager({
+        drawingMode: google.maps.drawing.OverlayType.MARKER,
+        drawingControl: true,
+        drawingControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER,
+          drawingModes: [
+          google.maps.drawing.OverlayType.POLYLINE
+          ]
+        }
+      });
 
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
+      drawingManager.setMap(map);
     });
-
-    var drawingManager = new google.maps.drawing.DrawingManager({
-      drawingMode: google.maps.drawing.OverlayType.MARKER,
-      drawingControl: true,
-      drawingControlOptions: {
-        position: google.maps.ControlPosition.TOP_CENTER,
-        drawingModes: [
-        google.maps.drawing.OverlayType.POLYLINE
-        ]
-      }
-    });
-
-    drawingManager.setMap(map);
   }
-
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
