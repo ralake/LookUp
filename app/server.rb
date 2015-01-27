@@ -19,44 +19,44 @@ class LookUp < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
-  get '/roofs' do
+  get '/' do
     erb :index
   end
 
-  post '/roofs/new' do
+  post '/roofs' do
     roof = Roof.create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
     session[:roof_id] = roof.id
-    redirect to "/roofs/#{roof.id}/information"
+    redirect to "/roofs/#{roof.id}/get_started"
   end
 
-  get '/roofs/:id/information' do
+  get '/roofs/:id/get_started' do
     @roof = Roof.first(id: params[:id])
-    erb :information
+    erb :get_started
   end
 
-  get '/roofs/:id/angle/edit' do
+  get '/roofs/:id/start' do
     @roof = Roof.first(id: params[:id])
     erb :angle
   end
 
-  post '/roofs/:id/flat_roof_data' do
+  post '/roofs/:id/flat' do
     roof_facing(set_azimuth(params[:flat_orientation]))
     Roof.first(id: params[:id]).update_flat_roof_data(0, params[:flat_orientation])
     redirect to "/roofs/#{params[:id]}/photo/edit"
   end
 
-  post '/roofs/:id/sloped_roof_orientation' do
+  post '/roofs/:id/sloped' do
     roof_facing(set_azimuth(params[:sloped_orientation]))
     Roof.first(id: params[:id]).update_sloped_roof_orientation(params[:sloped_orientation])
-    redirect to "/roofs/#{params[:id]}/sloped_roof/edit"
+    redirect to "/roofs/#{params[:id]}/sloped/edit"
   end
 
-  get '/roofs/:id/sloped_roof/edit' do
+  get '/roofs/:id/sloped/edit' do
     @roof = Roof.first(id: params[:id])
     erb :sloped_roof
   end
 
-  post '/roofs/:id/sloped_roof_angle' do
+  post '/roofs/:id/angle' do
     Roof.first(id: params[:id]).update(roof_angle: params[:sloped_angle].to_i)
     redirect to "/roofs/#{params[:id]}/photo/edit"
   end
@@ -93,7 +93,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs/:id/shading' do
-    Roof.first(id: session[:roof_id]).update(shade_value: params[:shade_value].to_i)
+    Roof.first(id: params[:id]).update(shade_value: params[:shade_value].to_i)
     redirect to "/roofs/#{params[:id]}/summary/edit"
   end
 
@@ -124,13 +124,13 @@ class LookUp < Sinatra::Base
     erb :area
   end
 
-  get '/roofs/:id/area/json' do
+  get '/roofs/:id' do
     roof = Roof.first(id: params[:id])
-    {"latitude" => roof.latitude, "longitude" => roof.longitude}.to_json
+    roof.to_json
   end
 
-  get '/roofs/:id/result' do
-    @roof = Roof.first(id: param[:id])
+  get '/roofs/:id/capacity' do
+    @roof = Roof.first(id: params[:id])
     @roof.set_capacities
     erb :result
   end
