@@ -2,16 +2,6 @@ require 'spec_helper'
 
 describe Roof do
 
-  context 'Time created' do
-
-    it 'records the date and time that the record was created' do
-      visit '/'
-      click_on "Get started!"
-      expect(Roof.first.created_at).to eq "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}"
-    end
-
-  end
-
   context 'Roof material' do
 
     it "knows the material that the roof is made out of" do

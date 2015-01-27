@@ -24,7 +24,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs' do
-    roof = Roof.create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
+    roof = Roof.create
     session[:roof_id] = roof.id
     redirect to "/roofs/#{roof.id}/get_started"
   end
