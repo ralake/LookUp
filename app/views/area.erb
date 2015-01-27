@@ -1,0 +1,20 @@
+<style>
+  html, body, #map-canvas {
+    height: 400px;
+    width: 400px;
+  }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
+<script type="text/javascript" src="/js/labels.js"></script>
+<script type="text/javascript" src="/js/mapAndRuler.js"></script>
+
+<div id="map-canvas" data-roof-id="<%=@roof.id%>"></div>
+
+<input type='button' id='addRuler' onclick='addruler();' value='Add Ruler' style="color: red"/>
+
+<form action='/roofs/<%=@roof.id%>/area' method="post">
+  <input type="text" placeholder="angled_edge" name="angled_edge">
+  <input type="text" placeholder="gutter_edge" name="gutter_edge">
+  <input type="submit" class="button round button_background" value="Calculate">
+</form>
+

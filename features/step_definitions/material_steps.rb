@@ -1,5 +1,11 @@
 Given(/^I am on the material page$/) do
-  visit '/material'
+  visit 'roofs/:id/material'
+  expect(page).to have_content("What does the roof look like it is made out of?")
+end
+
+Given(/^That there is a roof and I am on the material page$/) do
+  @roof = Roof.create
+  visit "roofs/#{@roof.id}/material/edit"
   expect(page).to have_content("What does the roof look like it is made out of?")
 end
 

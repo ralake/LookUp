@@ -11,7 +11,7 @@ $( document ).ready(function(){
     longit = position.coords.longitude;
   }
 
-  $('#submit').click(function() {
+  $('#submit_button').click(function() {
     $.post('/geolocation',{ latitude: lat, longitude: longit });
   });
 

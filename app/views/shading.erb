@@ -20,29 +20,23 @@
 
 <div class="row">
   <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
-    <form action="/shading_data" method="post">
+    <form action="/roofs/<%=@roof.id%>/shading" method="post">
       <output for="shader" id="shade">50%</output>
       <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)"><br>
       <input type="submit" class="button round button_background" value="Next">
     </form>
   </div>
 </div>
-
+ 
 <div class="info_icon">
   <a href="#" data-reveal-id="shade_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>
 </div>
 
 <div id="shade_info" class="reveal-modal info-popup" data-reveal>
-  <p>Is there anything up on the building itself or nearby that looks like it might cast a shadow on the roof at certain times of day? Things to look out for might include:  
-  <br><br><br>
-  trees <br>  
-  buildings <br>  
-  chimneys <br> 
-  railings / walls <br>  
-  lampposts / telegraph poles <br> 
-  overhead wires <br>  
-  air conditioning units></p>
+  <p>“Shading can make all the difference to a roof’s potential, and even a little bit of shading - for instance, like the thin shadow cast by overhead phone cables - can be a big problem for solar panels’ power output. Watch out for things like nearby buildings and trees, and chimneys or air conditioning units on the roof in question. Shading will be different at different times of day, so it’s hard to get this right during a spot check. Just give it your best guess for now.”</p>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+<script>function outputUpdate(shade) {document.querySelector('#shade').value = shade + "%";}</script>
 
 
