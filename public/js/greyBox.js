@@ -1,7 +1,7 @@
 function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).width(), "height": $(document).height() })
   .click(function() {
     $(this).css("display", "none"); $(styleToApply).css("display", "none");
-    $('#takePictureField').click();
+    // $('#takePictureField').click();
     $("#submit_button").fadeIn();
     $("#yourimage").fadeIn();
     $("#takePictureField").on("change",gotPic); 
