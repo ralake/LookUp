@@ -25,54 +25,12 @@ class Roof
 
   PANEL_POWER = 250
 
-  def self.create_record
-    # change method name
-    create(created_at: "#{(Time.now).strftime('%H:%M | %d.%m.%Y')}")
-  end
-
-  def self.find(id)
-    # change method name
-    first(id: id)
-  end
-
-  def set_photo_url(url)
-    update(photo_url: url)
-  end
-
-  def set_geolocation(latitude, longitude)
-    update(latitude: latitude, longitude: longitude)
-  end
-
-  def set_material(material)
-    update(material: material)
-  end
-
-  def set_flat_roof_data(angle, orientation)
+  def update_flat_roof_data(angle, orientation)
     update(roof_angle: angle, orientation: set_azimuth(orientation))
   end
 
-  def set_sloped_roof_orientation(orientation)
+  def update_sloped_roof_orientation(orientation)
     update(orientation: set_azimuth(orientation))
-  end
-
-  def set_sloped_roof_angle(angle)
-    update(roof_angle: angle)
-  end
-
-  def destroy_record
-    destroy
-  end
-
-  def set_shade_value(shade_value)
-    update(shade_value: shade_value)
-  end
-
-  def set_discovery_data(title, user)
-    update(title: title, discovered_by: user)
-  end
-
-  def set_user_email(email)
-    update(user_email: email)
   end
 
   def set_capacities
@@ -91,6 +49,14 @@ class Roof
     update(power_capacity: panel_capacity * PANEL_POWER )
   end
 
+  def flat_roof_panel_capacity
+    (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i * shade_percentage
+  end
+
+  def sloped_roof_panel_capacity
+    (sloped_roof_area / SLOPED_ROOF_PANEL_AREA) * shade_percentage
+  end
+
   def angle_cos
     Math.cos(roof_angle * Math::PI / 180)
   end
@@ -101,14 +67,6 @@ class Roof
 
   def shade_percentage
     (100 - shade_value) / 100.0
-  end
-
-  def flat_roof_panel_capacity
-    (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i * shade_percentage
-  end
-
-  def sloped_roof_panel_capacity
-    (sloped_roof_area / SLOPED_ROOF_PANEL_AREA) * shade_percentage
   end
 
 end
