@@ -8,15 +8,6 @@ require 'dm-migrations'
 
 Capybara.app = LookUp.new
 
-def submit_material
-  visit '/'
-  click_on 'Get started!'
-  click_on 'Next'
-  visit '/material'
-  choose('tiles')
-  click_on "Next"
-end
-
 RSpec.configure do |config|
 
   config.include Capybara::DSL
