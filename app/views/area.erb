@@ -8,47 +8,11 @@
 <script type="text/javascript" src="/js/labels.js"></script>
 <script type="text/javascript" src="/js/mapAndRuler.js"></script>
 
-<div id="map-canvas"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
-
-<script>
-  function initialize() {
-    var id = window.location.href.match(/\d+$/);
-    $.getJSON("/roofs/" + id + "/area/json").then(function(data) {
-      var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
-      var mapOptions = {
-        zoom: 25,
-        center: myLatlng
-      };
-      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-      var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: 'Hello World!'
-      });
-
-      var drawingManager = new google.maps.drawing.DrawingManager({
-        drawingMode: google.maps.drawing.OverlayType.MARKER,
-        drawingControl: true,
-        drawingControlOptions: {
-          position: google.maps.ControlPosition.TOP_CENTER,
-          drawingModes: [
-          google.maps.drawing.OverlayType.POLYLINE
-          ]
-        }
-      });
-
-      drawingManager.setMap(map);
-    });
-  }
-
-  google.maps.event.addDomListener(window, 'load', initialize);
+<div id="map-canvas" data-roof-id="<%=@roof.id%>"></div>
 
 <input type='button' id='addRuler' onclick='addruler();' value='Add Ruler' style="color: red"/>
 
-<form action='/desktop/data' method="post">
+<form action='/roofs/<%=@roof.id%>/area' method="post">
   <input type="text" placeholder="angled_edge" name="angled_edge">
   <input type="text" placeholder="gutter_edge" name="gutter_edge">
   <input type="submit" class="button round button_background" value="Calculate">
