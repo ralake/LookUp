@@ -55,7 +55,8 @@ Label.prototype.draw = function() {
 	div.style.left = position.x + 'px';
 	div.style.top = position.y + 'px';
 	div.style.display = 'block';
-	div.style.fontSize = "30";
+	div.style.fontSize = "10";
+	div.style.color = "black";
 
 	this.span_.innerHTML = this.get('text').toString();
 };
