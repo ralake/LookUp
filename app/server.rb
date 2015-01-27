@@ -130,6 +130,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs/:id/area' do
+    p params
     Roof.first(id: params[:id]).update(angled_edge: params[:angled_edge], gutter_edge: params[:gutter_edge])
     redirect to "/roofs/#{params[:id]}/capacity"
   end

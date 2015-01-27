@@ -18,7 +18,7 @@ function deleteMarkers() {
 // setting up google map
 
 function start() {
-  var id = window.location.href.match(/\d+$/);
+  var id = $('#map-canvas').data("roof-id");
   $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
     var myOptions = {
