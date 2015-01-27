@@ -94,7 +94,7 @@ class LookUp < Sinatra::Base
 
   post '/roofs/:id/shading' do
     Roof.first(id: params[:id]).update(shade_value: params[:shade_value].to_i)
-    redirect to "/roofs/#{params[:id]}/summary/edit"
+    redirect to "/roofs/#{params[:id]}/area/edit"
   end
 
   get '/roofs/:id/summary/edit' do
