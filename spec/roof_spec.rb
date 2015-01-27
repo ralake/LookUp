@@ -108,6 +108,6 @@ describe Roof do
       expect(@roof.power_capacity).to eq 25000
     end
 
-  end
+    end
 
 end

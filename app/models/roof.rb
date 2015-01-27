@@ -1,3 +1,4 @@
+# The Roof class is responsible for setting information and collected data in the database
 class Roof
 
   include DataMapper::Resource

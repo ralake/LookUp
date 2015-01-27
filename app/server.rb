@@ -129,6 +129,11 @@ class LookUp < Sinatra::Base
     roof.to_json
   end
 
+  post '/roofs/:id/area' do
+    Roof.first(id: params[:id]).update(angled_edge: params[:angled_edge], gutter_edge: params[:gutter_edge])
+    redirect to "/roofs/#{params[:id]}/capacity"
+  end
+
   get '/roofs/:id/capacity' do
     @roof = Roof.first(id: params[:id])
     @roof.set_capacities
