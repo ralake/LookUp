@@ -1,10 +1,11 @@
-Given(/^I am on shading page$/) do
-  visit '/shading'
+Given(/^that there is a roof and I am on shading page$/) do
+  @roof = Roof.create
+  visit "/roofs/#{@roof.id}/shading/edit"
   expect(page).to have_content("Use the slider to estimate how much shade")
 end
 
 When(/^I choose a shade value$/) do
-  fill_in "shade_value", with: "1"
+  fill_in "shade_value", with: "10"
   click_on "Next"
 end
 
@@ -13,7 +14,8 @@ Then(/^I should see the roof angle page$/) do
 end
 
 Given(/^I am on the shading page$/) do
-  visit '/shading'
+  @roof = Roof.create
+  visit "/roofs/#{@roof.id}/shading/edit"
   page.should have_selector('#shade_info', visible: false)
 end
 

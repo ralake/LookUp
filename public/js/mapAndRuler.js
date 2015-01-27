@@ -19,7 +19,7 @@ function deleteMarkers() {
 
 function start() {
   var id = window.location.href.match(/\d+$/);
-  $.getJSON("/desktop/json/" + id).then(function(data) {
+  $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
     var myOptions = {
       zoom: 25,

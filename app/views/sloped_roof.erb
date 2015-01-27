@@ -6,10 +6,10 @@
   No device orientation data
 </section>
 
-<form action="/sloped_roof_angle" method="post">
-  <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
-  <input type="submit" value="Capture" id="capture">
-</form>
+  <form action="/roofs/<%=@roof.id%>/angle" method="post">
+    <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
+    <input type="submit" value="Capture" id="capture">
+  </form>
 
 <div class="info_icon">
   <a href="#" data-reveal-id="roof_angle_info" id="shade_button"><img class="info-icon" src="images/info_sign.png"></a>

@@ -1,5 +1,6 @@
 Given(/^I visit the summary page$/) do
-  visit '/summary'
+  @roof = Roof.create
+  visit "/roofs/#{@roof.id}/summary/edit"
   expect(page).to have_content("Summary")
   fill_in 'title', with: "Test Site"
   fill_in 'discovered_by', with: "Test User"
