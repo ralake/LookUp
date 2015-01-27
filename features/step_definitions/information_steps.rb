@@ -1,5 +1,5 @@
 Given(/^I am on the information page$/) do
-  visit '/infopage'
+  visit '/roofs/:id/infopage'
 end
 
 When(/^I read information I want to move to next page$/) do

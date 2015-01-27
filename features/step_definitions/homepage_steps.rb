@@ -1,5 +1,5 @@
 Given(/^I visit the homepage$/) do
-  visit '/'
+  visit '/roofs'
   expect(page).to have_content("Look Up")
 end
 

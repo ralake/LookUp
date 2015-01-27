@@ -1,5 +1,5 @@
 Given(/^I am on the material page$/) do
-  visit '/material'
+  visit 'roofs/:id/material'
   expect(page).to have_content("What does the roof look like it is made out of?")
 end
 

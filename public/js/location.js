@@ -12,7 +12,7 @@ $( document ).ready(function(){
   }
 
   $('#submit_button').click(function() {
-    $.post('/geolocation',{ latitude: lat, longitude: longit });
+    $.post('/roofs/geolocation',{ latitude: lat, longitude: longit });
   });
 
 });
