@@ -97,28 +97,6 @@ class LookUp < Sinatra::Base
     redirect to "/roofs/#{params[:id]}/area/edit"
   end
 
-  get '/roofs/:id/summary/edit' do
-    @roof = Roof.first(id: params[:id])
-    erb :summary
-  end
-
-  post '/roofs/:id/summary' do
-    Roof.first(id: params[:id]).update(title: params[:title], discovered_by: params[:discovered_by])
-    redirect to "/roofs/#{params[:id]}/email/edit"
-  end
-
-  get '/roofs/:id/email/edit' do
-    @roof = Roof.first(id: params[:id])
-    erb :email
-  end
-
-  post '/roofs/:id/email' do
-    roof = Roof.first(id: params[:id])
-    roof.update(user_email: params[:email])
-    send_email_with_link(roof)
-    redirect to 'http://www.1010global.org/uk'
-  end
-
   get '/roofs/:id/area/edit' do
     @roof = Roof.first(id: params[:id])
     erb :area
@@ -130,15 +108,23 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs/:id/area' do
-    p params
     Roof.first(id: params[:id]).update(angled_edge: params[:angled_edge], gutter_edge: params[:gutter_edge])
-    redirect to "/roofs/#{params[:id]}/capacity"
+    redirect to "/roofs/#{params[:id]}/capacity/edit"
   end
-
-  get '/roofs/:id/capacity' do
+  
+  get '/roofs/:id/capacity/edit' do
     @roof = Roof.first(id: params[:id])
     @roof.set_capacities
     erb :result
+  end
+
+  post '/roofs/:id/capacity' do
+    roof = Roof.first(id: params[:id])
+    roof.update(title: params[:title],
+                discovered_by: params[:discovered_by],
+                user_email: params[:email])
+    send_email_with_link(roof)
+    redirect to 'http://www.1010global.org/uk'
   end
 
   run! if app_file == $0
