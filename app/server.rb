@@ -107,7 +107,12 @@ class LookUp < Sinatra::Base
     roof.to_json
   end
 
+  def format_measurments(params)
+    params.each { |key, value| params[key] = value[0..-2].to_f if value.include?('m') }
+  end
+
   post '/roofs/:id/area' do
+    format_measurments(params)
     Roof.first(id: params[:id]).update(angled_edge: params[:angled_edge], gutter_edge: params[:gutter_edge])
     redirect to "/roofs/#{params[:id]}/capacity/edit"
   end
