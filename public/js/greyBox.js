@@ -4,7 +4,10 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     $("#submit_button").fadeIn();
     $("#yourimage").fadeIn();
     $("#takePictureField").on("change",gotPic);
-    $("#takePictureField").click();
+    if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0)
+    {
+      $("#takePictureField").click();
+    }
   });
 }
 
@@ -15,4 +18,6 @@ function gotPic(event) {
   }
 }
 
-function myFunction(){ $("#takePictureField").click(); }
+function myFunction(){
+  $("#takePictureField").click();
+}
