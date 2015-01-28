@@ -1,10 +1,9 @@
-# The Roof class is responsible for setting information and collected data in the database
 class Roof
 
   include DataMapper::Resource
   
   property :id,                   Serial
-  property :created_at,           String
+  property :created_at,           DateTime
   property :shade_value,          Integer
   property :material,             String
   property :roof_angle,           Integer

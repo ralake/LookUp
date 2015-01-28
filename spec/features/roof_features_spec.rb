@@ -7,7 +7,7 @@ feature "Results" do
     click_on 'Get started!'
     @roof = Roof.first
     @roof.update(roof_angle: 0, gutter_edge: 20, angled_edge: 10, shade_value: 20)
-    visit "/roofs/#{@roof.id}/capacity"
+    visit "/roofs/#{@roof.id}/capacity/edit"
     expect(page).to have_content("Estimated Solar Panel Capacity: 62")
     expect(page).to have_content("Estimated Output Power: 15500")
   end
@@ -17,7 +17,7 @@ feature "Results" do
     click_on 'Get started!'
     @roof = Roof.first
     @roof.update(roof_angle: 10, gutter_edge: 20, angled_edge: 10, shade_value: 20)
-    visit "/roofs/#{@roof.id}/capacity"
+    visit "/roofs/#{@roof.id}/capacity/edit"
     expect(page).to have_content("Estimated Solar Panel Capacity: 100")
     expect(page).to have_content("Estimated Output Power: 25000")
   end

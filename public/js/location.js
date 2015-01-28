@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-  greyOut('#PhotoInfo');
+  ;
 
   navigator.geolocation.getCurrentPosition(getPosition);
 
