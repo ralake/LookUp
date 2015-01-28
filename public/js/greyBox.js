@@ -4,6 +4,7 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     $("#submit_button").fadeIn();
     $("#yourimage").fadeIn();
     $("#takePictureField").on("change",gotPic);
+    $("#takePictureField").click();
   });
 }
 
