@@ -3,7 +3,9 @@ $(document).ready(function() {
     event.preventDefault();
     $("#angled").attr('value', length);
     document.getElementById("gutter_form").style.display = "";
+    document.getElementById("gutter_ruler").style.display = "";
     document.getElementById("angled_form").style.display = "none";
+    document.getElementById("angled_ruler").style.display = "none";
   });
 });
 
@@ -35,6 +37,7 @@ function deleteMarkers() {
 
 function start() {
   document.getElementById("gutter_form").style.display = "none";
+  document.getElementById("gutter_ruler").style.display = "none";
   var id = $('#map-canvas').data("roof-id");
   $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
