@@ -72,9 +72,9 @@ class LookUp < Sinatra::Base
     redirect to "/roofs/#{params[:id]}/material/edit"
   end
 
-  post '/geolocation' do
-    p params
-    Roof.first(id: session[:roof_id]).update(latitude: params[:latitude], longitude: params[:longitude])
+  post '/roofs/:id/geolocation' do
+    Roof.first(id: params[:id]).update(latitude: params[:latitude],
+                                       longitude: params[:longitude])
   end
 
   get '/roofs/:id/material/edit' do

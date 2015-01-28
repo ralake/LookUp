@@ -5,6 +5,7 @@ $( document ).ready(function(){
 
   var lat;
   var longit;
+  var id = $('.page-wrap').data("roof-id");
 
   function getPosition(position) {
     lat = position.coords.latitude;
@@ -12,7 +13,7 @@ $( document ).ready(function(){
   }
 
   $('#submit_button').click(function() {
-    $.post('/geolocation',{ latitude: lat, longitude: longit });
+    $.post('/roofs/' + id + '/geolocation',{ latitude: lat, longitude: longit });
   });
 
 });
