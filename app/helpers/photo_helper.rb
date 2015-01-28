@@ -1,4 +1,5 @@
 def upload_image(params)
+  p params
   establish_connection
   store_image(params)
   return "https://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com/#{params[:file][:filename]}"
