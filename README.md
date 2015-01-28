@@ -21,3 +21,11 @@ Challenges
 ----------
 Used some external libraries, such as the map tool, which needed tweaking to make them work in our context. It wasn't possible to test the photo capture process or the touch screen map tool using cucumber/capybara which isn't ideal as they are quite complex steps. We made sure that we tested each on a number of different devices to ensure the feature's cross platform compatibility.
 
+Team
+----
+
+[Rich](http://github.com/ralake)
+[Pavel](http://github.com/palyrex)
+[Attila](http://github.com/Tr1ckX)
+[Shan](http://github.com/shanhasan)
+
