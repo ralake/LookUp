@@ -3,16 +3,11 @@ $(document).ready(function() {
     event.preventDefault();
     $("#angled").attr('value', length);
     document.getElementById("gutter_form").style.display = "";
-    document.getElementById("gutter_ruler").style.display = "";
     document.getElementById("angled_form").style.display = "none";
-    document.getElementById("angled_ruler").style.display = "none";
   });
-});
-
-$(document).ready(function() {
   $("#btn-gutter").click(function() {
     $("#gutter").attr('value', length);
-  });
+  }); 
 });
 
 var map;
@@ -37,7 +32,6 @@ function deleteMarkers() {
 
 function start() {
   document.getElementById("gutter_form").style.display = "none";
-  document.getElementById("gutter_ruler").style.display = "none";
   var id = $('#map-canvas').data("roof-id");
   $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
@@ -47,11 +41,7 @@ function start() {
       mapTypeId: google.maps.MapTypeId.SATELLITE
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-    });
-    markers.push(marker);
+    addRuler(myLatlng);
   });
 }
 
@@ -65,18 +55,18 @@ google.maps.event.addDomListener(window, 'load', start);
 
 */
 
-function addruler() {
+function addRuler(latlon) {
 
   deleteMarkers();
 
   ruler1 = new google.maps.Marker({
-    position: map.getCenter(),
+    position: latlon,
     map: map,
     draggable: true
   });
 
   ruler2 = new google.maps.Marker({
-    position: map.getCenter(),
+    position: latlon,
     map: map,
     draggable: true
 

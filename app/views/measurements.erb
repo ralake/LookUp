@@ -10,9 +10,6 @@
 
 <div id="map-canvas" data-roof-id="<%=@roof.id%>"></div>
 
-<input type='button' id='angled_ruler' onclick='addruler();' value='Set Angled Edge' style="color: red"/>
-<input type='button' id='gutter_ruler' onclick='addruler();' value='Set Gutter Edge' style="color: red"/>
-
 <form action='/roofs/<%=@roof.id%>/measurements' method="post">
 
   <angled id="angled_form">
