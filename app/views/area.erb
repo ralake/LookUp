@@ -10,10 +10,19 @@ html, body, #map-canvas {
 
 <div id="map-canvas" data-roof-id="<%=@roof.id%>"></div>
 
-<input type='button' id='addRuler' onclick='addruler();' value='Add Ruler' style="color: red"/>
+<input type='button' id='angled_ruler' onclick='addruler();' value='Set Angled Edge' style="color: red"/>
+<input type='button' id='gutter_ruler' onclick='addruler();' value='Set Gutter Edge' style="color: red"/>
 
 <form action='/roofs/<%=@roof.id%>/area' method="post">
-  <input type="text" placeholder="angled_edge" name="angled_edge">
-  <input type="text" placeholder="gutter_edge" name="gutter_edge">
-  <input type="submit" class="button round button_background" value="Calculate">
+
+  <angled id="angled_form">
+    <input type="hidden" placeholder="Angled Edge" name="angled_edge" id="angled" value="">
+    <input type="submit" id="btn-angled" class="button round button_background" value="Submit"></button>
+  </angled>
+
+  <gutter id="gutter_form">
+    <input type="hidden" placeholder="Gutter Edge" name="gutter_edge" id="gutter" value="">
+    <input type="submit" id="btn-gutter" class="button round button_background" value="Submit">
+  </gutter>
+
 </form>

@@ -1,5 +1,23 @@
+$(document).ready(function() {
+  $("#btn-angled").click(function(event) {
+    event.preventDefault();
+    $("#angled").attr('value', length);
+    document.getElementById("gutter_form").style.display = "";
+    document.getElementById("gutter_ruler").style.display = "";
+    document.getElementById("angled_form").style.display = "none";
+    document.getElementById("angled_ruler").style.display = "none";
+  });
+});
+
+$(document).ready(function() {
+  $("#btn-gutter").click(function() {
+    $("#gutter").attr('value', length);
+  });
+});
+
 var map;
 var markers = [];
+var length;
 
 function setAllMap(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -18,6 +36,8 @@ function deleteMarkers() {
 // setting up google map
 
 function start() {
+  document.getElementById("gutter_form").style.display = "none";
+  document.getElementById("gutter_ruler").style.display = "none";
   var id = $('#map-canvas').data("roof-id");
   $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
@@ -85,12 +105,14 @@ function addruler() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
     ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
     ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
   });
 
   google.maps.event.addListener(ruler2, 'drag', function() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
     ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
     ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
   });
 
 }
