@@ -121,11 +121,8 @@ class LookUp < Sinatra::Base
 
   post '/roofs/:id/capacity' do
     roof = Roof.first(id: params[:id])
-    roof.update(title: params[:title],
-                discovered_by: params[:discovered_by],
-                user_email: params[:email])
-    send_email_with_link(roof)
-    redirect to 'http://www.1010global.org/uk'
+    roof.update(title: params[:title], discovered_by: params[:discovered_by], user_email: params[:email])
+    email_validation(roof)
   end
 
   run! if app_file == $0

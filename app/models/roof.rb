@@ -1,3 +1,5 @@
+require 'dm-validations'
+
 class Roof
 
   include DataMapper::Resource
@@ -18,6 +20,8 @@ class Roof
   property :angled_edge,          Float
   property :panel_capacity,       Integer
   property :power_capacity,       Integer
+
+  validates_format_of :user_email, :as => :email_address, message: "The email address you've entered is not valid"
 
   FLAT_ROOF_PANEL_AREA = 2.56
 

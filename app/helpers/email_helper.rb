@@ -15,3 +15,18 @@ def email_body(roof)
   This could generate an estimated power output of #{roof.power_capacity}kw.\n
   Please give us a call at the 10:10 office to find out more about the next steps!"
 end
+
+def email_validation(roof)
+  return valid_email(roof) if roof.save
+  invalid_email(roof)
+end
+
+def valid_email(roof)
+  send_email_with_link(roof)
+  redirect to 'http://www.1010global.org/uk'
+end
+
+def invalid_email(roof)
+  flash[:error] = roof.errors.full_messages
+  redirect to "/roofs/#{roof.id}/capacity/edit"
+end
