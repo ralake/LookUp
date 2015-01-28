@@ -23,7 +23,7 @@ class LookUp < Sinatra::Base
     erb :index
   end
 
-  post '/roofs' do
+  get '/roofs' do
     roof = Roof.create
     session[:roof_id] = roof.id
     redirect to "/roofs/#{roof.id}/get_started"
