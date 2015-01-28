@@ -21,7 +21,7 @@ class Roof
   property :panel_capacity,       Integer
   property :power_capacity,       Integer
 
-  validates_format_of :user_email, :as => :email_address, message: "The email address you've entered is not valid"
+  validates_format_of :user_email, :as => :email_address, message: "The email address you've entered is not valid. Please enter another"
 
   FLAT_ROOF_PANEL_AREA = 2.56
 
