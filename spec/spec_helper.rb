@@ -4,7 +4,6 @@ CodeClimate::TestReporter.start
 ENV["RACK_ENV"] = "test"
 
 require './app/server'
-require '/app/helpers/email_helper'
 require 'helpers/helper'
 require 'database_cleaner'
 require 'capybara'
