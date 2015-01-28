@@ -11,6 +11,6 @@ end
 
 def select_materials
   visit '/material'
-  choose('tiles')
+  choose 'tiles'
   click_on "Next"
 end

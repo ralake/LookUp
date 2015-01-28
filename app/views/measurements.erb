@@ -13,16 +13,16 @@
 <input type='button' id='angled_ruler' onclick='addruler();' value='Set Angled Edge' style="color: red"/>
 <input type='button' id='gutter_ruler' onclick='addruler();' value='Set Gutter Edge' style="color: red"/>
 
-<form action='/roofs/<%=@roof.id%>/area' method="post">
+<form action='/roofs/<%=@roof.id%>/measurements' method="post">
 
   <angled id="angled_form">
-    <input type="hidden" placeholder="Angled Edge" name="angled_edge" id="angled" value="">
-    <input type="submit" id="btn-angled" class="button round button_background" value="Submit"></button>
+    <input type="hidden" id="angled" placeholder="Angled Edge" name="angled_edge" value="">
+    <input type="submit" id="btn-angled" class="button round button_background" value="Submit Angled Edge"></button>
   </angled>
 
   <gutter id="gutter_form">
-    <input type="hidden" placeholder="Gutter Edge" name="gutter_edge" id="gutter" value="">
-    <input type="submit" id="btn-gutter" class="button round button_background" value="Submit">
+    <input type="hidden" id="gutter" placeholder="Gutter Edge" name="gutter_edge" value="">
+    <input type="submit" id="btn-gutter" class="button round button_background" value="Submit Gutter Edge">
   </gutter>
 
 </form>
