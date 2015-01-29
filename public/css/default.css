@@ -61,7 +61,7 @@ body {
 
 .info-popup{
  color: #334d5c;
- font-family: 'Baron Neue'; 
+ font-family: 'Baron Neue';
  border-radius: 35px;
 }
 
@@ -80,11 +80,11 @@ body {
   float: center;
 }
 
-@font-face {  
-  font-family: 'Baron Neue';   
-  src: local('Baron Neue Regular'),   
-  url('fonts/baron.otf');  
-  font-weight: 400; 
+@font-face {
+  font-family: 'Baron Neue';
+  src: local('Baron Neue Regular'),
+  url('fonts/baron.otf');
+  font-weight: 400;
 }
 
 .container-photo{

@@ -72,9 +72,9 @@ class LookUp < Sinatra::Base
     redirect to "/roofs/#{params[:id]}/material/edit"
   end
 
-  post '/geolocation' do
-    p params
-    Roof.first(id: session[:roof_id]).update(latitude: params[:latitude], longitude: params[:longitude])
+  post '/roofs/:id/geolocation' do
+    Roof.first(id: params[:id]).update(latitude: params[:latitude],
+                                       longitude: params[:longitude])
   end
 
   get '/roofs/:id/material/edit' do
@@ -94,12 +94,12 @@ class LookUp < Sinatra::Base
 
   post '/roofs/:id/shading' do
     Roof.first(id: params[:id]).update(shade_value: params[:shade_value].to_i)
-    redirect to "/roofs/#{params[:id]}/area/edit"
+    redirect to "/roofs/#{params[:id]}/measurements/edit"
   end
 
-  get '/roofs/:id/area/edit' do
+  get '/roofs/:id/measurements/edit' do
     @roof = Roof.first(id: params[:id])
-    erb :area
+    erb :measurements
   end
 
   get '/roofs/:id' do
@@ -107,7 +107,8 @@ class LookUp < Sinatra::Base
     roof.to_json
   end
 
-  post '/roofs/:id/area' do
+  post '/roofs/:id/measurements' do
+    format_measurments(params)
     Roof.first(id: params[:id]).update(angled_edge: params[:angled_edge], gutter_edge: params[:gutter_edge])
     redirect to "/roofs/#{params[:id]}/capacity/edit"
   end
@@ -120,11 +121,8 @@ class LookUp < Sinatra::Base
 
   post '/roofs/:id/capacity' do
     roof = Roof.first(id: params[:id])
-    roof.update(title: params[:title],
-                discovered_by: params[:discovered_by],
-                user_email: params[:email])
-    send_email_with_link(roof)
-    redirect to 'http://www.1010global.org/uk'
+    roof.update(title: params[:title], discovered_by: params[:discovered_by], user_email: params[:email])
+    email_validation(roof)
   end
 
   run! if app_file == $0

@@ -1,5 +1,18 @@
+$(document).ready(function() {
+  $("#btn-angled").click(function(event) {
+    event.preventDefault();
+    $("#angled").attr('value', length);
+    document.getElementById("gutter_form").style.display = "";
+    document.getElementById("angled_form").style.display = "none";
+  });
+  $("#btn-gutter").click(function() {
+    $("#gutter").attr('value', length);
+  }); 
+});
+
 var map;
 var markers = [];
+var length;
 
 function setAllMap(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -18,6 +31,7 @@ function deleteMarkers() {
 // setting up google map
 
 function start() {
+  document.getElementById("gutter_form").style.display = "none";
   var id = $('#map-canvas').data("roof-id");
   $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
@@ -27,11 +41,7 @@ function start() {
       mapTypeId: google.maps.MapTypeId.SATELLITE
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-    });
-    markers.push(marker);
+    addRuler(myLatlng);
   });
 }
 
@@ -45,18 +55,18 @@ google.maps.event.addDomListener(window, 'load', start);
 
 */
 
-function addruler() {
+function addRuler(latlon) {
 
   deleteMarkers();
 
   ruler1 = new google.maps.Marker({
-    position: map.getCenter(),
+    position: latlon,
     map: map,
     draggable: true
   });
 
   ruler2 = new google.maps.Marker({
-    position: map.getCenter(),
+    position: latlon,
     map: map,
     draggable: true
 
@@ -85,12 +95,14 @@ function addruler() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
     ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
     ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
   });
 
   google.maps.event.addListener(ruler2, 'drag', function() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
     ruler1label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
     ruler2label.set('text',distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
   });
 
 }

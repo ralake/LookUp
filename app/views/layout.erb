@@ -16,6 +16,10 @@
   <body>
     <% if flash[:notice] %>
       <%= flash[:notice] %>
+    <% elsif flash[:error] %>
+      <% flash[:error].each do |error| %>
+        <%= error %>
+      <% end %>
     <% end %>
     <%= yield %>
   </body>
