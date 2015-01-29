@@ -20,42 +20,74 @@ Built in Ruby with a Sinatra server and Postgres for the database. We used cucum
 Techs overview
 -------------- 
 
-Languages:
+**Languages:**
 
 - Ruby
 - Javascript
 
-Frameworks:
+**Frameworks:**
 
 - Sinatra
 - Foundation
 
-External libraries: 
+**External libraries:** 
 
 - jQuery
 - Google maps API
 
-Database:
+**Database:**
 
 - PostrgeSQL
 
-Test suites:
+**Test suites:**
 
 - RSpec
 - Cucumber
 - Capybara
 
-Deployed:
+**Deployed:**
 
 - Heroku
 - AWS for saving images
 
-Best code snippet
------------------
+Best code snippets
+------------------
 
+Retrieving geolocation in browser:
+```javascript
+
+navigator.geolocation.getCurrentPosition(getPosition); 
+var lat;
+var longit;
+var id = $('.page-wrap').data("roof-id");
+function getPosition(position) {
+  lat = position.coords.latitude;
+  longit = position.coords.longitude;
+}
+$('#submit_button').click(function() {
+  $.post('/roofs/' + id + '/geolocation',{ latitude: lat, longitude: longit });
+});
+```
+Getting mobile phone accelerometer data:
+```javascript
+if(window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', function(event) {
+  angle = Math.abs(Math.round(event.beta));
+  if(angle !== null); 
+  dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
+  }, false);
+  $('#capture').click(function(){
+    $('#capture_hidden').attr('value', angle);
+});
+```
+Checking if user running Safari, browser, as we encountered issues with complatibility with *.click* method:
+```javascript
+if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0)
+  {
+    $("#takePictureField").click();
+  }
 ```
 
-```
 
 Challenges
 ----------
@@ -64,11 +96,11 @@ Used some external libraries, such as the map tool, which needed tweaking to mak
 Team
 ----
 
-[Rich](http://github.com/ralake)
+<img src="https://avatars2.githubusercontent.com/u/8901119?v=3&s=35">  [Rich](http://github.com/ralake)
 
-[Pavel](http://github.com/palyrex)
+<img src="https://avatars3.githubusercontent.com/u/7409666?v=3&s=35">  [Pavel](http://github.com/palyrex)
 
-[Attila](http://github.com/Tr1ckX)
+<img src="https://avatars2.githubusercontent.com/u/8865160?v=3&s=35">  [Attila](http://github.com/Tr1ckX)
 
-[Shan](http://github.com/shanhasan)
+<img src="https://avatars2.githubusercontent.com/u/8972868?v=3&s=35">  [Shan](http://github.com/shanhasan)
 
