@@ -2,12 +2,13 @@
 <script type="text/javascript" src="/js/greyBox.js"></script>
 <script>$(document).ready(function(){greyOut('#screen');});</script>
 
-<div class="page-wrap" data-roof-id="<%=@roof.id%>">
+<div class="page" data-roof-id="<%=@roof.id%>">
   <div id="screen" onclick="myFunction()">
-    <p>Stand nearby and square on<br>
-        to your building and take a photograph!
+    <p>
+      Stand nearby and square on<br>
+      to your building and take a photograph!
     </p>
-    <a class="button round button_background">Ok, I got it</a>
+    <a class="button expand bottom"><i class="fa fa-camera"></i> Ok, ready</a>
   </div>
 </div>
 

@@ -1,18 +1,31 @@
 <script type="text/javascript" src="/js/gyroscope.js"></script>
 
-<p>Aim your phone at the pitch of the roof and press capture. You should see the data updating as you change the angle of your phone.</p>
+<div class="page">
 
-<section id="dataContainerOrientation">
-  No device orientation data
-</section>
+  <div class="row">
+    <div class="columns">
+      <p>
+        Aim your phone at the pitch of the roof and press capture. 
+        You should see the data updating as you change the angle of your phone.
+      </p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="columns">
+      <h1 id="dataContainerOrientation" class="chunky">
+        No device orientation data
+      </h1>
+    </div>
+  </div>
 
   <form action="/roofs/<%=@roof.id%>/angle" method="post">
     <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
-    <input class="button round button_background" type="submit" value="Capture" id="capture">
+    <input class="button expand bottom" type="submit" value="Capture!" id="capture">
   </form>
 
-<div class="info_icon">
-  <a href="#" data-reveal-id="roof_angle_info" id="shade_button"><img class="info-icon" src="/images/info_sign.png"></a>
+</div>
+  
 </div>
 
 <script>$(document).ready(function(){gyroscope();});</script>

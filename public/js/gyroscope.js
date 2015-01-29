@@ -9,7 +9,7 @@ function gyroscope() {
     angle = Math.abs(Math.round(event.beta));
 
     if(angle !== null); 
-    dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
+    dataContainerOrientation.innerHTML = angle + '°';
     }, false);
 
     $('#capture').click(function(){
