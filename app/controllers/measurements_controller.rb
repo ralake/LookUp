@@ -11,7 +11,7 @@ class LookUp < Sinatra::Base
   post '/roofs/:id/measurements' do
     format_measurments(params)
     @roof.update(angled_edge: params[:angled_edge], gutter_edge: params[:gutter_edge])
-    redirect to "/roofs/#{params[:id]}/capacity/edit"
+    redirect to @roof_route + "capacity/edit"
   end
 
 end

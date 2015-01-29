@@ -7,7 +7,7 @@ class LookUp < Sinatra::Base
   post '/roofs/:id/photo' do
     photo_url = upload_image(params)
     @roof.update(photo_url: photo_url)
-    redirect to "/roofs/#{params[:id]}/material/edit"
+    redirect to @roof_route + "material/edit"
   end
 
   post '/roofs/:id/geolocation' do
