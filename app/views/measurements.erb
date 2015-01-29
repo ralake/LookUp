@@ -8,7 +8,10 @@ html, body, #map-canvas {
 <script type="text/javascript" src="/js/labels.js"></script>
 <script type="text/javascript" src="/js/mapAndRuler.js"></script>
 
+<div>Here’s your roof – let’s measure it!</div>
 <div id="map-canvas" data-roof-id="<%=@roof.id%>"></div>
+<div id="1st_text">First, drag the the pins to draw a line down one edge of the roof.</div>
+<div id="2nd_text">Now draw a new line across the other edge.</div>
 
 <form action='/roofs/<%=@roof.id%>/measurements' method="post">
 

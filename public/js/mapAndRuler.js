@@ -4,10 +4,12 @@ $(document).ready(function() {
     $("#angled").attr('value', length);
     document.getElementById("gutter_form").style.display = "";
     document.getElementById("angled_form").style.display = "none";
+    document.getElementById("2nd_text").style.display = "";
+    document.getElementById("1st_text").style.display = "none";
   });
   $("#btn-gutter").click(function() {
     $("#gutter").attr('value', length);
-  }); 
+  });
 });
 
 var map;
@@ -32,6 +34,7 @@ function deleteMarkers() {
 
 function start() {
   document.getElementById("gutter_form").style.display = "none";
+  document.getElementById("2nd_text").style.display = "none";
   var id = $('#map-canvas').data("roof-id");
   $.getJSON("/roofs/" + id).then(function(data) {
     var myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
@@ -110,11 +113,11 @@ function addRuler(latlon) {
 function distance(lat1,lon1,lat2,lon2) {
   var R = 6371; // km (change this constant to get miles)
   var dLat = (lat2-lat1) * Math.PI / 180;
-  var dLon = (lon2-lon1) * Math.PI / 180; 
+  var dLon = (lon2-lon1) * Math.PI / 180;
   var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2); 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   var d = R * c;
   if (d>1) return Math.round(d)+"km";
   else if (d<=1) return (d*1000).toFixed(2)+"m";
