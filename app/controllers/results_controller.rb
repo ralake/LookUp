@@ -6,7 +6,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs/:id/capacity' do
-    @roof.update(title: params[:title], discovered_by: params[:discovered_by], user_email: params[:email])
+    @roof.params_parser(params)
     email_validation(@roof)
   end
 

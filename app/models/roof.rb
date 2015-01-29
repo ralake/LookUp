@@ -42,6 +42,16 @@ class Roof
     set_power_capacity
   end
 
+  def params_parser(params)
+    self.methods.each do |method|
+      if params.keys.include?(method.to_s)
+        self.update(method.to_sym => params[method])
+        p method
+      end
+    end
+    p params
+  end
+
   private
 
   def set_panel_capacity

@@ -17,12 +17,13 @@ def email_body(roof)
 end
 
 def email_validation(roof)
-  return valid_email(roof) if roof.save
+  return valid_email(roof) if (roof.user_email != "" && roof.save)
+  redirect to 'http://www.1010global.org/uk' if roof.user_email == ""
   invalid_email(roof)
 end
 
 def valid_email(roof)
-  send_email_with_link(roof)
+  send_email_with_link(roof) 
   redirect to 'http://www.1010global.org/uk'
 end
 

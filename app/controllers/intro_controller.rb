@@ -6,7 +6,6 @@ class LookUp < Sinatra::Base
 
   post '/roofs' do
     roof = Roof.create
-    session[:roof_id] = roof.id
     redirect to "/roofs/#{roof.id}/get_started"
   end
 
