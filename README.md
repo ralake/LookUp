@@ -15,7 +15,47 @@ The app collects the user's location using the google maps API, the direction th
 
 How it was built
 ----------------
-Built in Ruby with a Sinatra server and Postgres for the database. We used cucumber and capybara for our feature tests and rSpec for the unit tests. 
+Built in Ruby with a Sinatra server and Postgres for the database. We used cucumber and capybara for our feature tests and RSpec for the unit tests. 
+
+Techs overview
+-------------- 
+
+Languages:
+
+- Ruby
+- Javascript
+
+Frameworks:
+
+- Sinatra
+- Foundation
+
+External libraries: 
+
+- jQuery
+- Google maps API
+
+Database:
+
+- PostrgeSQL
+
+Test suites:
+
+- RSpec
+- Cucumber
+- Capybara
+
+Deployed:
+
+- Heroku
+- AWS for saving images
+
+Best code snippet
+-----------------
+
+```
+
+```
 
 Challenges
 ----------
@@ -25,7 +65,10 @@ Team
 ----
 
 [Rich](http://github.com/ralake)
+
 [Pavel](http://github.com/palyrex)
+
 [Attila](http://github.com/Tr1ckX)
+
 [Shan](http://github.com/shanhasan)
 
