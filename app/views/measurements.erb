@@ -1,7 +1,7 @@
 <style>
 html, body, #map-canvas {
   height: 400px;
-  width: 400px;
+  width: 100%;
 }
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
@@ -14,12 +14,12 @@ html, body, #map-canvas {
 
   <angled id="angled_form">
     <input type="hidden" id="angled" placeholder="Angled Edge" name="angled_edge" value="">
-    <input type="submit" id="btn-angled" class="button round button_background" value="Submit Angled Edge"></button>
+    <input type="submit" id="btn-angled" class="button expand bottom" value="Measure angled edge"></button>
   </angled>
 
   <gutter id="gutter_form">
     <input type="hidden" id="gutter" placeholder="Gutter Edge" name="gutter_edge" value="">
-    <input type="submit" id="btn-gutter" class="button round button_background" value="Submit Gutter Edge">
+    <input type="submit" id="btn-gutter" class="button expand bottom" value="Now measure gutter edge">
   </gutter>
 
 </form>
