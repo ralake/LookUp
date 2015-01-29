@@ -30,13 +30,13 @@ describe Roof do
     it 'records a 0 degree angle for flat roofs' do
       visit "/roofs/#{@roof.id}/start"
       click_on 'Flat'
-      expect(Roof.first.roof_angle).to eq 0
+      expect(Roof.first.angle).to eq 0
     end
 
     it 'records the specific angle of the roof if it is sloped' do
       visit "/roofs/#{@roof.id}/sloped/edit"
       click_on 'Capture'
-      expect(Roof.first.roof_angle).to eq 0
+      expect(Roof.first.angle).to eq 0
     end
   end
 
@@ -51,7 +51,7 @@ describe Roof do
 
   context 'Results for flat roofs' do
     before(:each) do 
-      @roof = Roof.create(gutter_edge: 20, angled_edge: 10, roof_angle: 0, shade_value: 20)
+      @roof = Roof.create(gutter_edge: 20, angled_edge: 10, angle: 0, shade_value: 20)
       @roof.set_capacities
     end
 
@@ -66,7 +66,7 @@ describe Roof do
 
   context 'Results for sloped roofs' do
     before(:each) do
-      @roof = Roof.create(roof_angle: 10, gutter_edge: 20, angled_edge: 10, shade_value: 20)
+      @roof = Roof.create(angle: 10, gutter_edge: 20, angled_edge: 10, shade_value: 20)
       @roof.set_capacities
     end
 

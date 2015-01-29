@@ -5,14 +5,14 @@ class LookUp < Sinatra::Base
    end
 
   post '/roofs/:id/flat' do
-    roof_facing(set_azimuth(params[:flat_orientation]))
-    @roof.update_flat_roof_data(0, params[:flat_orientation])
+    reverse_bearing(params) && roof_direction(params[:orientation])
+    @roof.params_parser(params)
     redirect to @roof_route + "photo/edit"
   end
 
   post '/roofs/:id/sloped' do
-    roof_facing(set_azimuth(params[:sloped_orientation]))
-    @roof.update_sloped_roof_orientation(params[:sloped_orientation])
+    reverse_bearing(params) && roof_direction(params[:orientation])
+    @roof.params_parser(params)
     redirect to @roof_route + "sloped/edit"
   end
 
@@ -21,7 +21,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs/:id/angle' do
-    @roof.update(roof_angle: params[:sloped_angle].to_i)
+    @roof.params_parser(params)
     redirect to @roof_route + "photo/edit"
   end
 

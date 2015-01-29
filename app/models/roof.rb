@@ -8,7 +8,7 @@ class Roof
   property :created_at,           DateTime
   property :shade_value,          Integer
   property :material,             String
-  property :roof_angle,           Integer
+  property :angle,                Integer
   property :orientation,          Integer
   property :photo_url,            Text
   property :latitude,             Float
@@ -29,33 +29,21 @@ class Roof
 
   PANEL_POWER = 250
 
-  def update_flat_roof_data(angle, orientation)
-    update(roof_angle: angle, orientation: set_azimuth(orientation))
-  end
-
-  def update_sloped_roof_orientation(orientation)
-    update(orientation: set_azimuth(orientation))
-  end
-
   def set_capacities
     set_panel_capacity
     set_power_capacity
   end
 
   def params_parser(params)
-    self.methods.each do |method|
-      if params.keys.include?(method.to_s)
-        self.update(method.to_sym => params[method])
-        p method
-      end
+    methods.each do |method|
+      update(method.to_sym => params[method]) if params.keys.include?(method.to_s)
     end
-    p params
   end
 
   private
 
   def set_panel_capacity
-    return update(panel_capacity: flat_roof_panel_capacity) if roof_angle == 0
+    return update(panel_capacity: flat_roof_panel_capacity) if angle == 0
     update(panel_capacity: sloped_roof_panel_capacity)
   end
 
@@ -72,7 +60,7 @@ class Roof
   end
 
   def angle_cos
-    Math.cos(roof_angle * Math::PI / 180)
+    Math.cos(angle * Math::PI / 180)
   end
 
   def sloped_roof_area
