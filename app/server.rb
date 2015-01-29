@@ -22,6 +22,7 @@ class LookUp < Sinatra::Base
 
   before '/roofs/:id/*' do
     @roof = Roof.first(id: params[:id])
+    @roof_route = "/roofs/#{@roof.id}/"
   end
 
   run! if app_file == $0

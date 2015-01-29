@@ -6,7 +6,7 @@ class LookUp < Sinatra::Base
 
   post '/roofs/:id/material' do
     @roof.update(material: params[:material])
-    redirect to "/roofs/#{params[:id]}/shading/edit"
+    redirect to @roof_route + "shading/edit"
   end
 
 end
