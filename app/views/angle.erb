@@ -13,39 +13,34 @@
   </div>
   
   <div class="row">
+    
     <div class="column small-6">
-      <a href="/roofs/<%=@roof.id%>/start">
-        <img src="/images/img_roof_flat.png">
-      </a>
+      <img src="/images/img_roof_flat.png" data-form="flat-form" class="submit_form"><br>
+      Flat
+      
+      <form action="/roofs/<%=@roof.id%>/flat" method="post" id="flat-form">
+        <input type="hidden" value="" name="flat_orientation" id="flat_hidden">
+      </form>
     </div>
     
     <div class="column small-6">
-      <a href="/roofs/<%=@roof.id%>/start">
-        <img src="/images/img_roof_sloped.png">
-      </a>
+      <img src="/images/img_roof_sloped.png" data-form="sloped-form" class="submit_form"><br>
+      Sloped
+      
+      <form action="/roofs/<%=@roof.id%>/sloped" method="post" id="sloped-form">
+        <input type="hidden" value="" name="sloped_orientation" id="sloped_hidden">
+      </form>
     </div>
   </div>
-  
-  <!--
-  <form action="/roofs/<%=@roof.id%>/flat" method="post">
-    <input type="hidden" value="" name="flat_orientation" id="flat_hidden">
-    <input class="button round button_background" type="submit" value="Flat" id="flat">
-  </form>
-
-  <form action="/roofs/<%=@roof.id%>/sloped" method="post">
-    <input type="hidden" value="" name="sloped_orientation" id="sloped_hidden">
-    <input class="button round button_background"  type="submit" value="Sloped" id="sloped">
-  </form>
-  -->
+    
+  <br>
 
   <section id="compassSection">
-    <h3>Compass bearing</h3>
-    <span id="compass"></span>
+    <div>Compass bearing is <strong><span id="compass"></span><span>&deg;</span></strong></h3>
   </section>
 
   <section id="rooFacing">
-    <h3>Roof facing</h3>
-    <span id="facing"></span>
+    <div>Roof is facing <strong><span id="facing"></span></strong></div>
   </section>
 
   <div class="info_icon">
@@ -53,8 +48,12 @@
   </div>
   
   <div id="roof_info" class="reveal-modal info-popup" data-reveal>
-    <p>Aspect: “South facing roofs are best, while North facing ones don’t get enough sun for solar. Anywhere from East to West via South should work.”</p>
-    <p>Angle: “A shallow pitched roof is great if it’s facing south, and even east/west facing pitches can work out just fine for solar. Flat roofs allow fine tuning of panel orientation, but can often be hard to install on for structural reasons.”</p>
+    <p>
+      <strong>Aspect</strong>: South facing roofs are best, while North facing ones don’t get enough sun for solar. Anywhere from East to West via South should work.
+    </p>
+    <p>
+      <strong>Angle</strong>: A shallow pitched roof is great if it’s facing south, and even east/west facing pitches can work out just fine for solar. Flat roofs allow fine tuning of panel orientation, but can often be hard to install on for structural reasons.
+    </p>
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
