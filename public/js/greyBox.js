@@ -1,3 +1,10 @@
+var browserType;
+
+function browserDetect(){
+  browserType = detect.parse(navigator.userAgent);
+  console.log(browserType.browser.family);
+}
+
 function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).width(), "height": $(document).height() })
   .click(function() {
     $(this).css("visibility", "hidden");
@@ -6,10 +13,10 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     $("#submit_button").fadeIn();
     $("#yourimage").fadeIn();
     $("#takePictureField").on("change",gotPic);
-    if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0)
-    {
-      $("#takePictureField").click();
-    }
+    // if (browserType.browser.family === 'Mobile Safari')
+    // {
+    //   $("#takePictureField").click();
+    // }
   });
 }
 
@@ -21,5 +28,6 @@ function gotPic(event) {
 }
 
 function myFunction(){
-  $("#takePictureField").click();
+  if (browserType.browser.family === 'Mobile Safari' || browserType.browser.family === 'Chrome Mobile iOS' ) {
+  $("#takePictureField").click(); }
 }
