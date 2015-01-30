@@ -13,12 +13,13 @@ require_rel 'helpers'
 require_rel 'controllers'
 
 class LookUp < Sinatra::Base
-
   use Rack::Flash
   set :views, File.join(root, '..', 'views')
   set :public_dir, File.join(root, '../..', 'public')
+  
   enable :sessions
   set :session_secret, 'super secret'
+
 
   before '/roofs/:id/*' do
     @roof = Roof.first(id: params[:id])

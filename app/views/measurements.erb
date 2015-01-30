@@ -4,7 +4,6 @@ html, body, #map-canvas {
   width: 100%;
 }
 </style>
-<script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
 <script type="text/javascript" src="/js/labels.js"></script>
 <script type="text/javascript" src="/js/mapAndRuler.js"></script>
 
@@ -14,15 +13,8 @@ html, body, #map-canvas {
 <div id="2nd_text">Now draw a new line across the other edge.</div>
 
 <form action='/roofs/<%=@roof.id%>/measurements' method="post">
-
-  <angled id="angled_form">
-    <input type="hidden" id="angled" placeholder="Angled Edge" name="angled_edge" value="">
-    <input type="submit" id="btn-angled" class="button expand bottom" value="Measure angled edge"></button>
-  </angled>
-
-  <gutter id="gutter_form">
-    <input type="hidden" id="gutter" placeholder="Gutter Edge" name="gutter_edge" value="">
-    <input type="submit" id="btn-gutter" class="button expand bottom" value="Now measure gutter edge">
-  </gutter>
-
+  <input type="hidden" id="angled" placeholder="Angled Edge" name="angled_edge" value="0">
+  <button id="btn-angled" class="button expand bottom">Measure angled edge</button>
+  <input type="hidden" id="gutter" placeholder="Gutter Edge" name="gutter_edge" value="0">
+  <input type="submit" id="btn-gutter" class="button expand bottom" value="Now measure gutter edge">
 </form>
