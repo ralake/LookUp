@@ -14,7 +14,7 @@
     
     <div class="row">
       <div class="columns">
-        <h1 class="chunky" id="shade">50%</h1>
+        <output class="chunky" id="shade">50%</output>
       </div>
     </div>
   
@@ -26,13 +26,11 @@
 
     <div class="row">
       <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
-          <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value">
+          <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)">
           <input type="submit" class="button expand bottom" value="Next">
       </div>
     </div>
-  
   </form>
-  
 </div>
 
 <div class="info_icon">
@@ -43,3 +41,5 @@
   <p>“Shading can make all the difference to a roof’s potential, and even a little bit of shading - for instance, like the thin shadow cast by overhead phone cables - can be a big problem for solar panels’ power output. Watch out for things like nearby buildings and trees, and chimneys or air conditioning units on the roof in question. Shading will be different at different times of day, so it’s hard to get this right during a spot check. Just give it your best guess for now.”</p>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+<script>function outputUpdate(shade) {document.querySelector('#shade').value = shade + "%";}</script>

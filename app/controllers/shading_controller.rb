@@ -5,6 +5,7 @@ class LookUp < Sinatra::Base
   end
 
   post '/roofs/:id/shading' do
+    p params
     @roof.params_parser(params)
     redirect to @roof_route + "measurements/edit"
   end
