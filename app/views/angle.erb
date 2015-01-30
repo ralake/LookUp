@@ -18,7 +18,8 @@
       Flat
       
       <form action="/roofs/<%=@roof.id%>/flat" method="post" id="flat-form">
-        <input type="hidden" value="" name="flat_orientation" id="flat_hidden">
+        <input type="hidden" name="angle" value="0">
+        <input type="hidden" value="" name="orientation" id="flat_hidden">
       </form>
     </div>
     
@@ -27,7 +28,7 @@
       Sloped
       
       <form action="/roofs/<%=@roof.id%>/sloped" method="post" id="sloped-form">
-        <input type="hidden" value="" name="sloped_orientation" id="sloped_hidden">
+        <input type="hidden" value="" name="orientation" id="sloped_hidden">
       </form>
     </div>
   </div>

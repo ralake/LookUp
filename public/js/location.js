@@ -4,7 +4,7 @@ $( document ).ready(function(){
 
   var lat;
   var longit;
-  var id = $('.page-wrap').data("roof-id");
+  var id = $('.page').data("roof-id");
 
   function getPosition(position) {
     lat = position.coords.latitude;
