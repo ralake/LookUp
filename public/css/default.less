@@ -52,11 +52,16 @@ body {
     &.white {
       color: @blue;
       background: #FFF;
+      
+      .chunky {
+        color: @blue;
+        line-height: 60px;
+      }
     }
-  }
-  
-  .chunky {
-    font-size: 95px;
+    
+    .chunky {
+      font-size: 95px;
+    }
   }
   
   .material_icon {
@@ -341,7 +346,7 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 16px;
   cursor: pointer;
-  background: #CCC;
+  background: @blue;
   border-radius: 8px;
   border-color: transparent;
   border-width: 0;
