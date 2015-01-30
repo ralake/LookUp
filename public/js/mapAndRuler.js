@@ -114,11 +114,13 @@ function addRuler(latlon) {
 
   google.maps.event.addListener(ruler1, 'drag', function() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
+    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
     $("#" + active_dimension).val(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
   });
 
   google.maps.event.addListener(ruler2, 'drag', function() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
+    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
     $("#" + active_dimension).val(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
   });
 
