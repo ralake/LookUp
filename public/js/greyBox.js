@@ -28,6 +28,6 @@ function gotPic(event) {
 }
 
 function myFunction(){
-  if (browserType.browser.family === 'Mobile Safari' || browserType.browser.family === 'Chrome Mobile iOS') {
+  if (browserType.browser.family === 'Mobile Safari' || browserType.browser.family === 'Chrome Mobile iOS' ) {
   $("#takePictureField").click(); }
 }
