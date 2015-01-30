@@ -1,32 +1,70 @@
-
-<summary class="row">
-  <div class="large-12 medium-8 small-6 small-centered medium-centered columns">
-    <div id="page-wrap">
-      <h1>Results</h1>
+<div class="page">
+  <h1 class="title">Your results</h1>
+  
+  <div class="row result">
+    <div class="columns small-4">
+      <i class="fa fa-th fa-3x pull-left"></i>
+    </div>
+    <div class="columns small-8 text-left">
+      Solar panel capacity<br>
+      <strong><%= @roof.panel_capacity %> panels</strong><br>
+    </div>
+  </div>
+  
+  <div class="row result">
+    <div class="columns small-4">
+      <i class="fa fa-lightbulb-o fa-3x pull-left"></i>
+    </div>
+    <div class="columns small-8 text-left">
+      Estimated power<br>
+      <strong><%= @roof.power_capacity.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse %> kWp</strong><br>
+    </div>
+  </div>
+  
+  <div class="row result">
+    <div class="columns small-4">
+      <i class="fa fa-cubes fa-3x pull-left"></i>
+    </div>
+    <div class="columns small-8 text-left">
+      Material<br>
+      <strong><%= @roof.material %></strong><br>
+    </div>
+  </div>
+  
+  <div class="row result">
+    <div class="columns small-4">
+      <i class="fa fa-tree fa-3x pull-left"></i>
+    </div>
+    <div class="columns small-8 text-left">
+      Shade<br>
+      <strong><%= @roof.shade_value %>%</strong><br>
+    </div>
+  </div>
+  
+  <div class="row result">
+    <div class="columns small-4">
+      <i class="fa fa-expand fa-3x pull-left"></i>
+    </div>
+    <div class="columns small-8 text-left">
+      Roof angle<br>
+      <strong><%= @roof.roof_angle %>&deg;</strong><br>
+    </div>
+  </div>
+      
+  <!--
+  <img class="summary_img" src="<%= @roof.photo_url %>" class="material_img">
+  -->
+    
+  <div class="row">
+    <div class="columns">
+      
       <form action="/roofs/<%=@roof.id%>/capacity" id="user_data" method="post" name="creator">
-        <div class="row">
-          <div class="large-4 medium-4 small-4 column">
-          </div>
-          <div class="large-4 medium-6 small-12 column">
-            <input type="text" placeholder="Title..." name="title">
-            <input type="text" placeholder="Discovered by..." name="discovered_by">
-            <input type="text" placeholder="email" name="email">
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 large-centered">
-            <ul>
-              <li><strong>Estimated Solar Panel Capacity: <%= @roof.panel_capacity %> panels</strong></li>
-              <li><strong>Estimated Output Power: <%= @roof.power_capacity %>kw</strong></li>
-              <li>Material: <%= @roof.material %></li>
-              <li>Shade: <%= @roof.shade_value %>%</li>
-              <li>Roof Angle: <%= @roof.roof_angle %> degrees</li>
-              <li><img class="summary_img" src="<%= @roof.photo_url %>" class="material_img"></li>
-            </ul>
-          </div>
-          <input type="submit" id="save_data" class="button round button_background" value="Send me the results"/>
-        </div>
+        <input type="text" placeholder="Give it a title, something memorable" name="title">
+        <input type="text" placeholder="Discovered by..." name="discovered_by">
+        <input type="text" placeholder="Your email" name="email">
+        <input type="submit" id="save_data" class="button expand" value="Send me the results!"/>
       </form>
     </div>
   </div>
-</summary>
+  
+</div>
