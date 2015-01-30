@@ -1,6 +1,11 @@
 <script type="text/javascript" src="/js/location.js"></script>
 <script type="text/javascript" src="/js/greyBox.js"></script>
-<script>$(document).ready(function(){greyOut('#screen');});</script>
+<script type="text/javascript" src="/js/detect.min.js"></script>
+
+<script>
+  $(document).ready(function(){greyOut('#screen');});
+  $(document).ready(function(){browserDetect();});
+</script>
 
 <div class="page" data-roof-id="<%=@roof.id%>">
   <div id="screen" onclick="myFunction()">
