@@ -1,9 +1,7 @@
 Look Up
 =======
 
-[![Code Climate](https://codeclimate.com/github/Tr1ckX/LookUp/badges/gpa.svg)](https://codeclimate.com/github/Tr1ckX/LookUp)
-
-[![Test Coverage](https://codeclimate.com/github/Tr1ckX/LookUp/badges/coverage.svg)](https://codeclimate.com/github/Tr1ckX/LookUp)
+[![Code Climate](https://codeclimate.com/github/Tr1ckX/LookUp/badges/gpa.svg)](https://codeclimate.com/github/Tr1ckX/LookUp) [![Test Coverage](https://codeclimate.com/github/Tr1ckX/LookUp/badges/coverage.svg)](https://codeclimate.com/github/Tr1ckX/LookUp)
 
 What is “LookUp”?
 -----------------
@@ -15,7 +13,79 @@ The app collects the user's location using the google maps API, the direction th
 
 How it was built
 ----------------
-Built in Ruby with a Sinatra server and Postgres for the database. We used cucumber and capybara for our feature tests and rSpec for the unit tests. 
+Built in Ruby with a Sinatra server and Postgres for the database. We used cucumber and capybara for our feature tests and RSpec for the unit tests. 
+
+Techs overview
+-------------- 
+
+**Languages:**
+
+- Ruby
+- Javascript
+
+**Frameworks:**
+
+- Sinatra
+- Foundation
+
+**External libraries:** 
+
+- jQuery
+- Google maps API
+
+**Database:**
+
+- PostrgeSQL
+
+**Test suites:**
+
+- RSpec
+- Cucumber
+- Capybara
+
+**Deployed:**
+
+- Heroku
+- AWS for saving images
+
+Best code snippets
+------------------
+
+Retrieving geolocation in browser:
+```javascript
+
+navigator.geolocation.getCurrentPosition(getPosition); 
+var lat;
+var longit;
+var id = $('.page-wrap').data("roof-id");
+function getPosition(position) {
+  lat = position.coords.latitude;
+  longit = position.coords.longitude;
+}
+$('#submit_button').click(function() {
+  $.post('/roofs/' + id + '/geolocation',{ latitude: lat, longitude: longit });
+});
+```
+Getting mobile phone accelerometer data:
+```javascript
+if(window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', function(event) {
+  angle = Math.abs(Math.round(event.beta));
+  if(angle !== null); 
+  dataContainerOrientation.innerHTML = 'Roof angle: ' + angle + ' degrees';
+  }, false);
+  $('#capture').click(function(){
+    $('#capture_hidden').attr('value', angle);
+});
+```
+Checking if user running Safari, browser, as we encountered issues with complatibility with *.click* method:
+```javascript
+if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0)
+  {
+    $("#takePictureField").click();
+  }
+```
+
 
 Challenges
 ----------
@@ -24,8 +94,11 @@ Used some external libraries, such as the map tool, which needed tweaking to mak
 Team
 ----
 
-[Rich](http://github.com/ralake)
-[Pavel](http://github.com/palyrex)
-[Attila](http://github.com/Tr1ckX)
-[Shan](http://github.com/shanhasan)
+<img src="https://avatars2.githubusercontent.com/u/8901119?v=3&s=35">  [Rich](http://github.com/ralake)
+
+<img src="https://avatars3.githubusercontent.com/u/7409666?v=3&s=35">  [Pavel](http://github.com/palyrex)
+
+<img src="https://avatars2.githubusercontent.com/u/8865160?v=3&s=35">  [Attila](http://github.com/Tr1ckX)
+
+<img src="https://avatars2.githubusercontent.com/u/8972868?v=3&s=35">  [Shan](http://github.com/shanhasan)
 
