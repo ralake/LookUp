@@ -9,9 +9,8 @@ describe Roof do
   context 'Roof material' do
     it "knows the material that the roof is made out of" do
       visit "/roofs/#{@roof.id}/material/edit"
-      choose("Tiles")
-      click_on "Next"
-      expect(Roof.first.material).to eq "Tiles"
+      click_on "OK, next"
+      expect(Roof.first.material).to eq "Unknown"
     end
   end
 
