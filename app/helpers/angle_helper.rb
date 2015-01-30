@@ -1,14 +1,18 @@
-def set_azimuth(params)
-    compass = params.to_i
-    return compass-180 if compass > 180
-    return compass+180 if compass < 180
+def reverse_bearing(params)
+  if params[:orientation].to_i < 180
+    params[:orientation] = params[:orientation].to_i + 180
+  else
+    params[:orientation] = params[:orientation].to_i - 180
   end
+end
  
 
-def roof_facing(azimuth)
-  if [*(271...360), *(0...90)].include?(azimuth)
+def roof_direction(bearing)
+  if [*(271...360), *(0...90)].include?(bearing.to_i)
     flash[:notice] = "Sorry you roof facing north" 
-    Roof.first(id: session[:roof_id]).destroy
+    @roof.destroy
     redirect to '/'
   end
 end
+
+

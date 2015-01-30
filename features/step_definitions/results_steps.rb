@@ -1,5 +1,5 @@
 Given(/^That there is a roof and I on results page$/) do
-  @roof = Roof.create(roof_angle: 0, gutter_edge: 20, angled_edge: 10, shade_value: 20, )
+  @roof = Roof.create(angle: 0, gutter_edge: 20, angled_edge: 10, shade_value: 20, )
   visit("/roofs/#{@roof.id}/capacity/edit")
 end
 
@@ -23,4 +23,9 @@ end
 
 Then(/^Should see (\d+):(\d+) homepage$/) do |arg1, arg2|
   expect(current_url).to eq('http://www.1010global.org/uk')
+end
+
+When(/^I don't enter an email address$/) do
+  fill_in "email", with: ''
+  click_on("Send me the results")
 end

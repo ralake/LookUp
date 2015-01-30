@@ -16,7 +16,7 @@ def select_materials
 end
 
 def create_roof_instance
-  @roof = Roof.create(roof_angle: 0, angled_edge: 10, gutter_edge: 20, shade_value: 10)
+  @roof = Roof.create(angle: 0, angled_edge: 10, gutter_edge: 20, shade_value: 10)
   visit "/roofs/#{@roof.id}/capacity/edit"
   fill_in 'title', with: 'Test Roof'
   fill_in 'discovered_by', with: 'Test User'

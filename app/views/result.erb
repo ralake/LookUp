@@ -47,7 +47,7 @@
     </div>
     <div class="columns small-8 text-left">
       Roof angle<br>
-      <strong><%= @roof.roof_angle %>&deg;</strong><br>
+      <strong><%= @roof.angle %>&deg;</strong><br>
     </div>
   </div>
       
@@ -57,14 +57,13 @@
     
   <div class="row">
     <div class="columns">
-      
+        Looking good! Just a couple more things.
       <form action="/roofs/<%=@roof.id%>/capacity" id="user_data" method="post" name="creator">
-        <input type="text" placeholder="Give it a title, something memorable" name="title">
-        <input type="text" placeholder="Discovered by..." name="discovered_by">
+        <input type="text" placeholder="Give it a title: something memorable" name="title">
+        <input type="text" placeholder="Claim the glory: add your name" name="discovered_by">
         <input type="text" placeholder="Your email" name="email">
         <input type="submit" id="save_data" class="button expand" value="Send me the results!"/>
       </form>
     </div>
   </div>
-  
 </div>
