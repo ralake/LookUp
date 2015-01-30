@@ -3,6 +3,8 @@ Look Up
 
 [![Code Climate](https://codeclimate.com/github/Tr1ckX/LookUp/badges/gpa.svg)](https://codeclimate.com/github/Tr1ckX/LookUp) [![Test Coverage](https://codeclimate.com/github/Tr1ckX/LookUp/badges/coverage.svg)](https://codeclimate.com/github/Tr1ckX/LookUp)
 
+Look up at [look-up-production.herokuapp.com](http://look-up-production.herokuapp.com)
+
 What is “LookUp”?
 -----------------
 LookUp is a web-app that guides the user through a number of simple steps to survey a roof that they believe might be a good site for community solar power. Its overall aim is to engage and inspire a wider audience to consider setting up environmentally-friendly community energy projects that take some of the monopoly away from large energy companies.
