@@ -1,12 +1,11 @@
 <script type="text/javascript" src="/js/gyroscope.js"></script>
 
-<div class="page">
 
+<div class="page">
   <div class="row">
     <div class="columns">
       <p>
-        Aim your phone at the pitch of the roof and press capture. 
-        You should see the data updating as you change the angle of your phone.
+        Let's check the angle of the roof. Tilt your phone to match the slope!
       </p>
     </div>
   </div>
@@ -20,7 +19,7 @@
   </div>
 
   <form action="/roofs/<%=@roof.id%>/angle" method="post">
-    <input type="hidden" name="sloped_angle" value="" id="capture_hidden">
+    <input type="hidden" name="angle" value="0" id="capture_hidden">
     <input class="button expand bottom" type="submit" value="Capture!" id="capture">
   </form>
 
@@ -29,5 +28,3 @@
 </div>
 
 <script>$(document).ready(function(){gyroscope();});</script>
-
-

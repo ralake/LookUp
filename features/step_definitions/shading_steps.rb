@@ -1,7 +1,7 @@
 Given(/^that there is a roof and I am on shading page$/) do
   @roof = Roof.create
   visit("/roofs/#{@roof.id}/shading/edit")
-  expect(page).to have_content("Use the slider to estimate how much shade")
+  expect(page).to have_content("Is there anything around that could cast a shadow on the roof? Use the slider to record the shading.")
 end
 
 When(/^I choose a shade value$/) do
