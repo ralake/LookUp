@@ -1,15 +1,14 @@
 Given(/^I am on measurements page$/) do
-  @roof = Roof.create(angle: 0, gutter_edge: 20, angled_edge: 10, shade_value: 20)
-  visit("/roofs/#{@roof.id}/measurements/edit")
-  find("#map-canvas")
+  find('#pageNine').should be_visible
+  page.should_not have_css('#pageTen')
 end
 
 When(/^I measured both gutter and angled page$/) do
-  find("#angled").set("7.4m")
-  find("#gutter").set("7.4m")
+  find("#btn-angled").click
   find("#btn-gutter").click
 end
 
 Then(/^I should see results of using LookUp$/) do
-  expect(page).to have_content("Results")
+  find('#pageTen').should be_visible
+  page.should_not have_css('#pageNine')
 end
