@@ -7,6 +7,9 @@
     <script type="text/javascript" src="/js/vendor/foundation.min.js"></script>
     <script type="text/javascript" src="/js/singlePage.js"></script>
     <script type="text/javascript" src="/js/orientation.js"></script>
+    <script type="text/javascript" src="/js/location.js"></script>
+    <script type="text/javascript" src="/js/greyBox.js"></script>
+    <script type="text/javascript" src="/js/detect.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script src="/js/vendor/modernizr.js"></script>
     <script src="/js/vendor/fastclick.js"></script>
@@ -32,5 +35,9 @@
 
   <script>$(document).foundation();</script>
   <script>$(document).ready(function(){orientation();});</script>
+  <script>
+    $(document).ready(function(){greyOut('#screen');});
+    $(document).ready(function(){browserDetect();});
+  </script>
 
 </html>

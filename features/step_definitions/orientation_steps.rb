@@ -1,7 +1,6 @@
 Given(/^I am on the orientation page$/) do
-  visit '/'
-  click_on('Start')
-  find('#toPageThree').click
+  find('#pageThree').should be_visible
+  page.should_not have_css('#pageFour')
 end
 
 When(/^I am happy with my compass position$/) do

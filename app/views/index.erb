@@ -65,8 +65,7 @@
 
 <!-- Page four -->
 <div class="page" id="pageFour">
-  <div class="page white">
-    <div class="row">
+  <div class="row">
 
     <div class="row">
       <div class="column">
@@ -79,24 +78,15 @@
     <div class="info_icon">
       <a href="#" data-reveal-id="roof_info" id="shade_button"><img class="info-icon" src="/images/info_sign.png"></a>
     </div>
-    
-    <div class="column small-6">
+
+    <div class="column small-6" id="flatRoof" onclick="show('pageSix');">
       <img src="/images/img_roof_flat.png" data-form="flat-form" class="submit_form"><br>
       Flat
-      
-      <form id="flat-form">
-        <input type="hidden" name="angle" value="0">
-        <input type="hidden" value="" name="orientation" id="flat_hidden">
-      </form>
     </div>
-    
+
     <div class="column small-6">
       <img src="/images/img_roof_sloped.png" data-form="sloped-form" class="submit_form"><br>
       Sloped
-      
-      <form id="sloped-form">
-        <input type="hidden" value="" name="orientation" id="sloped_hidden">
-      </form>
     </div>
     <div id="roof_info" class="reveal-modal info-popup" data-reveal>
       <p>
@@ -105,4 +95,21 @@
       <a class="close-reveal-modal">&#215;</a>
     </div>
   </div>
+</div>
+
+<!-- Page Six -->
+<div class="page" id="pageSix">
+  <div id="screen" onclick="myFunction()">
+    <p>
+      Snap a picture of the building. Make sure the roof is visible!
+    </p>
+    <a class="button expand bottom"><i class="fa fa-camera"></i> Ok, ready</a>
+  </div>
+
+  <img id="yourimage">
+
+  <form enctype="multipart/form-data">
+    <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input data_capture_form">
+    <input id="submit_button" style="display:none" class="button round button_background" type="submit" value="OK...">
+  </form>
 </div>
