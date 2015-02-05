@@ -1,14 +1,14 @@
-Given(/^That there is a roof and I am on the material page$/) do
-  @roof = Roof.create
-  visit("roofs/#{@roof.id}/material/edit")
-  expect(page).to have_content("What's the roof made of?")
+Given(/^I am on the material page$/) do
+  find('#pageSeven').should be_visible
+  page.should_not have_css('#pageEight')
 end
 
 When(/^I choose a roof material$/) do
-  find("input[value='Tiles']").click
-  click_on("Next")
+  find("#metal").click
+  click_on("OK, next")
 end
 
 Then(/^I should see the shading page$/) do
-  expect(page).to have_content("Is there anything around that could cast a shadow on the roof? Use the slider to record the shading.")
+  find('#pageEight').should be_visible
+  page.should_not have_css('#pageSeven')
 end
