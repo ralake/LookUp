@@ -11,8 +11,8 @@ $( document ).ready(function(){
     longit = position.coords.longitude;
   }
 
-  $('#submit_button').click(function() {
-    $.post('/roofs/' + id + '/geolocation',{ latitude: lat, longitude: longit });
-  });
+  // $('#submit_button').click(function() {
+  //   $.post('/roofs/' + id + '/geolocation',{ latitude: lat, longitude: longit });
+  // });
 
 });

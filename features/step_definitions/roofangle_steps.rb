@@ -5,6 +5,6 @@ Given(/^I am on the roof angle page and matched angle$/) do
 end
 
 Then(/^I should move to photo page$/) do
-  find('#parackgeSix').should be_visible
+  find('#pageSix').should be_visible
   page.should_not have_css('#pageFive')
 end

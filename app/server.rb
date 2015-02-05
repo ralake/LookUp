@@ -20,12 +20,6 @@ class LookUp < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
-
-  before '/roofs/:id/*' do
-    @roof = Roof.first(id: params[:id])
-    @roof_route = "/roofs/#{@roof.id}/"
-  end
-
   run! if app_file == $0
 
 end
