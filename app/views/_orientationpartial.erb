@@ -1,0 +1,30 @@
+<div class="page" id="pageThree">
+    <div class="row">
+      <div class="column">
+        <p>
+          Angle your phone square-on to the roof to check which way it faces. When you are ready click Next
+        </p>
+      </div>
+    </div>
+
+    <section id="compassSection">
+      <div>Compass bearing is <strong><span id="compass"></span><span>&deg;</span></strong></h3>
+    </section>
+
+    <section id="rooFacing">
+      <div>Roof is facing <strong><span id="facing"></span></strong></div>
+    </section>
+
+    <button onclick="show('pageFour');" class="button expand bottom" id="toPageFour">Next</button>
+
+    <div class="info_icon">
+      <a href="#" data-reveal-id="roof_info" id="shade_button"><img class="info-icon" src="/images/info_sign.png"></a>
+    </div>
+
+    <div id="roof_info" class="reveal-modal info-popup" data-reveal>
+      <p>
+        <strong>Aspect</strong>: South facing roofs are best, while North facing ones don’t get enough sun for solar. Anywhere from East to West via South should work.
+      </p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+</div>

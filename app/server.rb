@@ -14,11 +14,15 @@ require_rel 'controllers'
 
 class LookUp < Sinatra::Base
   use Rack::Flash
+  
   set :views, File.join(root, '..', 'views')
   set :public_dir, File.join(root, '../..', 'public')
   
   enable :sessions
   set :session_secret, 'super secret'
+
+  enable :partial_underscores
+  set :partial_template_engine, :erb
 
   run! if app_file == $0
 

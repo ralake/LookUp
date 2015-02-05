@@ -1,0 +1,20 @@
+<div class="page" id="pageNine">
+
+  <style>
+    html, body, #map-canvas {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+
+  <div>Here’s your roof – let’s measure it!</div>
+  <div id="map-canvas"></div>
+  <div id="1st_text">First, drag the the pins to draw a line down one edge of the roof.</div>
+  <div id="2nd_text">Now draw a new line across the other edge.</div>
+
+
+  <input type="hidden" id="angled" placeholder="Angled Edge" name="angled_edge" value="0">
+  <button id="btn-angled" class="button expand bottom">Measure angled edge</button>
+  <input type="hidden" id="gutter" placeholder="Gutter Edge" name="gutter_edge" value="0">
+  <input id="btn-gutter" class="button expand bottom" value="Now measure gutter edge" onclick="show('pageTen');">
+</div>
