@@ -3,6 +3,7 @@ Feature: Visiting the homepage
   As a solar-power curious person
   I want to use the lookup app.
 
+@javascript
 Scenario: Visiting the homepage
   Given I visit the homepage
   When I decide to get started

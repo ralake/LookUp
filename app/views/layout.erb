@@ -5,6 +5,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn5dROp8__VJNWhOwyA706Ffkm2hw4Bnc"></script>
     <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
     <script type="text/javascript" src="/js/vendor/foundation.min.js"></script>
+    <script type="text/javascript" src="/js/singlePage.js"></script>
     <script src="/js/vendor/modernizr.js"></script>
     <script src="/js/vendor/fastclick.js"></script>
     <link rel="stylesheet" href="/css/normalize.css">     
@@ -28,23 +29,5 @@
   </body>
 
   <script>$(document).foundation();</script>
-  <script>
-
-  function show(elementID) {
-    var element = document.getElementById(elementID);
-    if (!element) {
-      alert("no such element");
-      return;
-    }
-
-    var pages = document.getElementsByClassName('page');
-    for(var i = 0; i < pages.length; i++) {
-      pages[i].style.display = 'none';
-    }
-
-    element.style.display = 'block';
-  }
-
-</script>
 
 </html>

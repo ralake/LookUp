@@ -13,6 +13,10 @@ require 'rspec'
 
 Capybara.app = LookUp
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
 class LookUpWorld
   include Capybara::DSL
   include RSpec::Expectations
