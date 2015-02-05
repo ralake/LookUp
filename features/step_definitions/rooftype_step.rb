@@ -7,7 +7,22 @@ When(/^I select flat roof$/) do
   find('#flatRoof').click
 end
 
-Then(/^I should the photo page$/) do
+Then(/^I should see the photo page$/) do
   find('#pageSix').should be_visible
+  page.should_not have_css('#pageFour')
+end
+
+
+Given(/^I am on Roof Angle page$/) do
+  find('#pageFour').should be_visible
+  page.should_not have_css('#pageFive')
+end
+
+When(/^I select sloped roof$/) do
+  find('#slopedRoof').click
+end
+
+Then(/^I should see the roof angle page$/) do
+  find('#pageFive').should be_visible
   page.should_not have_css('#pageFour')
 end

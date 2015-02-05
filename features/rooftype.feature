@@ -14,7 +14,13 @@ Feature: Selecting roof type
     Then I should proceed to the next step
 
   @javascript
-  Scenario: Selecting flat roof 
+  Scenario: Selecting a flat roof 
     Given I am on the roof type page
     When I select flat roof
-    Then I should the photo page
+    Then I should see the photo page
+
+  @javascript
+  Scenario: Selecting a sloped roof
+    Given I am on Roof Angle page
+    When I select sloped roof
+    Then I should see the roof angle page

@@ -9,9 +9,9 @@ When(/^I choose a shade value$/) do
   click_on("Next")
 end
 
-Then(/^I should see the roof angle page$/) do
-  expect(current_url).to eq("http://www.example.com/roofs/#{@roof.id}/measurements/edit")
-end
+# Then(/^I should see the roof angle page$/) do
+#   expect(current_url).to eq("http://www.example.com/roofs/#{@roof.id}/measurements/edit")
+# end
 
 Given(/^I am on the shading page$/) do
   @roof = Roof.create
