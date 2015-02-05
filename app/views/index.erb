@@ -1,3 +1,4 @@
+<!-- Page one -->
 <div class="page" id="pageOne">
   <welcome class="row large-12 medium-8 small-6 small-centered medium centered columns">
     <div id="page-wrap" class="welcome-page">
@@ -15,6 +16,7 @@
   </welcome>
 </div>
 
+<!-- Page two -->
 <div class="page" id="pageTwo">
   <div class="container">
     <div class="row">
@@ -23,7 +25,35 @@
           People everywhere are teaming up to repower their town with <strong>solar panels</strong>.
           That means less carbon pollution and <strong>more money</strong> for important stuff.
         </p>
+        <button onclick="show('pageThree');" class="button expand bottom">Next</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page three -->
+<div class="page" id="pageThree">
+  <div class="page white">
+    <section id="compassSection">
+      <div>Compass bearing is <strong><span id="compass"></span><span>&deg;</span></strong></h3>
+    </section>
+
+    <section id="rooFacing">
+      <div>Roof is facing <strong><span id="facing"></span></strong></div>
+    </section>
+
+    <div class="info_icon">
+      <a href="#" data-reveal-id="roof_info" id="shade_button"><img class="info-icon" src="/images/info_sign.png"></a>
+    </div>
+
+    <div id="roof_info" class="reveal-modal info-popup" data-reveal>
+      <p>
+        <strong>Aspect</strong>: South facing roofs are best, while North facing ones don’t get enough sun for solar. Anywhere from East to West via South should work.
+      </p>
+      <p>
+        <strong>Angle</strong>: A shallow pitched roof is great if it’s facing south, and even east/west facing pitches can work out just fine for solar. Flat roofs allow fine tuning of panel orientation, but can often be hard to install on for structural reasons.
+      </p>
+      <a class="close-reveal-modal">&#215;</a>
     </div>
   </div>
 </div>

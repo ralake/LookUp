@@ -1,6 +1,7 @@
 Given(/^I visit the homepage$/) do
   visit('/')
-  expect(page).to have_content("A rooftop treasure hunt for solar prospectors")
+  find('#pageOne').should be_visible
+  page.should_not have_css('#pageTwo')
 end
 
 When(/^I decide to get started$/) do
@@ -8,6 +9,6 @@ When(/^I decide to get started$/) do
 end
 
 Then(/^I should see the introductory page$/) do
-  expect(page).to have_content("People everywhere are teaming up to repower their town")
-  page.should have_selector('#pageOne', visible: false)
+  page.should_not have_css('#pageOne')
+  find('#pageTwo').should be_visible
 end
