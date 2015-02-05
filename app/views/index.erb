@@ -241,7 +241,7 @@
   <div class="row">
     <div class="large-6 medium-8 small-12 large-centered medium-centered small-centered column">
         <input type="range" class="slider-properties" id="shader" min="0" max="100" step="10" name="shade_value" onchange="outputUpdate(value)">
-        <button class="button expand bottom" id="toPageNine">Next</button>
+        <button class="button expand bottom" id="toPageNine" onclick="show('pageNine');">Next</button>
     </div>
   </div>
 
@@ -253,4 +253,29 @@
     <p>“Shading can make all the difference to a roof’s potential, and even a little bit of shading - for instance, like the thin shadow cast by overhead phone cables - can be a big problem for solar panels’ power output. Watch out for things like nearby buildings and trees, and chimneys or air conditioning units on the roof in question. Shading will be different at different times of day, so it’s hard to get this right during a spot check. Just give it your best guess for now.”</p>
     <a class="close-reveal-modal">&#215;</a>
   </div>
+</div>
+
+<!-- Page nine -->
+
+<div class="page" id="pageNine">
+
+  <style>
+    html, body, #map-canvas {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+
+  <div>Here’s your roof – let’s measure it!</div>
+  <div id="map-canvas"></div>
+  <div id="1st_text">First, drag the the pins to draw a line down one edge of the roof.</div>
+  <div id="2nd_text">Now draw a new line across the other edge.</div>
+
+  <form>
+    <input type="hidden" id="angled" placeholder="Angled Edge" name="angled_edge" value="0">
+    <button id="btn-angled" class="button expand bottom">Measure angled edge</button>
+    <input type="hidden" id="gutter" placeholder="Gutter Edge" name="gutter_edge" value="0">
+    <input type="submit" id="btn-gutter" class="button expand bottom" value="Now measure gutter edge">
+  </form>
+
 </div>

@@ -4,6 +4,6 @@ Feature: Measurments
   And see results after
 
   xScenario: Measuring gutter and angled edge
-    Given That there is a roof and I am on measurements page
+    Given I am on measurements page
     When I measured both gutter and angled page
     Then I should see results of using LookUp
