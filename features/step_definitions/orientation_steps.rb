@@ -1,13 +1,14 @@
-Given(/^That there is a roof and I am on the roof angle page$/) do
-  @roof = Roof.create
-  visit("/roofs/#{@roof.id}/start")
-  expect(page).to have_content('Angle your phone square-on to the roof to check which way it faces.')
+Given(/^I am on the orientation page$/) do
+  visit '/'
+  click_on('Start')
+  find('#toPageThree').click
 end
 
 When(/^I am happy with my compass position$/) do
-  click_on('Flat')
+  find('#toPageFour').click
 end
 
 Then(/^I should proceed to the next step$/) do
-  expect(page).to have_content('Snap a picture of the building. Make sure the roof is visible!')
+  page.should_not have_css('#pageThree')
+  find('#pageFour').should be_visible 
 end

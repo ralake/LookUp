@@ -25,7 +25,7 @@
           People everywhere are teaming up to repower their town with <strong>solar panels</strong>.
           That means less carbon pollution and <strong>more money</strong> for important stuff.
         </p>
-        <button onclick="show('pageThree');" class="button expand bottom">Next</button>
+        <button onclick="show('pageThree');" class="button expand bottom" id="toPageThree">Next</button>
       </div>
     </div>
   </div>
@@ -33,7 +33,14 @@
 
 <!-- Page three -->
 <div class="page" id="pageThree">
-  <div class="page white">
+    <div class="row">
+      <div class="column">
+        <p>
+          Angle your phone square-on to the roof to check which way it faces. When you are ready click Next
+        </p>
+      </div>
+    </div>
+
     <section id="compassSection">
       <div>Compass bearing is <strong><span id="compass"></span><span>&deg;</span></strong></h3>
     </section>
@@ -41,6 +48,8 @@
     <section id="rooFacing">
       <div>Roof is facing <strong><span id="facing"></span></strong></div>
     </section>
+
+    <button onclick="show('pageFour');" class="button expand bottom" id="toPageFour">Next</button>
 
     <div class="info_icon">
       <a href="#" data-reveal-id="roof_info" id="shade_button"><img class="info-icon" src="/images/info_sign.png"></a>
@@ -50,6 +59,46 @@
       <p>
         <strong>Aspect</strong>: South facing roofs are best, while North facing ones don’t get enough sun for solar. Anywhere from East to West via South should work.
       </p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+</div>
+
+<!-- Page four -->
+<div class="page" id="pageFour">
+  <div class="page white">
+    <div class="row">
+
+    <div class="row">
+      <div class="column">
+        <p>
+          Is the roof sloped or flat?
+        </p>
+      </div>
+    </div>
+
+    <div class="info_icon">
+      <a href="#" data-reveal-id="roof_info" id="shade_button"><img class="info-icon" src="/images/info_sign.png"></a>
+    </div>
+    
+    <div class="column small-6">
+      <img src="/images/img_roof_flat.png" data-form="flat-form" class="submit_form"><br>
+      Flat
+      
+      <form id="flat-form">
+        <input type="hidden" name="angle" value="0">
+        <input type="hidden" value="" name="orientation" id="flat_hidden">
+      </form>
+    </div>
+    
+    <div class="column small-6">
+      <img src="/images/img_roof_sloped.png" data-form="sloped-form" class="submit_form"><br>
+      Sloped
+      
+      <form id="sloped-form">
+        <input type="hidden" value="" name="orientation" id="sloped_hidden">
+      </form>
+    </div>
+    <div id="roof_info" class="reveal-modal info-popup" data-reveal>
       <p>
         <strong>Angle</strong>: A shallow pitched roof is great if it’s facing south, and even east/west facing pitches can work out just fine for solar. Flat roofs allow fine tuning of panel orientation, but can often be hard to install on for structural reasons.
       </p>
@@ -57,5 +106,3 @@
     </div>
   </div>
 </div>
-
-

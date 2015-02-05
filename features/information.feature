@@ -11,4 +11,4 @@ Feature: Information page
   @javascript
   Scenario: As a user who wants to go to the next page
     Given I am on the get started page
-    Then I move on to the compass page
+    Then I move on to the orientation page

@@ -4,7 +4,7 @@ Given(/^I am on the get started page$/) do
   click_on("Next")
 end
 
-Then(/^I move on to the compass page$/) do
+Then(/^I move on to the orientation page$/) do
   find('#pageThree').should be_visible
   page.should_not have_css('#pageTwo')
 end
