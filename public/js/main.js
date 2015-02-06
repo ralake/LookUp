@@ -16,9 +16,15 @@ $(document).ready(function(){
   navigator.geolocation.getCurrentPosition(getPosition);
 
   $('#toPageFour').click(function() {
-    $.post('/roofs/new', { orientation: alpha , latitude: lat, longitude: long }).then(function(data) {
-      response = $.parseJSON(data);
-      roofId = response.id;
+    $.post('/roofs/new', { orientation: 2 })
+      .then(function(data) {
+        response = $.parseJSON(data);
+        roofId = response.id;
+        return roofId;
+      })
+      .then(function(roofId) {
+        console.log(roofId)
+      $.post('/roofs/' + roofId + '/geolocation/edit', { latitude: lat, longitude: long })
     })
   });
 

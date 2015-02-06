@@ -21,12 +21,7 @@ function orientation() {
         facing.innerHTML = roofFacing(roofOrientation(alpha));
     }, false);
   }
-  
-  // $('.submit_form').click(function() {
-  //   console.log($(this).attr("data-form"));
-  //   var form = $(this).attr("data-form");
-  //   $("#" + form).submit();
-  // })
+
 }
 
 function roofOrientation(alpha) {
