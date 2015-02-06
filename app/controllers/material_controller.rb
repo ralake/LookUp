@@ -1,12 +1,9 @@
 class LookUp < Sinatra::Base
 
-  get '/roofs/:id/material/edit' do
-    erb :material
-  end
-
   post '/roofs/:id/material' do
+    p params
     @roof.params_parser(params)
-    redirect to @roof_route + "shading/edit"
+    @roof.to_json
   end
 
 end

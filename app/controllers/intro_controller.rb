@@ -10,7 +10,7 @@ class LookUp < Sinatra::Base
     roof.to_json
   end
 
-  post '/roofs/:id/geolocation/edit' do
+  post '/roofs/:id/geolocation' do
     @roof.params_parser(params)
     @roof.to_json
   end

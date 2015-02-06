@@ -1,6 +1,6 @@
 class LookUp < Sinatra::Base
 
-  post '/roofs/:id/angle/edit' do
+  post '/roofs/:id/angle' do
     @roof.params_parser(params)
     @roof.to_json
   end
