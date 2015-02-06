@@ -6,32 +6,40 @@ $(document).ready(function(){
   var roofId;
   var lat;
   var long;
-  var alpha;
+  var angle;
 
   function getPosition(position) {
-    lat = position.coords.latitude,
-    long = position.coords.longitude
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
   }
 
   navigator.geolocation.getCurrentPosition(getPosition);
 
   // POST orientation and geolocation
   $('#toPageFour').click(function() {
-    $.post('/roofs/new', { orientation: 2 })
+    orient = document.getElementById('compass').innerHTML;
+    $.post('/roofs/new', { orientation: orient })
       .then(function(data) {
         response = $.parseJSON(data);
         roofId = response.id;
         return roofId;
       })
       .then(function(roofId) {
-        console.log(roofId)
-      $.post('/roofs/' + roofId + '/geolocation/edit', { latitude: lat, longitude: long })
-    })
+      $.post('/roofs/' + roofId + '/geolocation/edit', { latitude: lat, longitude: long });
+    });
   });
+
 
   // POST roof-type
   $('#flatRoof').click(function() {
-    $.post('/roofs/' + roofId + '/type/edit', { angle: 0 });
+    $.post('/roofs/' + roofId + '/angle/edit', { angle: 0 });
   });
+
+  // POST roof-angle
+  $('#toPageSix').click(function() {
+    angle = document.getElementById('dataContainerOrientation').innerHTML.slice(0, 2);
+    $.post('/roofs/' + roofId + '/angle/edit', { angle: angle });
+  });
+
 
 });

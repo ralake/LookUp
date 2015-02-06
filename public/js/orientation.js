@@ -1,30 +1,32 @@
 function orientation() {
+  var alpha;
+  var compassBearing;
   var compass = document.getElementById('compass');
   var facing = document.getElementById('facing');
   
   if(window.DeviceOrientationEvent) {
-
     window.addEventListener('deviceorientation', function(event) {
       if(event.webkitCompassHeading) {
         alpha = Math.round(event.webkitCompassHeading);
-        compass.innerHTML = roofOrientation(alpha);
-        roofFacing.innerHTML = roofFacing(roofOrientation(alpha));
+        compassBearing = reverseBearing(alpha);
+        compass.innerHTML = compassBearing;
+        roofFacing.innerHTML = roofFacing(compassBearing);
       }
       else {
         alpha = Math.round(event.alpha);
+        compassBearing = reverseBearing(alpha);
         webkitAlpha = alpha;
         if(!window.chrome) {
           webkitAlpha = alpha-270;
         }
       }
-        compass.innerHTML = roofOrientation(alpha);
-        facing.innerHTML = roofFacing(roofOrientation(alpha));
+        compass.innerHTML = compassBearing;
+        facing.innerHTML = roofFacing(compassBearing);
     }, false);
   }
-
 }
 
-function roofOrientation(alpha) {
+function reverseBearing(alpha) {
   if (alpha > 180) { return alpha - 180; }
   else { return alpha + 180; }  
 }
