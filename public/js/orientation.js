@@ -1,5 +1,4 @@
 function orientation() {
-  var alpha;
   var compass = document.getElementById('compass');
   var facing = document.getElementById('facing');
   
@@ -22,21 +21,12 @@ function orientation() {
         facing.innerHTML = roofFacing(roofOrientation(alpha));
     }, false);
   }
-
-  $('#flat').click(function(){
-    $('#flat_hidden').attr('value', alpha);
-  });
-
-
-  $('#sloped').click(function(){
-    $('#sloped_hidden').attr('value', alpha);
-  });
   
-  $('.submit_form').click(function() {
-    console.log($(this).attr("data-form"));
-    var form = $(this).attr("data-form");
-    $("#" + form).submit();
-  })
+  // $('.submit_form').click(function() {
+  //   console.log($(this).attr("data-form"));
+  //   var form = $(this).attr("data-form");
+  //   $("#" + form).submit();
+  // })
 }
 
 function roofOrientation(alpha) {
@@ -54,3 +44,4 @@ function roofFacing(azimuth) {
   else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) { return 'south east';} 
   else { return 'south west';}
 }
+

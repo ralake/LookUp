@@ -24,6 +24,10 @@ class LookUp < Sinatra::Base
   enable :partial_underscores
   set :partial_template_engine, :erb
 
+  before '/roofs/:id/*' do
+    @roof = Roof.first(id: params[:id])
+  end
+
   run! if app_file == $0
 
 end

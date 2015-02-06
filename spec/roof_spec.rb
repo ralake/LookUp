@@ -3,13 +3,18 @@ require 'spec_helper'
 describe Roof do
 
   context "geolocation" do
+
     it "model instance created with geolocation", js: true do
       visit('/')
       click_on("Start")
+      click_on("Next")
       sleep(4)
-      # wait_for_ajax
+      find('#toPageFour').click
+      sleep(2)
       expect(Roof.first.longitude).not_to be nil
+      expect(Roof.first.latitude).not_to be nil
     end
+
   end
 
   # before(:each) do
