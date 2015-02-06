@@ -10,6 +10,7 @@ end
 Then(/^I should see the photo page$/) do
   find('#pageSix').should be_visible
   page.should_not have_css('#pageFour')
+  expect(Roof.first.angle).to eq 0
 end
 
 

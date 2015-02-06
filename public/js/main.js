@@ -15,6 +15,7 @@ $(document).ready(function(){
 
   navigator.geolocation.getCurrentPosition(getPosition);
 
+  // POST orientation and geolocation
   $('#toPageFour').click(function() {
     $.post('/roofs/new', { orientation: 2 })
       .then(function(data) {
@@ -26,6 +27,11 @@ $(document).ready(function(){
         console.log(roofId)
       $.post('/roofs/' + roofId + '/geolocation/edit', { latitude: lat, longitude: long })
     })
+  });
+
+  // POST roof-type
+  $('#flatRoof').click(function() {
+    $.post('/roofs/' + roofId + '/type/edit', { angle: 0 });
   });
 
 });
