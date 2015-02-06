@@ -37,11 +37,12 @@
   </body>
 
   <script>$(document).foundation();</script>
-  <script>$(document).ready(function(){orientation();});</script>
   <script>
-    $(document).ready(function(){greyOut('#screen');});
-    $(document).ready(function(){browserDetect();});
+    $(document).ready(function(){
+      orientation();});
+      greyOut('#screen');
+      gyroscope();
+    });
   </script>
-  <script>$(document).ready(function(){gyroscope();});</script>
 
 </html>
