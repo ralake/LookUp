@@ -4,13 +4,10 @@ class LookUp < Sinatra::Base
     erb :index
   end
 
-  get '/roofs' do
+  post '/roofs/new' do
     roof = Roof.create
-    redirect to "/roofs/#{roof.id}/get_started"
-  end
-
-  get '/roofs/:id/get_started' do
-    erb :get_started
+    roof.params_parser(params)
+    roof.to_json
   end
 
 end

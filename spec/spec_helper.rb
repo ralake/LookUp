@@ -3,6 +3,7 @@ CodeClimate::TestReporter.start
 
 ENV["RACK_ENV"] = "test"
 
+require 'support/wait_for_ajax'
 require './app/server'
 require 'helpers/helper'
 require 'database_cleaner'
@@ -12,9 +13,15 @@ require 'dm-migrations'
 
 Capybara.app = LookUp.new
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
 RSpec.configure do |config|
 
   config.include Capybara::DSL
+
+  config.include WaitForAjax
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

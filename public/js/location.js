@@ -1,18 +1,7 @@
 $( document ).ready(function(){
-
-  navigator.geolocation.getCurrentPosition(getPosition);
-
-  var lat;
-  var longit;
-  var id = $('.page').data("roof-id");
-
   function getPosition(position) {
-    lat = position.coords.latitude;
-    longit = position.coords.longitude;
+    $.post('/roofs/new',{ latitude: position.coords.latitude, longitude: position.coords.longitude });
   }
-
-  // $('#submit_button').click(function() {
-  //   $.post('/roofs/' + id + '/geolocation',{ latitude: lat, longitude: longit });
-  // });
-
+  $("#btn-start").click(function() { navigator.geolocation.getCurrentPosition(getPosition);
+  });
 });
