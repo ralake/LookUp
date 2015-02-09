@@ -39,7 +39,6 @@ function deleteMarkers() {
 function setup_map() {
   
   $('#roofId').watch('value', function() {
-    console.log($('#roofId').val())
     $.getJSON("/roofs/" + $('#roofId').val()).then(function(data) {
       // If there's a lat and lon, use it, otherwise use fallback
       if (data.latitude && data.longitude) {

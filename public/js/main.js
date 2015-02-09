@@ -10,7 +10,10 @@ $(document).ready(function(){
   var angle;
   var material;
 
+  navigator.geolocation.getCurrentPosition(getPosition)
+
   function getPosition(position) {
+    console.log(position.coords.latitude)
     lat = position.coords.latitude;
     long = position.coords.longitude;
   }
@@ -48,13 +51,12 @@ $(document).ready(function(){
       .then(function(data) {
         response = $.parseJSON(data);
         roofId = response.id;
-        // $('body').attr("data-roof-id", roofId);
-        // $('#roofId').attr("value", roofId);
         return roofId;
       })
       .then(function(roofId) {
-      $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long });
-      $('#roofId').attr("value", roofId);
+      $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long }).then(function() {
+        $('#roofId').attr("value", roofId);
+      });
     });
   });
 
