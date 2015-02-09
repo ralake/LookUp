@@ -20,11 +20,37 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
   });
 }
 
+var files = [];
+ 
 function gotPic(event) {
   if(event.target.files.length == 1 &&
   event.target.files[0].type.indexOf("image/") === 0) {
-    console.log(event.target.files);
     $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
+
+
+    $("#submit_button").click(function(event, form) {
+      event.preventDefault();
+      $.each(files, function(index, file) {
+        $.ajax({url: "/ajax-upload",
+              type: 'POST',
+              data: {filename: file.filename, data: file.data},
+              success: function(data, status, xhr) {}
+        });      
+      });
+      files = [];
+      form.preventDefault();
+    });
+
+    $.each(event.target.files, function(index, file) {
+      var reader = new FileReader();
+        reader.onload = function(event) {  
+        object = {};
+        object.filename = file.name;
+        object.data = event.target.result;
+        files.push(object);
+      };  
+      reader.readAsDataURL(file);
+    });
   }
 }
 

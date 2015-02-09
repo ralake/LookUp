@@ -1,7 +1,7 @@
-def upload_image(params)
+def upload_image(name)
   establish_connection
-  store_image(params)
-  return "https://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com/#{params[:file][:filename]}"
+  store_image(name)
+  return "https://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com/#{name}"
 end
 
 def establish_connection
@@ -11,10 +11,10 @@ def establish_connection
   )
 end
 
-def store_image(params)
+def store_image(name)
   AWS::S3::S3Object.store(
-    params[:file][:filename],
-    open(params[:file][:tempfile].path),
+    name,
+    open("public/images/user_images/#{name}"),
     ENV['S3_BUCKET_NAME'],
     :access => :public_read
   )
