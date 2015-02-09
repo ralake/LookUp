@@ -30,7 +30,7 @@ function gotPic(event) {
     $("#submit_button").click(function(event, form) {
       event.preventDefault();
       $.each(files, function(index, file) {
-        $.ajax({url: "/roofs/" + $("body").data().roofId + "/photo",
+        $.ajax({url: "/roofs/" + $("#roofId").val() + "/photo",
           type: 'POST',
           data: {filename: file.filename, data: file.data},
           success: function(data, status, xhr) {}

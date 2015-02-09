@@ -8,7 +8,9 @@ $(document).ready(function() {
   $("#btn-gutter").css("display", "none");
   $("#2nd_text").css("display", "none");
   
+  
   google.maps.event.addDomListener(window, 'load', setup_map);
+  
   
   $("#btn-angled").click(function(event) {
     event.preventDefault();
@@ -36,29 +38,30 @@ function deleteMarkers() {
 // setting up google map
 
 function setup_map() {
-
-  var id = $('#map-canvas').data("roof-id");
   
-  // $.getJSON("/roofs/" + id).then(function(data) {
-    
-    // If there's a lat and lon, use it, otherwise use fallback
-    // if (data.latitude && data.longitude)
-    //   myLatlng = new google.maps.LatLng(data.latitude, data.longitude);
-    // else {
-    //   myLatlng = new google.maps.LatLng(FALLBACK_LAT_LON[0], FALLBACK_LAT_LON[1]);
-    // }
-    
-    // var myOptions = {
-    //   zoom: 20,
-    //   center: myLatlng,
-    //   mapTypeId: google.maps.MapTypeId.SATELLITE,
-    //   disableDefaultUI: true
-    // };
-    
-    // map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-    // addRuler(myLatlng);
-    
-  }
+  $('#roofId').on('change',function() {
+    $.getJSON("/roofs/" + 1).then(function(data) {
+      // If there's a lat and lon, use it, otherwise use fallback
+      if (data.latitude && data.longitude) {
+        myLatlng = new google.maps.LatLng(data.latitude, data.longitude);}
+      else {
+        myLatlng = new google.maps.LatLng(FALLBACK_LAT_LON[0], FALLBACK_LAT_LON[1]);
+      }
+      
+      var myOptions = {
+        zoom: 20,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        disableDefaultUI: true
+      };
+      
+      map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+      // addRuler(myLatlng);
+      
+    });
+
+  });
+}
 
 /*
 	javascript ruler for google maps V3

@@ -2,7 +2,6 @@ $(document).ready(function(){
 
   browserDetect();
   greyOut('#screen');
-  
   orientation();
   gyroscope();
   var roofId;
@@ -16,14 +15,12 @@ $(document).ready(function(){
     long = position.coords.longitude;
   }
 
-  navigator.geolocation.getCurrentPosition(getPosition);
-
   // Add selected class to 
   // clicked material icons
   $('.material_icon').click(function() {
     $('.material_icon').removeClass('selected');
     $(this).addClass('selected');
-    material = this.innerHTML
+    material = this.innerHTML;
   });
 
   // Update shade percent on slider change
@@ -42,7 +39,7 @@ $(document).ready(function(){
 
   $('body').on("touchend", "#shader", function() {
     clearInterval(shader_interval);
-  })
+  });
 
   // POST orientation and geolocation
   $('#toPageFour').click(function() {
@@ -51,40 +48,36 @@ $(document).ready(function(){
       .then(function(data) {
         response = $.parseJSON(data);
         roofId = response.id;
-        $('body').attr("data-roof-id", roofId)
+        // $('body').attr("data-roof-id", roofId);
+        // $('#roofId').attr("value", roofId);
         return roofId;
       })
       .then(function(roofId) {
       $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long });
+      $('#roofId').attr("value", roofId);
     });
   });
 
   // POST roof-type
   $('#flatRoof').click(function() {
-    console.log("page material")
     $.post('/roofs/' + roofId + '/angle', { angle: 0 });
   });
 
   // POST roof-angle
   $('#toPageSix').click(function() {
-    console.log("page 6")
     angle = document.getElementById('dataContainerOrientation').innerHTML.slice(0, 2);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
   // POST material
   $('#toPageEight').click(function() {
-    console.log("page 8")
     $.post('/roofs/' + roofId + '/material', { material: material });
   });
 
   // POST shading
   $('#toPageNine').click(function() {
-    console.log("Test")
     var shade_value = document.getElementById('shade').innerHTML;
-    console.log(shade_value)
     $.post('/roofs/' + roofId + '/shading', { shade_value: shade_value });
   });
-
 
 });

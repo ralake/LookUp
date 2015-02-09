@@ -27,6 +27,7 @@
   </head>
 
   <body onload="show('pageOne');" data-roof-id="">
+  <input type="hidden" id="roofId" value="">
     <% if flash[:notice] %>
       <%= flash[:notice] %>
     <% elsif flash[:error] %>

@@ -4,6 +4,10 @@ class LookUp < Sinatra::Base
     erb :index
   end
 
+  get '/roofs/:id' do
+    Roof.first(id: params[:id]).to_json
+  end
+
   post '/roofs/new' do
     roof = Roof.create
     roof.params_parser(params)
