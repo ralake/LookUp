@@ -36,11 +36,11 @@ function deleteMarkers() {
 }
 
 // setting up google map
-
 function setup_map() {
   
-  $('#roofId').on('change',function() {
-    $.getJSON("/roofs/" + 1).then(function(data) {
+  $('#roofId').watch('value', function() {
+    console.log($('#roofId').val())
+    $.getJSON("/roofs/" + $('#roofId').val()).then(function(data) {
       // If there's a lat and lon, use it, otherwise use fallback
       if (data.latitude && data.longitude) {
         myLatlng = new google.maps.LatLng(data.latitude, data.longitude);}
@@ -56,10 +56,8 @@ function setup_map() {
       };
       
       map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
-      // addRuler(myLatlng);
-      
+      addRuler(myLatlng);
     });
-
   });
 }
 
