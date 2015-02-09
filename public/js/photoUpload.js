@@ -15,7 +15,7 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     $("#takePictureField").on("change",gotPic);
     if (browserType.browser.family === 'Mobile Safari')
     {
-      $("#takePictureField").click();
+    $("#takePictureField").click();
     }
   });
 }
@@ -27,18 +27,16 @@ function gotPic(event) {
   event.target.files[0].type.indexOf("image/") === 0) {
     $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
 
-
     $("#submit_button").click(function(event, form) {
       event.preventDefault();
       $.each(files, function(index, file) {
-        $.ajax({url: "/ajax-upload",
-              type: 'POST',
-              data: {filename: file.filename, data: file.data},
-              success: function(data, status, xhr) {}
+        $.ajax({url: "/roofs/" + $("body").data().roofId + "/photo",
+          type: 'POST',
+          data: {filename: file.filename, data: file.data},
+          success: function(data, status, xhr) {}
         });      
       });
       files = [];
-      form.preventDefault();
     });
 
     $.each(event.target.files, function(index, file) {
@@ -52,6 +50,7 @@ function gotPic(event) {
       reader.readAsDataURL(file);
     });
   }
+
 }
 
 function myFunction(){

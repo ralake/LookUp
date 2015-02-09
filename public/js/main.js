@@ -51,6 +51,7 @@ $(document).ready(function(){
       .then(function(data) {
         response = $.parseJSON(data);
         roofId = response.id;
+        $('body').attr("data-roof-id", roofId)
         return roofId;
       })
       .then(function(roofId) {
