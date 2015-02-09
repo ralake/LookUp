@@ -13,16 +13,17 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     $("#submit_button").fadeIn();
     $("#yourimage").fadeIn();
     $("#takePictureField").on("change",gotPic);
-    // if (browserType.browser.family === 'Mobile Safari')
-    // {
-    //   $("#takePictureField").click();
-    // }
+    if (browserType.browser.family === 'Mobile Safari')
+    {
+      $("#takePictureField").click();
+    }
   });
 }
 
 function gotPic(event) {
   if(event.target.files.length == 1 &&
   event.target.files[0].type.indexOf("image/") === 0) {
+    console.log(event.target.files);
     $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
   }
 }

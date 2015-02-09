@@ -1,7 +1,9 @@
 $(document).ready(function(){
 
-  orientation();
+  browserDetect();
   greyOut('#screen');
+  
+  orientation();
   gyroscope();
   var roofId;
   var lat;
@@ -82,5 +84,6 @@ $(document).ready(function(){
     console.log(shade_value)
     $.post('/roofs/' + roofId + '/shading', { shade_value: shade_value });
   });
+
 
 });
