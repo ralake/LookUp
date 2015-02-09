@@ -1,13 +1,8 @@
 class LookUp < Sinatra::Base
 
-  get '/roofs/:id/photo/edit' do
-    erb :photo
-  end
-
   post '/roofs/:id/photo' do
     photo_url = upload_image(params)
     @roof.update(photo_url: photo_url)
-    redirect to @roof_route + "material/edit"
   end
 
   post '/roofs/:id/geolocation' do
