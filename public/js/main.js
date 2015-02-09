@@ -82,4 +82,12 @@ $(document).ready(function(){
     $.post('/roofs/' + roofId + '/shading', { shade_value: shade_value });
   });
 
+  // POST measurements
+  $('#btn-gutter').click(function() {
+    var angled = $('#angled').val().slice(0, -1);
+    var gutter = $('#gutter').val().slice(0, -1);
+  
+    $.post('/roofs/' + roofId + '/measurements', { angled_edge: angled, gutter_edge: gutter });
+  });
+
 });
