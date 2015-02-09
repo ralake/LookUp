@@ -39,7 +39,7 @@ function setup_map() {
 
   var id = $('#map-canvas').data("roof-id");
   
-  $.getJSON("/roofs/" + id).then(function(data) {
+  // $.getJSON("/roofs/" + id).then(function(data) {
     
     // If there's a lat and lon, use it, otherwise use fallback
     if (data.latitude && data.longitude)
@@ -58,7 +58,7 @@ function setup_map() {
     map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
     addRuler(myLatlng);
     
-  });
+  };
 }
 
 /*

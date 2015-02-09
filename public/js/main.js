@@ -58,18 +58,29 @@ $(document).ready(function(){
 
   // POST roof-type
   $('#flatRoof').click(function() {
+    console.log("page material")
     $.post('/roofs/' + roofId + '/angle', { angle: 0 });
   });
 
   // POST roof-angle
   $('#toPageSix').click(function() {
+    console.log("page 6")
     angle = document.getElementById('dataContainerOrientation').innerHTML.slice(0, 2);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
   // POST material
   $('#toPageEight').click(function() {
+    console.log("page 8")
     $.post('/roofs/' + roofId + '/material', { material: material });
+  });
+
+  // POST shading
+  $('#toPageNine').click(function() {
+    console.log("Test")
+    var shade_value = document.getElementById('shade').innerHTML;
+    console.log(shade_value)
+    $.post('/roofs/' + roofId + '/shading', { shade_value: shade_value });
   });
 
 });
