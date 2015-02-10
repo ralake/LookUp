@@ -24,6 +24,7 @@ var files = [];
 function gotPic(event) {
   if(event.target.files.length == 1 &&
   event.target.files[0].type.indexOf("image/") === 0) {
+    
     $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
 
     $("#submit_button").click(function(event, form) {
@@ -52,8 +53,8 @@ function gotPic(event) {
 
 }
 
-// function myFunction(){
-//   if (browserType.browser.family != 'Mobile Safari') {
-//     $("#takePictureField").click();
-//   // }
-// }
+function myFunction(){
+  if (browserType.browser.family === 'Mobile Safari') {
+    $("#takePictureField").click();
+  }
+}
