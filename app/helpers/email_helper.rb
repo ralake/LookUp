@@ -29,5 +29,4 @@ end
 
 def invalid_email(roof)
   flash[:error] = roof.errors.full_messages
-  redirect to "/roofs/#{roof.id}/capacity/edit"
 end

@@ -52,11 +52,11 @@ class Roof
   end
 
   def flat_roof_panel_capacity
-    (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i * shade_percentage
+    (gutter_edge * angled_edge / FLAT_ROOF_PANEL_AREA).to_i
   end
 
   def sloped_roof_panel_capacity
-    (sloped_roof_area / SLOPED_ROOF_PANEL_AREA) * shade_percentage
+    sloped_roof_area / SLOPED_ROOF_PANEL_AREA
   end
 
   def angle_cos
@@ -65,10 +65,6 @@ class Roof
 
   def sloped_roof_area
     (angled_edge / angle_cos).to_i * gutter_edge
-  end
-
-  def shade_percentage
-    (100 - shade_value) / 100.0
   end
 
 end

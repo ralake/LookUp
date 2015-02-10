@@ -4,6 +4,7 @@ $(document).ready(function(){
   greyOut('#screen');
   orientation();
   gyroscope();
+  var roof;
   var roofId;
   var lat;
   var long;
@@ -87,7 +88,15 @@ $(document).ready(function(){
   $('#btn-gutter').click(function() {
     var angled = $('#angled').val().slice(0, -1);
     var gutter = $('#gutter').val().slice(0, -1);
-    $.post('/roofs/' + roofId + '/measurements', { angled_edge: angled, gutter_edge: gutter });
+    $.post('/roofs/' + roofId + '/measurements', { angled_edge: angled, gutter_edge: gutter })
+      .then(function(data) {
+        roof = $.parseJSON(data);
+        document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
+        document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
+        document.getElementById('roofMaterial').innerHTML = roof.material;
+        document.getElementById('roofShade').innerHTML = roof.shade_value;
+        document.getElementById('roofAngle').innerHTML = roof.angle;
+      });
   });
 
   // POST results
