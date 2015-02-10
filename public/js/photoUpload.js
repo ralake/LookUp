@@ -13,9 +13,8 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     $("#submit_button").fadeIn();
     $("#yourimage").fadeIn();
     $("#takePictureField").on("change",gotPic);
-    if (browserType.browser.family === 'Mobile Safari')
-    {
-    $("#takePictureField").click();
+    if (browserType.browser.family === 'Mobile Safari') {
+      $("#takePictureField").click();
     }
   });
 }
@@ -53,7 +52,8 @@ function gotPic(event) {
 
 }
 
-function myFunction(){
-  if (browserType.browser.family === 'Mobile Safari' || browserType.browser.family === 'Chrome Mobile iOS' ) {
-  $("#takePictureField").click(); }
-}
+// function myFunction(){
+//   if (browserType.browser.family != 'Mobile Safari') {
+//     $("#takePictureField").click();
+//   // }
+// }

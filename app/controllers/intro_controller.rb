@@ -10,6 +10,8 @@ class LookUp < Sinatra::Base
 
   post '/roofs/new' do
     roof = Roof.create
+    reverse_bearing(params)
+    roof_direction(params[:orientation])
     roof.params_parser(params)
     roof.to_json
   end
