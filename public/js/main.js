@@ -54,7 +54,8 @@ $(document).ready(function(){
         return roofId;
       })
       .then(function(roofId) {
-      $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long }).then(function() {
+        $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
+      .then(function() {
         $('#roofId').attr("value", roofId);
       });
     });
