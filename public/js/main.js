@@ -87,8 +87,16 @@ $(document).ready(function(){
   $('#btn-gutter').click(function() {
     var angled = $('#angled').val().slice(0, -1);
     var gutter = $('#gutter').val().slice(0, -1);
-  
     $.post('/roofs/' + roofId + '/measurements', { angled_edge: angled, gutter_edge: gutter });
   });
+
+  // POST results
+  $('#user_data').submit(function(event) {
+    event.preventDefault();
+    var title = $(this).find("input[name='title']").val();
+    var discoveredBy = $(this).find("input[name='discovered_by']").val();
+    var userEmail = $(this).find("input[name='user_email']").val();
+    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
+  })
 
 });
