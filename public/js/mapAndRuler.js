@@ -1,5 +1,6 @@
 var FALLBACK_LAT_LON = [51.506699, -0.098362];
 var map;
+var myLatlng;
 var markers = [];
 var active_dimension = "angled";
 
@@ -20,6 +21,11 @@ $(document).ready(function() {
   });
   
 });
+
+function resizeMap() {
+  google.maps.event.trigger(map, 'resize');
+  map.setCenter(myLatlng);
+}
 
 function setAllMap(map) {
   for (var i = 0; i < markers.length; i++) {
