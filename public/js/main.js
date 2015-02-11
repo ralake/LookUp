@@ -27,17 +27,24 @@ $(document).ready(function(){
     material = this.innerHTML;
   });
 
-  // Update shade percent on slider change
   $('#shader').change(function() {
-    $('#shade').text($(this).val() + "%");
+    if ($('#shader').val() === '0') {
+      $('#shade').text('No Shade')
+    }
+    else if ($('#shader').val() === '1') {
+      $('#shade').text('Half Shade')
+    }
+    else {
+      $('#shade').text('Full Shade')
+    }
   });
   
-  $('body').on("touchstart", "#shader", function() {
-    var el = $(this);
-    shader_interval = setInterval(function() {
-      $('#shade').text(el.val() + "%");
-    }, 50);
-  });
+  // $('body').on("touchstart", "#shader", function() {
+  //   var el = $(this);
+  //   shader_interval = setInterval(function() {
+  //     $('#shade').text(el.val() + "%");
+  //   }, 50);
+  // });
 
   $('body').on("touchend", "#shader", function() {
     clearInterval(shader_interval);
@@ -80,8 +87,8 @@ $(document).ready(function(){
 
   // POST shading
   $('#toPageEleven').click(function() {
-    var shade_value = document.getElementById('shade').innerHTML;
-    $.post('/roofs/' + roofId + '/shading', { shade_value: shade_value });
+    var shade = document.getElementById('shade').innerHTML;
+    $.post('/roofs/' + roofId + '/shading', { shade: shade });
   });
 
   // POST measurements

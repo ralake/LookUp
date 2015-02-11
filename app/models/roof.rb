@@ -6,7 +6,7 @@ class Roof
   
   property :id,                   Serial
   property :created_at,           DateTime
-  property :shade_value,          String
+  property :shade,                String
   property :material,             String
   property :angle,                Integer
   property :orientation,          Integer
