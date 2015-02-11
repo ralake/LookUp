@@ -9,10 +9,14 @@ Feature: Matching roof angle
     Then I should see the first introductory page
     Given I am on the first information page
     Then I move on to the second information page
+    Given I am on the second information page
+    Then I move on to the third information page
+    Given I am on the third information page
+    Then I move on to the orientation page
     Given I am on the orientation page
     When I am happy with my compass position
     Then I should proceed to the next step
-    Given I am on Roof Angle page
+    Given I am on the roof type page
     When I select sloped roof
     Then I should see the roof angle page
 

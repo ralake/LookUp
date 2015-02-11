@@ -1,6 +1,6 @@
 Given(/^I am on the roof type page$/) do
-  find('#pageFour').should be_visible
-  page.should_not have_css('#pageSix')
+  find('#pageSix').should be_visible
+  page.should_not have_css('#pageFive')
 end
 
 When(/^I select flat roof$/) do
@@ -8,15 +8,9 @@ When(/^I select flat roof$/) do
 end
 
 Then(/^I should see the photo page$/) do
-  find('#pageSix').should be_visible
-  page.should_not have_css('#pageFour')
+  find('#pageEight').should be_visible
+  page.should_not have_css('#pageSix')
   expect(Roof.first.angle).to eq 0
-end
-
-
-Given(/^I am on Roof Angle page$/) do
-  find('#pageFour').should be_visible
-  page.should_not have_css('#pageFive')
 end
 
 When(/^I select sloped roof$/) do
@@ -24,6 +18,6 @@ When(/^I select sloped roof$/) do
 end
 
 Then(/^I should see the roof angle page$/) do
-  find('#pageFive').should be_visible
-  page.should_not have_css('#pageFour')
+  find('#pageSeven').should be_visible
+  page.should_not have_css('#pageSix')
 end

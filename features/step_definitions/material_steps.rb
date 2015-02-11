@@ -1,5 +1,5 @@
 Given(/^I am on the material page$/) do
-  find('#pageSeven').should be_visible
+  find('#pageNine').should be_visible
   page.should_not have_css('#pageEight')
 end
 
@@ -9,6 +9,6 @@ When(/^I choose a roof material$/) do
 end
 
 Then(/^I should see the shading page$/) do
-  find('#pageEight').should be_visible
-  page.should_not have_css('#pageSeven')
+  find('#pageTen').should be_visible
+  page.should_not have_css('#pageNine')
 end

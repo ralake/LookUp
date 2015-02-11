@@ -1,5 +1,5 @@
 Given(/^I am on shading page$/) do
-  find('#pageEight').should be_visible
+  find('#pageTen').should be_visible
   page.should_not have_css('#pageNine')
 end
 
@@ -9,7 +9,7 @@ When(/^I choose a shade value$/) do
 end
 
 Then(/^I should see the measurements page$/) do
-  find('#pageNine').should be_visible
-  page.should_not have_css('#pageEight')
+  find('#pageEleven').should be_visible
+  page.should_not have_css('#pageTen')
 end
 
