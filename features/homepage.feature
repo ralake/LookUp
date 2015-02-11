@@ -7,4 +7,4 @@ Feature: Visiting the homepage
 Scenario: Visiting the homepage
   Given I visit the homepage
   When I decide to get started
-  Then I should see the introductory page
+  Then I should see the first introductory page

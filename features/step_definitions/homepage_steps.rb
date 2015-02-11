@@ -8,7 +8,7 @@ When(/^I decide to get started$/) do
   click_on('Start')
 end
 
-Then(/^I should see the introductory page$/) do
+Then(/^I should see the first introductory page$/) do
   page.should_not have_css('#pageOne')
   find('#pageTwo').should be_visible
 end

@@ -6,9 +6,9 @@ Feature: Orientation
   Background: Using the app
     Given I visit the homepage
     When I decide to get started
-    Then I should see the introductory page
-    Given I am on the get started page
-    Then I move on to the orientation page
+    Then I should see the first introductory page
+    Given I am on the first information page
+    Then I move on to the second information page
 
   @javascript
   Scenario: Orientation with phone
