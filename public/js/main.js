@@ -10,14 +10,14 @@ $(document).ready(function(){
   var long;
   var angle;
   var material;
-
-  navigator.geolocation.getCurrentPosition(getPosition)
+  var shader_interval;
 
   function getPosition(position) {
-    console.log(position.coords.latitude)
     lat = position.coords.latitude;
     long = position.coords.longitude;
   }
+
+  navigator.geolocation.getCurrentPosition(getPosition)
 
   // Add selected class to 
   // clicked material icons
@@ -32,8 +32,6 @@ $(document).ready(function(){
     $('#shade').text($(this).val() + "%");
   });
   
-  var shader_interval;
-  
   $('body').on("touchstart", "#shader", function() {
     var el = $(this);
     shader_interval = setInterval(function() {
@@ -46,7 +44,7 @@ $(document).ready(function(){
   });
 
   // POST orientation and geolocation
-  $('#toPageFour').click(function() {
+  $('#toPageSix').click(function() {
     orient = document.getElementById('compass').innerHTML;
     $.post('/roofs/new', { orientation: orient })
       .then(function(data) {
@@ -55,6 +53,8 @@ $(document).ready(function(){
         return roofId;
       })
       .then(function(roofId) {
+        console.log(lat)
+        console.log(long)
         $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
       .then(function() {
         $('#roofId').attr("value", roofId);
@@ -68,18 +68,18 @@ $(document).ready(function(){
   });
 
   // POST roof-angle
-  $('#toPageSix').click(function() {
+  $('#toPageEight').click(function() {
     angle = document.getElementById('dataContainerOrientation').innerHTML.slice(0, 2);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
   // POST material
-  $('#toPageEight').click(function() {
+  $('#toPageTen').click(function() {
     $.post('/roofs/' + roofId + '/material', { material: material });
   });
 
   // POST shading
-  $('#toPageNine').click(function() {
+  $('#toPageEleven').click(function() {
     var shade_value = document.getElementById('shade').innerHTML;
     $.post('/roofs/' + roofId + '/shading', { shade_value: shade_value });
   });

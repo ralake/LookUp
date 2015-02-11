@@ -53,8 +53,8 @@ function gotPic(event) {
 
 }
 
-function myFunction(){
-  if (browserType.browser.family === 'Mobile Safari') {
-    $("#takePictureField").click();
-  }
-}
+// function myFunction(){
+//   if (browserType.browser.family === 'Mobile Safari') {
+//     $("#takePictureField").click();
+//   }
+// }
