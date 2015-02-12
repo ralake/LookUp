@@ -23,13 +23,7 @@
 
   <body onload="show('pageOne');">
   <input type="hidden" id="roofId" value="">
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
-    <% elsif flash[:error] %>
-      <% flash[:error].each do |error| %>
-        <%= error %>
-      <% end %>
-    <% end %>
+    <%= erb :_flash_partial %>
     <%= yield %>
   </body>
 
