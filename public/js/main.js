@@ -17,7 +17,7 @@ $(document).ready(function(){
     long = position.coords.longitude;
   }
 
-  navigator.geolocation.getCurrentPosition(getPosition)
+  navigator.geolocation.getCurrentPosition(getPosition);
 
   // Add selected class to 
   // clicked material icons
@@ -29,22 +29,15 @@ $(document).ready(function(){
 
   $('#shader').change(function() {
     if ($('#shader').val() === '0') {
-      $('#shade').text('No Shade')
+      $('#shade').text('No Shade');
     }
     else if ($('#shader').val() === '1') {
-      $('#shade').text('Half Shade')
+      $('#shade').text('Half Shade');
     }
     else {
-      $('#shade').text('Full Shade')
+      $('#shade').text('Full Shade');
     }
   });
-  
-  // $('body').on("touchstart", "#shader", function() {
-  //   var el = $(this);
-  //   shader_interval = setInterval(function() {
-  //     $('#shade').text(el.val() + "%");
-  //   }, 50);
-  // });
 
   $('body').on("touchend", "#shader", function() {
     clearInterval(shader_interval);
@@ -60,8 +53,6 @@ $(document).ready(function(){
         return roofId;
       })
       .then(function(roofId) {
-        console.log(lat)
-        console.log(long)
         $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
       .then(function() {
         $('#roofId').attr("value", roofId);
@@ -92,19 +83,32 @@ $(document).ready(function(){
   });
 
   // POST measurements
-  $('#btn-gutter').click(function() {
-    var angled = $('#angled').val().slice(0, -1);
-    var gutter = $('#gutter').val().slice(0, -1);
-    $.post('/roofs/' + roofId + '/measurements', { angled_edge: angled, gutter_edge: gutter })
+  function RoofEdges() {
+    this.angled = $('#angled').val().slice(0, -1);
+    this.gutter = $('#gutter').val().slice(0, -1);
+  }
+
+  RoofEdges.prototype.postEdges = function() {
+    var _this = this;
+    $.post('/roofs/' + roofId + '/measurements', { angled_edge: this.angled, gutter_edge: this.gutter })
       .then(function(data) {
         roof = $.parseJSON(data);
-        document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
-        document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
-        document.getElementById('roofMaterial').innerHTML = roof.material;
-        document.getElementById('roofShade').innerHTML = roof.shade_value;
-        document.getElementById('roofAngle').innerHTML = roof.angle;
+        _this.setResults(roof);
       });
+  };
+
+  $('#btn-gutter').click(function() {
+    new RoofEdges().postEdges();
   });
+
+  RoofEdges.prototype.setResults = function(roof) {
+    document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
+    document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
+    document.getElementById('roofMaterial').innerHTML = roof.material;
+    document.getElementById('roofShade').innerHTML = roof.shade_value;
+    document.getElementById('roofAngle').innerHTML = roof.angle;
+  };
+
 
   // POST results
   $('#user_data').submit(function(event) {
@@ -112,7 +116,7 @@ $(document).ready(function(){
     var title = $(this).find("input[name='title']").val();
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
-    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
-  })
+    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail });
+  });
 
 });

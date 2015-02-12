@@ -10,7 +10,7 @@ $(document).ready(function() {
   $("#2nd_text").css("display", "none");
   
   
-  google.maps.event.addDomListener(window, 'load', setup_map);
+  google.maps.event.addDomListener(window, 'load', setupMap);
   
   
   $("#btn-angled").click(function(event) {
@@ -21,6 +21,12 @@ $(document).ready(function() {
   });
   
 });
+
+function mapInfo(style) { $(style).css( { "width": $(document).width(), "height": $(document).height() })
+  .click(function() {
+    $(this).css("visibility", "hidden");
+  });
+}
 
 function resizeMap() {
   google.maps.event.trigger(map, 'resize');
@@ -42,7 +48,7 @@ function deleteMarkers() {
 }
 
 // setting up google map
-function setup_map() {
+function setupMap() {
   
   $('#roofId').watch('value', function() {
     $.getJSON("/roofs/" + $('#roofId').val()).then(function(data) {
@@ -147,11 +153,11 @@ function distance(lat1,lon1,lat2,lon2) {
 
 Number.prototype.toRad = function() {
    return this * Math.PI / 180;
-}
+};
 
 Number.prototype.toDeg = function() {
    return this * 180 / Math.PI;
-}
+};
 
 google.maps.LatLng.prototype.destinationPoint = function(brng, dist) {
    dist = dist / 6371;  
@@ -170,4 +176,4 @@ google.maps.LatLng.prototype.destinationPoint = function(brng, dist) {
    if (isNaN(lat2) || isNaN(lon2)) return null;
 
    return new google.maps.LatLng(lat2.toDeg(), lon2.toDeg());
-}
+};
