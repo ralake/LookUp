@@ -5,28 +5,25 @@ var markers = [];
 var active_dimension = "angled";
 
 $(document).ready(function() {
-  
-  $("#btn-gutter").css("display", "none");
-  $("#2nd_text").css("display", "none");
-  
-  
+  $('#mapPage').css("display", "none");
+  $('#mapInfo').click(function() {
+    $('#mapInfo').css("display", "none");
+    $('#mapPage').css("display", "block");
+    resizeMap();
+  });
+
   google.maps.event.addDomListener(window, 'load', setupMap);
   
+  $("#btn-gutter").css("display", "none");
+  $("#2nd_text").css("display", "none");  
   
   $("#btn-angled").click(function(event) {
     event.preventDefault();
     $("#2nd_text, #btn-gutter").css("display", "block");
-    $("#1st_text, #btn-angled").css("display", "none");
     active_dimension = "gutter";
   });
   
 });
-
-function mapInfo(style) { $(style).css( { "width": $(document).width(), "height": $(document).height() })
-  .click(function() {
-    $(this).css("visibility", "hidden");
-  });
-}
 
 function resizeMap() {
   google.maps.event.trigger(map, 'resize');
@@ -49,7 +46,6 @@ function deleteMarkers() {
 
 // setting up google map
 function setupMap() {
-  
   $('#roofId').watch('value', function() {
     $.getJSON("/roofs/" + $('#roofId').val()).then(function(data) {
       // If there's a lat and lon, use it, otherwise use fallback
