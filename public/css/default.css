@@ -321,6 +321,10 @@ body
   margin-top: 25px;
 }
 
+#submit_button:focus {
+  outline: 0;
+}
+
 .summary-table{
   background-color: transparent;
   border-color: transparent;

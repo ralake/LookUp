@@ -36,8 +36,8 @@ function roofFacing(azimuth) {
   if (azimuth === 90) {return "east";}
   if (azimuth === 180) {return "south";}
   if (azimuth === 270) {return "west";}
-  if($.inArray(azimuth,  _.range(0, 90)) !== -1) { return 'north east';} 
-  else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { return 'north west';} 
+  if($.inArray(azimuth,  _.range(0, 90)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
+  else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
   else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) { return 'south east';} 
   else { return 'south west';}
 }

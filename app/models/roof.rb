@@ -36,7 +36,7 @@ class Roof
 
   def params_parser(params)
     methods.each do |method|
-      update(method.to_sym => params[method]) if params.keys.include?(method.to_s)
+      update(method => params[method.to_s]) if params.keys.include?(method.to_s)
     end
   end
 
