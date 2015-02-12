@@ -8,7 +8,6 @@ describe Roof do
 
   context "Updating itself" do
 
-
     it "updates the relevent information from params" do
       params = { "title" => "test title" }
       @roof.params_parser(params)
