@@ -8,16 +8,16 @@ class Roof
   property :created_at,           DateTime
   property :shade,                String
   property :material,             String
-  property :angle,                Integer
+  property :angle,                Integer # must have
   property :orientation,          Integer
   property :photo_url,            Text
-  property :latitude,             Float
-  property :longitude,            Float
+  property :latitude,             Float  # must have
+  property :longitude,            Float  # must have
   property :title,                String
   property :discovered_by,        String
   property :user_email,           String
-  property :gutter_edge,          Float
-  property :angled_edge,          Float
+  property :gutter_edge,          Float  # must have
+  property :angled_edge,          Float  # must have
   property :panel_capacity,       Integer
   property :power_capacity,       Integer
 

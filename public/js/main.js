@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  browserDetect();
   greyOut('#screen');
   orientation();
   new Gyroscope().setAngle();
@@ -105,7 +104,7 @@ $(document).ready(function(){
     document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
     document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
     document.getElementById('roofMaterial').innerHTML = roof.material;
-    document.getElementById('roofShade').innerHTML = roof.shade_value;
+    document.getElementById('roofShade').innerHTML = roof.shade;
     document.getElementById('roofAngle').innerHTML = roof.angle;
   };
 

@@ -1,20 +1,19 @@
-var browserType;
-
-function browserDetect(){
-  browserType = detect.parse(navigator.userAgent);
-  console.log(browserType.browser.family);
-}
-
 function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).width(), "height": $(document).height() })
   .click(function() {
-    $(this).css("visibility", "hidden");
-    $(styleToApply).css("visibility", "hidden");
-    $('#takePictureField').click();
-    $("#submit_button").fadeIn();
-    $("#yourimage").fadeIn();
-    $("#takePictureField").on("change",gotPic);
-    if (browserType.browser.family === 'Mobile Safari') {
-      $("#takePictureField").click();
+    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) {
+        $(this).css("visibility", "hidden");
+        $(styleToApply).css("visibility", "hidden");
+      $('#takePictureField').click();
+        $("#submit_button").fadeIn();
+        $("#yourimage").fadeIn();
+        $("#takePictureField").on("change",gotPic);
+    } else {
+      $(this).css("visibility", "hidden");
+      $(styleToApply).css("visibility", "hidden");
+      $('#takePictureField').click();
+      $("#submit_button").fadeIn();
+      $("#yourimage").fadeIn();
+      $("#takePictureField").on("change",gotPic);
     }
   });
 }
@@ -50,11 +49,4 @@ function gotPic(event) {
       reader.readAsDataURL(file);
     });
   }
-
 }
-
-// function myFunction(){
-//   if (browserType.browser.family === 'Mobile Safari') {
-//     $("#takePictureField").click();
-//   }
-// }
