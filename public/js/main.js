@@ -116,6 +116,7 @@ $(document).ready(function(){
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
     $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail });
+    window.location.href = 'http://www.1010global.org/uk';
   });
 
 });
