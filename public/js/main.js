@@ -66,7 +66,7 @@ $(document).ready(function(){
 
   // POST roof-angle
   $('#toPageEight').click(function() {
-    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, 2);
+    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, -1);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
@@ -96,7 +96,7 @@ $(document).ready(function(){
       });
   };
 
-  $('#btn-gutter').click(function() {
+  $('#btn-measurements').click(function() {
     new RoofEdges().postEdges();
   });
 
@@ -108,7 +108,6 @@ $(document).ready(function(){
     document.getElementById('roofAngle').innerHTML = roof.angle;
   };
 
-
   // POST results
   $('#user_data').submit(function(event) {
     event.preventDefault();
@@ -116,6 +115,7 @@ $(document).ready(function(){
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
     $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail });
+    window.location.href = 'http://www.1010global.org/uk';
   });
 
 });
