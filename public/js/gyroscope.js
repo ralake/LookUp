@@ -1,20 +1,15 @@
-function gyroscope() {
-
-  var angle;
-
-  var dataContainerOrientation = document.getElementById('dataContainerOrientation');
-    if(window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', function(event) {
-      
-    angle = Math.abs(Math.round(event.beta));
-
-    if(angle !== null); 
-    dataContainerOrientation.innerHTML = angle + '°';
-    }, false);
-
-    $('#capture').click(function(){
-      $('#capture_hidden').attr('value', angle);
-    });
-  }
+function Gyroscope() {
+  this.angleContainer = document.getElementById('setRoofAngle');
 }
+
+Gyroscope.prototype.setAngle = function() {
+  _this = this;
+  if(window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', function(event) {
+    this.angle = Math.abs(Math.round(event.beta));
+    if(this.angle !== null);
+      _this.angleContainer.innerHTML = this.angle + '°';
+    }, false);
+  }
+};
 

@@ -3,7 +3,7 @@ $(document).ready(function(){
   browserDetect();
   greyOut('#screen');
   orientation();
-  gyroscope();
+  new Gyroscope().setAngle();
   var roof;
   var roofId;
   var lat;
@@ -67,7 +67,7 @@ $(document).ready(function(){
 
   // POST roof-angle
   $('#toPageEight').click(function() {
-    angle = document.getElementById('dataContainerOrientation').innerHTML.slice(0, 2);
+    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, 2);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
