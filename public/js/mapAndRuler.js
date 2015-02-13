@@ -2,7 +2,6 @@ var FALLBACK_LAT_LON = [51.506699, -0.098362];
 var map;
 var myLatlng;
 var markers = [];
-var active_dimension = "angled";
 
 $(document).ready(function() {
   $('#mapPage').css("display", "none");
@@ -13,16 +12,6 @@ $(document).ready(function() {
   });
 
   google.maps.event.addDomListener(window, 'load', setupMap);
-  
-  $("#btn-gutter").css("display", "none");
-  $("#2nd_text").css("display", "none");  
-  
-  $("#btn-angled").click(function(event) {
-    event.preventDefault();
-    $("#2nd_text, #btn-gutter").css("display", "block");
-    active_dimension = "gutter";
-  });
-  
 });
 
 function resizeMap() {
@@ -77,7 +66,6 @@ function setupMap() {
 */
 
 function addRuler(latlon) {
-  
   var a_marker = {
     url: '/images/img_a_marker.png',
     size: new google.maps.Size(50, 50),
@@ -92,7 +80,12 @@ function addRuler(latlon) {
     anchor: new google.maps.Point(0, 25)
   };
 
-  deleteMarkers();
+  var c_marker = {
+    url: '/images/img_c_marker.png',
+    size: new google.maps.Size(50, 50),
+    origin: new google.maps.Point(0,0),
+    anchor: new google.maps.Point(0, 25)
+  };
 
   ruler1 = new google.maps.Marker({
     position: latlon.destinationPoint(270, 0.005),
@@ -108,6 +101,13 @@ function addRuler(latlon) {
     icon: b_marker
   });
 
+  ruler3 = new google.maps.Marker({
+    position: latlon.destinationPoint(0, 0.005),
+    map: map,
+    draggable: true,
+    icon: c_marker
+  });
+
   var rulerpoly = new google.maps.Polyline({
     path: [ruler1.position, ruler2.position],
     strokeColor: "#FFFFFF",
@@ -115,20 +115,38 @@ function addRuler(latlon) {
     strokeWeight: 5
   });
 
-  markers.push(ruler1, ruler2, rulerpoly);
+  var rulerpoly2 = new google.maps.Polyline({
+    path: [ruler2.position, ruler3.position],
+    strokeColor: "#FFFFFF",
+    strokeOpacity: 0.8,
+    strokeWeight: 5
+  });
 
   rulerpoly.setMap(map);
+  rulerpoly2.setMap(map);
+
+  // distance between point A and B
 
   google.maps.event.addListener(ruler1, 'drag', function() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
-    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
-    $("#" + active_dimension).val(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+    $("#angled").val(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
   });
 
   google.maps.event.addListener(ruler2, 'drag', function() {
     rulerpoly.setPath([ruler1.getPosition(), ruler2.getPosition()]);
-    length = distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng());
-    $("#" + active_dimension).val(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+    $("#angled").val(distance( ruler1.getPosition().lat(), ruler1.getPosition().lng(), ruler2.getPosition().lat(), ruler2.getPosition().lng()));
+  });
+
+  // distance between point B and C
+
+  google.maps.event.addListener(ruler2, 'drag', function() {
+    rulerpoly2.setPath([ruler2.getPosition(), ruler3.getPosition()]);
+    $("#gutter").val(distance( ruler2.getPosition().lat(), ruler2.getPosition().lng(), ruler3.getPosition().lat(), ruler3.getPosition().lng()));
+  });
+
+  google.maps.event.addListener(ruler3, 'drag', function() {
+    rulerpoly2.setPath([ruler2.getPosition(), ruler3.getPosition()]);
+    $("#gutter" ).val(distance( ruler2.getPosition().lat(), ruler2.getPosition().lng(), ruler3.getPosition().lat(), ruler3.getPosition().lng()));
   });
 
 }

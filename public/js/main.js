@@ -67,7 +67,7 @@ $(document).ready(function(){
 
   // POST roof-angle
   $('#toPageEight').click(function() {
-    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, 2);
+    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, -1);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
@@ -97,7 +97,7 @@ $(document).ready(function(){
       });
   };
 
-  $('#btn-gutter').click(function() {
+  $('#btn-measurements').click(function() {
     new RoofEdges().postEdges();
   });
 
@@ -108,7 +108,6 @@ $(document).ready(function(){
     document.getElementById('roofShade').innerHTML = roof.shade_value;
     document.getElementById('roofAngle').innerHTML = roof.angle;
   };
-
 
   // POST results
   $('#user_data').submit(function(event) {
