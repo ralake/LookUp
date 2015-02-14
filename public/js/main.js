@@ -47,7 +47,7 @@ $(document).ready(function(){
     orient = document.getElementById('compass').innerHTML;
     $.post('/roofs/new', { orientation: orient })
       .then(function(data) {
-        response = $.parseJSON(data);
+        var response = $.parseJSON(data);
         roofId = response.id;
         return roofId;
       })
@@ -110,12 +110,31 @@ $(document).ready(function(){
 
   // POST results
   $('#user_data').submit(function(event) {
+    var response;
     event.preventDefault();
     var title = $(this).find("input[name='title']").val();
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
-    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail });
-    window.location.href = 'http://www.1010global.org/uk';
-  });
+    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
+      .then(function(data) {
+        response = $.parseJSON(data);
+        console.log(response)
+        if (response.errors) {
+          $('#flashError').text(response.errors[0]);
+        } else {
+          $('#flashError').text('');
+          window.location.href = 'http://www.1010global.org/uk';
+        }
+      });
+    });
+
+  function responseHandler (response) {
+    response = $.parseJSON(data);
+    if (response.errors) {
+      $('#flashError').text(response.errors[0]);
+    } else {
+      window.location.href = 'http://www.1010global.org/uk';
+    }
+  }
 
 });

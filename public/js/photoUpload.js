@@ -3,7 +3,7 @@ function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).wid
     if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) {
         $(this).css("visibility", "hidden");
         $(styleToApply).css("visibility", "hidden");
-      $('#takePictureField').click();
+        $('#takePictureField').click();
         $("#submit_button").fadeIn();
         $("#yourimage").fadeIn();
         $("#takePictureField").on("change",gotPic);
