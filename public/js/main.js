@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  greyOut('#screen');
+  activateCamera();
   orientation();
   new Gyroscope().setAngle();
   var roof;
@@ -111,14 +111,13 @@ $(document).ready(function(){
   // POST results
   $('#user_data').submit(function(event) {
     var response;
-    event.preventDefault();
     var title = $(this).find("input[name='title']").val();
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
+    event.preventDefault();
     $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
       .then(function(data) {
         response = $.parseJSON(data);
-        console.log(response)
         if (response.errors) {
           $('#flashError').text(response.errors[0]);
         } else {

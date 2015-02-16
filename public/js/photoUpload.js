@@ -1,17 +1,7 @@
-function greyOut(styleToApply) {
-  $(styleToApply).css( { "width": $(document).width(), "height": $(document).height() })
-  .click(function() {
-    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) {
-        $(this).css("visibility", "hidden");
-        $(styleToApply).css("visibility", "hidden");
-        $('#takePictureField').click();
-        $("#takePictureField").on("change",gotPic);
-    } else {
-      $(this).css("visibility", "hidden");
-      $(styleToApply).css("visibility", "hidden");
-      $('#takePictureField').click();
-      $("#takePictureField").on("change",gotPic);
-    }
+function activateCamera() {
+  $('#toPageEightPointFive').click(function(){
+    $('#takePictureField').click();
+    $("#takePictureField").on("change",gotPic)
   });
 }
 
