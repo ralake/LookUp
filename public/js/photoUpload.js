@@ -18,37 +18,36 @@ function greyOut(styleToApply) {
 var files = [];
  
 function gotPic(event) {
+  var baseFile = event.target.files[0];
+  var fileToSend = {}
   if(event.target.files.length == 1 &&
-  event.target.files[0].type.indexOf("image/") === 0) {
-
-    $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
-
+  baseFile.type.indexOf("image/") === 0) {
     $('#submit_button').click(function(event) {
       event.preventDefault();
     });
-
-    $('#photoReady').watch('value', function() {
-      $.each(files, function(index, file) {
-        $.ajax({url: "/roofs/" + $("#roofId").val() + "/photo",
-          type: 'POST',
-          data: {filename: file.filename, data: file.data},
-          success: function(data, status, xhr) { console.log("success!")}
-        });      
-      });
-      $('#submit_button').click();
-    });
-
-    $.each(event.target.files, function(index, file) {
-      var reader = new FileReader();
-      reader.onload = function(event) {  
-        object = {};
-        object.filename = file.name;
-        object.data = event.target.result;
-        files.push(object);
-        $('#photoReady').attr('value', 'ready')
-      };  
-      reader.readAsDataURL(file);
-    });
+    postImage(fileToSend);
+    readFile(fileToSend, baseFile);
   }
+}
+
+function postImage(fileToSend) {
+  $('#photoReady').watch('value', function() {
+    $.ajax({url: "/roofs/" + $("#roofId").val() + "/photo",
+      type: 'POST',
+      data: {filename: fileToSend.filename, data: fileToSend.data},
+      success: function(data, status, xhr) { console.log("image post successfull")}
+    });      
+    $('#submit_button').click();
+  });
+}
+
+function readFile(fileToSend, baseFile) {
+  var reader = new FileReader();
+  reader.onload = function(event) {  
+    fileToSend.filename = baseFile.name;
+    fileToSend.data = event.target.result;
+    $('#photoReady').attr('value', 'ready')
+  };  
+  reader.readAsDataURL(baseFile);
 }
 
