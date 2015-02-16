@@ -9,7 +9,7 @@ class LookUp < Sinatra::Base
     data_index = data.index('base64') + 7
     filedata = data.slice(data_index, data.length)
     decoded_image = Base64.decode64(filedata)
-     
+
     # Write the file to the system
     file = File.new("public/images/user_images/#{filename}", "w+")
     file.write(decoded_image)
