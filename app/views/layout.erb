@@ -22,8 +22,8 @@
   </head>
 
   <body onload="show('pageOne');">
-  <input type="hidden" id="roofId" value="">
-    <%= erb :_flash_partial %>
+    <input type="hidden" id="roofId" value="">
+    <input type="hidden" id="geoSuccess" data-latitude="" data-longitude="">
     <%= yield %>
   </body>
 

@@ -11,12 +11,12 @@ $(document).ready(function(){
   var material;
   var shader_interval;
 
-  function getPosition(position) {
+  function geoSuccess(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
+    $('#geoSuccess').attr("data-latitude", lat);
+    $('#geoSuccess').attr("data-longitude", long);
   }
-
-  navigator.geolocation.getCurrentPosition(getPosition);
 
   // Add selected class to 
   // clicked material icons
@@ -42,21 +42,24 @@ $(document).ready(function(){
     clearInterval(shader_interval);
   });
 
-  // POST orientation and geolocation
-  $('#toPageSix').click(function() {
-    orient = document.getElementById('compass').innerHTML;
-    $.post('/roofs/new', { orientation: orient })
-      .then(function(data) {
-        var response = $.parseJSON(data);
-        roofId = response.id;
-        return roofId;
-      })
-      .then(function(roofId) {
-        $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
-      .then(function() {
-        $('#roofId').attr("value", roofId);
-      });
+  // POST create roof
+  $('#btn-start').click(function() {
+    $.post('/roofs/new').then(function(data) {
+      roofId = $.parseJSON(data).id
+      $('#roofId').attr("value", roofId);
+      navigator.geolocation.getCurrentPosition(geoSuccess);
     });
+  });
+
+  // POST geolocation
+  $('#geoSuccess').watch('data-latitude', function() {
+    $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
+  })
+
+  // POST orientation
+  $('#toPageFive').click(function() {
+    var orientation = document.getElementById('compass').innerHTML
+    $.post('/roofs/' + roofId + '/orientation', {orientation: orientation});
   });
 
   // POST roof-type
