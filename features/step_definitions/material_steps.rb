@@ -1,6 +1,8 @@
 Given(/^I am on the material page$/) do
-  find('#pageNine').should be_visible
-  page.should_not have_css('#pageEight')
+  visit('/')
+  click_on('Start')
+  page.execute_script("show('pageNine');")
+  expect(page).to have_content("What's the roof made of?")
 end
 
 When(/^I choose a roof material$/) do
@@ -9,6 +11,5 @@ When(/^I choose a roof material$/) do
 end
 
 Then(/^I should see the shading page$/) do
-  find('#pageTen').should be_visible
-  page.should_not have_css('#pageNine')
+  expect(page).to have_content("Is there anything around that could cast a shadow on the roof?")
 end

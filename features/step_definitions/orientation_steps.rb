@@ -1,6 +1,8 @@
 Given(/^I am on the orientation page$/) do
-  find('#pageFive').should be_visible
-  page.should_not have_css('#pageFour')
+  visit('/')
+  click_on('Start')
+  page.execute_script("show('pageFive');")
+  expect(page).to have_content("Angle your phone square-on")
 end
 
 When(/^I am happy with my compass position$/) do
@@ -8,6 +10,5 @@ When(/^I am happy with my compass position$/) do
 end
 
 Then(/^I should proceed to the next step$/) do
-  page.should_not have_css('#pageFiv')
-  find('#pageSix').should be_visible 
+  expect(page).to have_content("Is the roof sloped or flat?")
 end

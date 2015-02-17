@@ -1,15 +1,16 @@
 Given(/^I am on shading page$/) do
-  find('#pageTen').should be_visible
-  page.should_not have_css('#pageNine')
+  visit('/')
+  click_on('Start')
+  page.execute_script("show('pageTen')")
+  expect(page).to have_content("Is there anything around that could cast a shadow")
 end
 
 When(/^I choose a shade value$/) do
-  fill_in("shade_value", with: "10")
+  fill_in("shade", with: "1")
   click_on("Next") 
 end
 
 Then(/^I should see the measurements page$/) do
-  find('#pageEleven').should be_visible
-  page.should_not have_css('#pageTen')
+  expect(page).to have_content("Here’s your roof – let’s measure it!")
 end
 

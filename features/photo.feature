@@ -3,23 +3,6 @@ Feature: Taking a photo
   As a user with a camera-phone
   I want to take an image
 
-  Background: Using the app
-    Given I visit the homepage
-    When I decide to get started
-    Then I should see the first introductory page
-    Given I am on the first information page
-    Then I move on to the second information page
-    Given I am on the second information page
-    Then I move on to the third information page
-    Given I am on the third information page
-    Then I move on to the orientation page
-    Given I am on the orientation page
-    When I am happy with my compass position
-    Then I should proceed to the next step
-    Given I am on the roof type page
-    When I select flat roof
-    Then I should see the photo page
-
   @javascript
   Scenario: Taking a photo
     Given I am on the photo page
