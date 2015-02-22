@@ -4,23 +4,23 @@ class Roof
 
   include DataMapper::Resource
   
-  property :id,                   Serial
+  property :angle,                Integer
+  property :angled_edge,          Float
   property :created_at,           DateTime
-  property :shade,                String
-  property :material,             String
-  property :angle,                Integer # must have
-  property :orientation,          Integer
-  property :photo_url,            Text
-  property :latitude,             Float  # must have
-  property :longitude,            Float  # must have
-  property :title,                String
   property :discovered_by,        String
-  property :user_email,           String
-  property :gutter_edge,          Float  # must have
-  property :angled_edge,          Float  # must have
+  property :gutter_edge,          Float
+  property :id,                   Serial
+  property :latitude,             Float
+  property :longitude,            Float
+  property :material,             String
+  property :orientation,          Integer
   property :panel_capacity,       Integer
+  property :photo_url,            Text
   property :power_capacity,       Integer
-
+  property :shade,                String
+  property :title,                String
+  property :user_email,           String
+  
   validates_format_of :user_email, :as => :email_address, message: "The email address you've entered is not valid. Please enter another"
 
   FLAT_ROOF_PANEL_AREA = 2.56
