@@ -1,5 +1,4 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
   <head>
     <meta charset="utf-8" http-equiv="Content-Type" name="viewport" content="initial-scale=1">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn5dROp8__VJNWhOwyA706Ffkm2hw4Bnc"></script>
@@ -7,26 +6,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/watch/2.0.3/jquery.watch.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script src="/js/main.js"></script>
-    <script src="/js/singlePage.js"></script>
     <script src="/js/orientation.js"></script>
     <script src="/js/photoUpload.js"></script>
     <script src="/js/gyroscope.js"></script>
     <script src="/js/labels.js"></script>
     <script src="/js/mapAndRuler.js"></script>
     <script src="/js/detect.min.js"></script>
+    <script src="/js/pageChange.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/normalize.css">     
-    <link rel="stylesheet" href="/css/foundation.css">
-    <link rel="stylesheet/less" type="text/css" href="/css/default.less" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css" />
+    <link rel="stylesheet/less" type="text/css" href="/css/main.less" />
     <script src="/js/vendor/less.min.js"></script>
   </head>
 
-  <body onload="show('pageOne');">
-  <input type="hidden" id="roofId" value="">
-    <%= erb :_flash_partial %>
+  <body>
+    <input type="hidden" id="roofId" value="">
+    <%= erb :"partials/_flash" %>
     <%= yield %>
+    
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.3/fastclick.min.js"></script>
   </body>
-
-  <script>$(document).foundation();</script>
 
 </html>
