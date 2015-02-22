@@ -42,6 +42,31 @@ $(document).ready(function(){
   $('body').on("touchend", "#shader", function() {
     clearInterval(shader_interval);
   });
+  
+  $('body').on("click", ".help-open", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    var el = $(this).parent().find(".help")
+    el.show()
+      .addClass("bounceInDown")
+      .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        el.removeClass("bounceInDown");
+      });
+  });
+  
+  $('body').on("click", ".help-close", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    
+    var el = $(this).closest(".help")
+    
+    el.addClass("bounceOutUp")
+      .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        el.removeClass("bounceOutUp");
+        el.hide();
+      });
+  });
 
   // POST orientation and geolocation
   $('#toPageSix').click(function() {
@@ -108,7 +133,6 @@ $(document).ready(function(){
     document.getElementById('roofShade').innerHTML = roof.shade_value;
     document.getElementById('roofAngle').innerHTML = roof.angle;
   };
-
 
   // POST results
   $('#user_data').submit(function(event) {

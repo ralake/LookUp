@@ -20,8 +20,10 @@ function orientation() {
           webkitAlpha = alpha-270;
         }
       }
-        compass.innerHTML = compassBearing;
-        facing.innerHTML = roofFacing(compassBearing);
+      
+      compass.innerHTML = compassBearing;
+      facing.innerHTML = roofFacing(compassBearing);
+      
     }, false);
   }
 }

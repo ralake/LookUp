@@ -1,4 +1,5 @@
 $(function() {
+  
   var current_page = 0;
   var num_pages = $('.pages .page').length;
   
@@ -54,7 +55,7 @@ $(function() {
     $('.box .page').show();
   }
   
-  $('.box-1').click(function() {
+  $('body').on('click', '.box-1', function() {
     
     if (current_page == num_pages) {
       return;

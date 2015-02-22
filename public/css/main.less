@@ -38,10 +38,14 @@ body {
   
   .page {
     display: none;
+    height: 0px;
+    width: 0px;
+    position: relative;
     
     p { 
-      font-size: 25px;
+      font-size: 20px;
       line-height:30px;
+      padding: 30px;
     }
     
     .alt {
@@ -114,6 +118,54 @@ body {
       text-align: center;
       color: white;
       margin: 20%;
+    }
+    
+    .help-open {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #FFF;
+      font-size: 35px;
+      line-height: 30px;
+      margin: 15px;
+      opacity: 0.6;
+      
+      &:hover, &:active {
+        opacity: 1;
+      }
+    }
+    
+    .help {
+      display:none;
+      position: absolute;
+      top: -40px;
+      left: 0px;
+      margin: 0;
+      width: 100%;
+      font-size: 20px;
+      line-height: 30px;
+      background: rgba(255,255,255,0.93);
+      color: #333;
+      padding: 100px 30px 30px 30px;
+      
+      .help-close { 
+      }
+      
+      .button {
+        border: 1px solid rgba(0,0,0,0.75);
+        color: #333;
+        font-size: 16px;
+        padding: 25px 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 20px;
+        line-height: 0;
+        
+        &:active {
+          background-color: #FFF;
+          color: #5F769B;
+        }
+      }
     }
   }
   

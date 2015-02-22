@@ -1,13 +1,6 @@
 <div class="page orange" id="pageSix">
   <p>
     Is the roof sloped or flat?
-  </p>
-
-  <div class="info_icon">
-    <a href="#" data-reveal-id="roof_info" id="shade_button">
-      <img class="info-icon" src="/images/info_sign.png">
-    </a>
-  </div>
 
   <div id="flatRoof" onclick="show('pageEight');">
     <img src="/images/img_roof_flat.png" data-form="flat-form" class="submit_form"><br>
@@ -19,11 +12,17 @@
     Sloped
   </div>
   
-  <div id="roof_info" class="reveal-modal info-popup" data-reveal>
-    <p>
-      <strong>Angle</strong>: A shallow pitched roof is great if it’s facing south, and even east/west facing pitches can work out just fine for solar. Flat roofs allow fine tuning of panel orientation, but can often be hard to install on for structural reasons.
-    </p>
-    <a class="close-reveal-modal">&#215;</a>
+  </p>
+  
+  <div class="help-open"><i class="icon-question-circle"></i></div>
+  
+  <div class="help animated">
+    <strong>Angle</strong>: A shallow pitched roof is great 
+    if it’s facing south, and even east/west facing pitches 
+    can work out just fine for solar. Flat roofs allow fine 
+    tuning of panel orientation, but can often be hard to 
+    install on for structural reasons.
+    <div class="button help-close">Got it!</div>
   </div>
 
 </div>
