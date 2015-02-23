@@ -16,7 +16,7 @@ class Roof
   property :orientation,          Integer
   property :panel_capacity,       Integer
   property :photo_url,            Text
-  property :power_capacity,       Integer
+  property :power_capacity,       Float
   property :shade,                String
   property :title,                String
   property :user_email,           String
@@ -27,7 +27,7 @@ class Roof
 
   SLOPED_ROOF_PANEL_AREA = 1.6
 
-  PANEL_POWER = 250
+  PANEL_POWER = 0.250
 
   def set_capacities
     set_panel_capacity

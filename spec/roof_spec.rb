@@ -28,7 +28,7 @@ describe Roof do
       @roof.update(gutter_edge: "10", angled_edge: "20", angle: "0")
       @roof.set_capacities
       expect(@roof.panel_capacity).to eq 78
-      expect(@roof.power_capacity).to eq 19500
+      expect(@roof.power_capacity).to eq 19.5
     end 
 
   end

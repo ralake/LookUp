@@ -5,7 +5,6 @@ ENV["RACK_ENV"] = "test"
 
 require 'support/wait_for_ajax'
 require './app/server'
-require 'helpers/helper'
 require 'database_cleaner'
 require 'capybara'
 require 'capybara/rspec'
