@@ -35,6 +35,7 @@ class Roof
   def set_capacities
     set_panel_capacity
     set_power_capacity
+    power_homes
   end
 
   def params_parser(params)
@@ -43,12 +44,12 @@ class Roof
     end
   end
 
+  private
+  
   def power_homes
     homes = (power_capacity / AVERAGE_HOME_USE).to_i
     update(homes_to_power: homes)
   end
-
-  private
 
   def set_panel_capacity
     return update(panel_capacity: flat_roof_panel_capacity) if angle == 0

@@ -32,8 +32,8 @@ describe Roof do
     end 
 
     it "estimates the amount of homes its solar panels could power" do
-      @roof.update(power_capacity: 18)
-      @roof.power_homes
+      @roof.update(power_capacity: 18, gutter_edge: "10", angled_edge: "20", angle: "0")
+      @roof.set_capacities
       expect(@roof.homes_to_power).to eq 9
     end
 
