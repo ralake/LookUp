@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  activateCamera();
+  initCamera();
   orientation();
   new Gyroscope().setAngle();
   var roof;

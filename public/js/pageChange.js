@@ -1,5 +1,5 @@
 $(function() {
-  var manualClick = false;
+  var userClick = false;
   var fresh = true;
   var default_page_id = "page_index";
   var num_pages = $('.pages .page').length;
@@ -25,18 +25,6 @@ $(function() {
   
   init();
   $(window).resize(init);
-  
-  function idFromPath(path) {
-    if (path != "/") {
-      return path.replace("/p/", "page_");
-    } else {
-      return default_page_id;
-    }
-  }
-  
-  function pathFromId(id) {
-    return "/p/" + id.replace("page_", "");
-  }
   
   function init() {
     var height = $(window).height();
@@ -77,14 +65,11 @@ $(function() {
   // Bind to StateChange Event
   History.Adapter.bind(window, 'statechange', function() {
     changePage(History.getState());
-    manualClick = false;
+    userClick = false;
   });
   
   $('body').on('click', '.nav', function() {
-    var page = $(this).closest('.page');
-    var next_page_id = page.attr("data-next");
-    manualClick = true;
-    History.pushState({ page_id: next_page_id }, $('title').text(), pathFromId(next_page_id));
+    userNavigates($(this));
   });
   
   function changePage(state) {
@@ -113,7 +98,7 @@ $(function() {
       return;
     }
     
-    if (manualClick == false) {
+    if (userClick == false) {
       
       $('.pages')
         .append($('.box .page').hide());
@@ -158,6 +143,25 @@ $(function() {
       
     });
     
+  }
+
+  function userNavigates(el) {
+    var page = el.closest('.page');
+    var next_page_id = page.attr("data-next");
+    userClick = true;
+    History.pushState({ page_id: next_page_id }, $('title').text(), pathFromId(next_page_id));
+  }
+
+  function idFromPath(path) {
+    if (path != "/") {
+      return path.replace("/p/", "page_");
+    } else {
+      return default_page_id;
+    }
+  }
+
+  function pathFromId(id) {
+    return "/p/" + id.replace("page_", "");
   }
   
 });
