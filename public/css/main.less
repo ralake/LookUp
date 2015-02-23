@@ -78,6 +78,72 @@ body {
       }
     }
     
+    &#page_orientation {
+      .compass {
+        font-size: 50px; 
+        color:rgba(255,255,255,0.5); 
+        margin-bottom:30px;
+      }
+    }
+    
+    &#page_roof_type {
+      
+      h1 {
+        font-size: 23px;
+        line-height: 30px;
+        margin: 0;
+        padding-top: 65px;
+        padding-bottom: 20px;
+      }
+      
+      .roof_type {
+        line-height: 20px;
+        margin-bottom: 30px;
+        
+        &:active {
+          .img {
+            border: 8px solid white;
+          }
+        }
+        
+        .img {
+          width: 100px;
+          height: 100px;
+          -webkit-border-radius: 50px;
+          -moz-border-radius: 50px;
+          border-radius: 50px;
+          border: 8px solid #E2623D;
+          background-size: cover;
+          margin:auto;
+        }
+        
+        &#flatRoof { 
+          .img {
+            background-image: url('/images/img_roof_flat.png');
+          }
+        }
+        
+        &#slopedRoof { 
+          .img {
+            background-image: url('/images/img_roof_sloped.png');
+          }
+        }
+        
+      }
+      
+    }
+    
+    &#page_material {
+      .material_icon {
+        width: 100px;
+        height: 60px;
+        font-size: 15px;
+        float: left;
+        line-height: 60px;
+        margin: 15px;
+      }
+    }
+    
     &.hello {
       
       .arrow {

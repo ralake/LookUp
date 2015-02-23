@@ -69,7 +69,7 @@ $(document).ready(function(){
   });
 
   // POST orientation and geolocation
-  $('#toPageSix').click(function() {
+  $('#topage_roof_type').click(function() {
     orient = document.getElementById('compass').innerHTML;
     $.post('/roofs/new', { orientation: orient })
       .then(function(data) {
@@ -91,18 +91,18 @@ $(document).ready(function(){
   });
 
   // POST roof-angle
-  $('#toPageEight').click(function() {
+  $('#topage_photo').click(function() {
     angle = document.getElementById('setRoofAngle').innerHTML.slice(0, 2);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
   // POST material
-  $('#toPageTen').click(function() {
+  $('#topage_shade').click(function() {
     $.post('/roofs/' + roofId + '/material', { material: material });
   });
 
   // POST shading
-  $('#toPageEleven').click(function() {
+  $('#topage_measurement').click(function() {
     var shade = document.getElementById('shade').innerHTML;
     $.post('/roofs/' + roofId + '/shading', { shade: shade });
   });

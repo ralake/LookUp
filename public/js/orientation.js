@@ -36,11 +36,23 @@ function reverseBearing(alpha) {
 function roofFacing(azimuth) {
   if (azimuth === 0 || azimuth === 360) {return "north";}
   if (azimuth === 90) {return "east";}
-  if (azimuth === 180) {return "south";}
+  if (azimuth === 180) {
+    $('#page_orientation').removeClass('red').addClass('green');
+    return "south";
+  }
   if (azimuth === 270) {return "west";}
   if($.inArray(azimuth,  _.range(0, 90)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
-  else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
-  else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) { return 'south east';} 
-  else { return 'south west';}
+  else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { 
+    $('#page_orientation').removeClass('green').addClass('red');
+    return 'north.' + '<br>' + 'Try from the other side';
+  } 
+  else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) {
+    $('#page_orientation').removeClass('red').addClass('green');
+    return 'south east';
+  } 
+  else {
+    $('#page_orientation').removeClass('red').addClass('green'); 
+    return 'south west';
+  }
 }
 

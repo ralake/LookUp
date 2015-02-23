@@ -7,6 +7,12 @@ $(function() {
   var box1 = $('.box-1');
   var box2 = $('.box-2');
   
+  $('body').on('click', '#page_photo .button', function(e) {
+    console.log("OK");
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  
   FastClick.attach(document.body);
   
   document.ontouchmove = function(event){
@@ -74,11 +80,9 @@ $(function() {
     manualClick = false;
   });
   
-  $('body').on('click', '.box-1', function() {
-    var state = History.getState();
-    console.log("clicked, getting state page id:" + state.data.page_id);
-    var page = $("#" + state.data.page_id);
-    next_page_id = page.attr("data-next");
+  $('body').on('click', '.nav', function() {
+    var page = $(this).closest('.page');
+    var next_page_id = page.attr("data-next");
     manualClick = true;
     History.pushState({ page_id: next_page_id }, $('title').text(), pathFromId(next_page_id));
   });
@@ -88,15 +92,23 @@ $(function() {
     
     // First page, only fires once
     if (fresh == true) {
+
       fresh = false;
       
-      var page = $('#' + state.data.page_id);
+      var page_id = state.data.page_id;
+      
+      if (page_id === undefined) {
+        page_id = default_page_id;
+      }
+      
+      var page = $('#' + page_id);
       var page_next = $('#' + page.attr("data-next"));
+
 
       box1.append(page);
       box2.append(page_next);
       
-      $('.box .page').show();
+      $('.box .page').css('display', 'block');
       
       return;
     }

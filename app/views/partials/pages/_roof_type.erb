@@ -1,18 +1,15 @@
-<div class="page orange" id="<%= page_id %>" data-next="page_roof_angle">
-  <p>
-    Is the roof sloped or flat?
-
-  <div id="flatRoof" onclick="show('page_photo');">
-    <img src="/images/img_roof_flat.png" data-form="flat-form" class="submit_form"><br>
-    Flat
-  </div>
-
-  <div id="slopedRoof" onclick="show('page_roof_angle');">
-    <img src="/images/img_roof_sloped.png" data-form="sloped-form" class="submit_form"><br>
-    Sloped
+<div class="page orange" id="<%= page_id %>" data-next="page_photo">
+  <h1>Is the roof sloped or flat?</h1>
+  
+  <div class="roof_type nav submit_form" id="flatRoof" data-form="flat-form">
+    <div class="img"></div>
+    <div class="label">Flat</div>
   </div>
   
-  </p>
+  <div class="roof_type nav submit_form" id="slopedRoof" data-form="floped-form">
+    <div class="img"></div>
+    <div class="label">Sloped</div>
+  </div>
   
   <div class="help-open"><i class="icon-question-circle"></i></div>
   
