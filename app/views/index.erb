@@ -2,31 +2,10 @@
 <div class="box box-2 animated"></div>
 
 <div class="pages">
-
-  <!-- Page One -->
-  <%= erb :"partials/_index" %>
-  <!-- Page Two -->
-  <%= erb :"partials/_information_one" %>
-  <!-- Page Three -->
-  <%= erb :"partials/_information_two" %>
-  <!-- Page Four -->
-  <%= erb :"partials/_information_three" %>
-  <!-- Page Five -->
-  <%= erb :"partials/_orientation" %>
-  <!-- Page Six -->
-  <%= erb :"partials/_roof_type" %>
-  <!-- Page Seven -->
-  <%= erb :"partials/_roof_angle" %>
-  <!-- Page Eight -->
-  <%= erb :"partials/_photo" %>
-  <!-- Page Nine -->
-  <%= erb :"partials/_material" %>
-  <!-- Page Ten -->
-  <%= erb :"partials/_shade" %>
-  <!-- Page Eleven -->
-  <%= erb :"partials/_measurement" %>
-  <!-- Page Twelve -->
-  <%= erb :"partials/_results" %>
+  
+  <% @page_partials.each do |page| %>
+    <%= erb page.to_sym, :locals => {:page_id => "page" + page.gsub('partials/pages/', "") } %>
+  <% end %>
 
 </div>
 

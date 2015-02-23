@@ -1,6 +1,12 @@
 class LookUp < Sinatra::Base
 
-  get '/' do
+  # Match '/' and '/p/:page'
+  get %r{/(p(/(?<page>\d*))?)?} do
+    @page_partials = Dir.glob("app/views/partials/pages/*")
+    @page_partials.each do |page_partial|
+      page_partial.gsub!("app/views/", "").gsub!(".erb", "")
+      puts page_partial
+    end
     erb :index
   end
 

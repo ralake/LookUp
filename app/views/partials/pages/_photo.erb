@@ -1,4 +1,4 @@
-<div class="page brown" id="pageEight">
+<div class="page brown" id="<%= page_id %>" data-next="page_material">
   <div id="screen">
     <p>Snap a picture of the building. Make sure the roof is visible!</p>
     <a class="button expand bottom"><i class="fa fa-camera"></i> Ok, ready</a>
@@ -8,6 +8,6 @@
 
   <form enctype="multipart/form-data" id="photoForm">
     <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input data_capture_form">
-    <button class="button round button_background" style="display:none" id="submit_button" onclick="show('pageNine');">OK...</button>
+    <button class="button round button_background" style="display:none" id="submit_button" onclick="show('page_material');">OK...</button>
   </form>
 </div>

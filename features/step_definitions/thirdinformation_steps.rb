@@ -1,5 +1,5 @@
 Given(/^I am on the third information page$/) do
-  page.should_not have_css('#pageThree')
+  page.should_not have_css('#page_orientation')
   find('#pageFour').should be_visible
 end
 

@@ -4,10 +4,10 @@ Given(/^I am on the orientation page$/) do
 end
 
 When(/^I am happy with my compass position$/) do
-  find('#toPageSix').click
+  find('#topage_roof_type').click
 end
 
 Then(/^I should proceed to the next step$/) do
   page.should_not have_css('#pageFiv')
-  find('#pageSix').should be_visible 
+  find('#page_roof_type').should be_visible 
 end

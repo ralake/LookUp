@@ -1,5 +1,5 @@
 Given(/^I on results page$/) do
-  find('#pageTen').should be_visible
+  find('#page_shade').should be_visible
 end
 
 Then(/^I should see estimates for solar panel and power capacity$/) do
