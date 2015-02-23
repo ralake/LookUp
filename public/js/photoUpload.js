@@ -1,7 +1,8 @@
 function activateCamera() {
-  $('#toPageEightPointFive').click(function(){
+  $('#btn-activate-camera').click(function(){
+    console.log("Opening photo select...");
     $('#takePictureField').click();
-    $("#takePictureField").on("change",gotPic)
+    $("#takePictureField").on("change", gotPic)
   });
 }
 

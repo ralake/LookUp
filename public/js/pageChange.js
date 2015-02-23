@@ -7,11 +7,11 @@ $(function() {
   var box1 = $('.box-1');
   var box2 = $('.box-2');
   
-  $('body').on('click', '#page_photo .button', function(e) {
-    console.log("OK");
-    e.stopPropagation();
-    e.preventDefault();
-  });
+  //$('body').on('click', '#page_photo .button', function(e) {
+  //  console.log("OK");
+  //  e.stopPropagation();
+  //  e.preventDefault();
+  //});
   
   FastClick.attach(document.body);
   
