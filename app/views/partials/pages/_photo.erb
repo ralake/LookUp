@@ -1,11 +1,16 @@
 <div class="page brown" id="<%= page_id %>" data-next="page_result">
   <div id="screen">
+    <input type="hidden" id="photoReady" value="">
     <p>
       Snap a picture of the building. Make sure the roof is visible!
     </p>
     
     <div class="button-holder nav">
-      <div class="button">Ok, ready</div>
+      <div class="button" id="activateCamera">Ok, ready</div>
     </div>
   </div>
+  <form enctype="multipart/form-data" id="photoForm">
+    <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input data_capture_form">
+    <button class="button nav" style="display:none" id="submit_button" onclick="show('pageNine');">OK...</button>
+  </form>
 </div>

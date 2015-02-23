@@ -68,7 +68,7 @@ $(document).ready(function(){
   });
 
   // POST create roof
-  $('#btn-start').click(function() {
+  $('#page_index').click(function() {
     $.post('/roofs/new').then(function(data) {
       roofId = $.parseJSON(data).id
       $('#roofId').attr("value", roofId);
@@ -82,7 +82,7 @@ $(document).ready(function(){
   })
 
   // POST orientation
-  $('#toPageFive').click(function() {
+  $('#orientationPost').click(function() {
     var orientation = document.getElementById('compass').innerHTML
     $.post('/roofs/' + roofId + '/orientation', {orientation: orientation});
   });

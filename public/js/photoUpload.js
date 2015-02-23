@@ -1,5 +1,5 @@
 function activateCamera() {
-  $('#toPageEightPointFive').click(function(){
+  $('#activateCamera').click(function(){
     $('#takePictureField').click();
     $("#takePictureField").on("change",gotPic)
   });
