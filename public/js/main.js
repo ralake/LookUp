@@ -104,8 +104,10 @@ $(document).ready(function(){
   });
 
   RoofEdges.prototype.setResults = function(roof) {
+    console.log("i got called!!!")
     document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
     document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
+    document.getElementById('homesToPower').innerHTML = roof.homes_to_power;
     document.getElementById('roofMaterial').innerHTML = roof.material;
     document.getElementById('roofShade').innerHTML = roof.shade;
     document.getElementById('roofAngle').innerHTML = roof.angle;

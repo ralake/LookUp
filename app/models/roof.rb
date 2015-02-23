@@ -9,6 +9,7 @@ class Roof
   property :created_at,           DateTime
   property :discovered_by,        String
   property :gutter_edge,          Float
+  property :homes_to_power,       Integer
   property :id,                   Serial
   property :latitude,             Float
   property :longitude,            Float
@@ -29,6 +30,8 @@ class Roof
 
   PANEL_POWER = 0.250
 
+  AVERAGE_HOME_USE = 2
+
   def set_capacities
     set_panel_capacity
     set_power_capacity
@@ -38,6 +41,11 @@ class Roof
     methods.each do |method|
       update(method => params[method.to_s]) if params.keys.include?(method.to_s)
     end
+  end
+
+  def power_homes
+    homes = (power_capacity / AVERAGE_HOME_USE).to_i
+    update(homes_to_power: homes)
   end
 
   private
