@@ -43,8 +43,7 @@ $(function() {
     $('.page').each(function(i) {
       $(this).css({
         height: height + "px",
-        width: width + "px",
-        lineHeight: height-50 + "px"
+        width: width + "px"
       });
     });
   }
