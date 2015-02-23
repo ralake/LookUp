@@ -1,10 +1,11 @@
 Given(/^I am on the third information page$/) do
-  page.should_not have_css('#page_orientation')
-  find('#pageFour').should be_visible
+  visit('/')
+  click_on('Start')
+  page.execute_script("show('pageFour');")
+  expect(page).to have_content("When you're done, you can share your find")
 end
 
 Then(/^I move on to the orientation page$/) do
   click_on("Let's go!")
-  page.should_not have_css('#pageFour')
-  find('#pageFive').should be_visible
+  expect(page).to have_content("Angle your phone square-on")
 end

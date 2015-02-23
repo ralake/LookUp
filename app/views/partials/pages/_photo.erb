@@ -1,26 +1,11 @@
-<div class="page brown" id="<%= page_id %>" data-next="page_material">
+<div class="page brown" id="<%= page_id %>" data-next="page_result">
   <div id="screen">
     <p>
       Snap a picture of the building. Make sure the roof is visible!
     </p>
-    <p>
-      
-      <i class="icon-camera" style="font-size: 150px; color:rgba(0,0,0,0.03);"></i>
-      
-      <div class="button-holder">
-        <div class="button">Ok, ready</div>
-      </div>
-      
-    </p>
+    
+    <div class="button-holder nav">
+      <div class="button">Ok, ready</div>
+    </div>
   </div>
-
-  <p>
-    <form enctype="multipart/form-data" id="photoForm">
-      <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField" class="custom-file-input data_capture_form">
-      <img id="yourimage" style="width:100%;"/>
-      <div class="button-holder">
-        <div class="button nav" style="display:none" id="submit_button">Done</div>
-      </div>
-    </form>
-</p>
 </div>

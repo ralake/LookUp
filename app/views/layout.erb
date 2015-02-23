@@ -21,10 +21,11 @@
     <script src="/js/vendor/less.min.js"></script>
   </head>
 
-  <body>
+  <body onload="show('pageOne');">
+    <input type="hidden" id="roofId" value="">
+    <input type="hidden" id="geoSuccess" data-latitude="" data-longitude="">
 
     <%= yield %>
-    <input type="hidden" id="roofId" value="" />
     <%= erb :"partials/_flash" %>
     
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -38,6 +39,7 @@
     <script src="/js/detect.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/pageChange.js"></script>
+
   </body>
 
 </html>

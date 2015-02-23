@@ -18,15 +18,15 @@ end
 
 def email_validation(roof)
   return valid_email(roof) if (roof.user_email != "" && roof.save)
-  redirect to 'http://www.1010global.org/uk' if roof.user_email == ""
+  return roof.to_json if roof.user_email == ""
   invalid_email(roof)
 end
 
 def valid_email(roof)
-  send_email_with_link(roof) 
-  redirect to 'http://www.1010global.org/uk'
+  send_email_with_link(roof)
+  roof.to_json 
 end
 
 def invalid_email(roof)
-  flash[:error] = roof.errors.full_messages
+  {"errors" => roof.errors.full_messages}.to_json
 end

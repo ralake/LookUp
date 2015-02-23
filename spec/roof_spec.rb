@@ -22,14 +22,20 @@ describe Roof do
 
   end
 
-  context "setting capacities from existing values" do
+  context "calculates its capacities" do
 
     it "updates the panel and power capacities" do
       @roof.update(gutter_edge: "10", angled_edge: "20", angle: "0")
       @roof.set_capacities
       expect(@roof.panel_capacity).to eq 78
-      expect(@roof.power_capacity).to eq 19500
+      expect(@roof.power_capacity).to eq 19.5
     end 
+
+    it "estimates the amount of homes its solar panels could power" do
+      @roof.update(power_capacity: 18, gutter_edge: "10", angled_edge: "20", angle: "0")
+      @roof.set_capacities
+      expect(@roof.homes_to_power).to eq 9
+    end
 
   end
 

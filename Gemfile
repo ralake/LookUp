@@ -17,5 +17,6 @@ group :development, :test do
   gem 'cucumber'
   gem 'database_cleaner'
   gem 'rspec'
-  gem "codeclimate-test-reporter", require: nil
+  gem 'preek'
+  gem 'codeclimate-test-reporter', require: nil
 end

@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-  browserDetect();
-  greyOut('#screen');
+  activateCamera();
   orientation();
   new Gyroscope().setAngle();
   var roof;
@@ -12,12 +11,12 @@ $(document).ready(function(){
   var material;
   var shader_interval;
 
-  function getPosition(position) {
+  function geoSuccess(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
+    $('#geoSuccess').attr("data-latitude", lat);
+    $('#geoSuccess').attr("data-longitude", long);
   }
-
-  navigator.geolocation.getCurrentPosition(getPosition);
 
   // Add selected class to 
   // clicked material icons
@@ -68,21 +67,24 @@ $(document).ready(function(){
       });
   });
 
-  // POST orientation and geolocation
-  $('#topage_roof_type').click(function() {
-    orient = document.getElementById('compass').innerHTML;
-    $.post('/roofs/new', { orientation: orient })
-      .then(function(data) {
-        response = $.parseJSON(data);
-        roofId = response.id;
-        return roofId;
-      })
-      .then(function(roofId) {
-        $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
-      .then(function() {
-        $('#roofId').attr("value", roofId);
-      });
+  // POST create roof
+  $('#btn-start').click(function() {
+    $.post('/roofs/new').then(function(data) {
+      roofId = $.parseJSON(data).id
+      $('#roofId').attr("value", roofId);
+      navigator.geolocation.getCurrentPosition(geoSuccess);
     });
+  });
+
+  // POST geolocation
+  $('#geoSuccess').watch('data-latitude', function() {
+    $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
+  })
+
+  // POST orientation
+  $('#toPageFive').click(function() {
+    var orientation = document.getElementById('compass').innerHTML
+    $.post('/roofs/' + roofId + '/orientation', {orientation: orientation});
   });
 
   // POST roof-type
@@ -92,7 +94,7 @@ $(document).ready(function(){
 
   // POST roof-angle
   $('#topage_photo').click(function() {
-    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, 2);
+    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, -1);
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
@@ -122,25 +124,45 @@ $(document).ready(function(){
       });
   };
 
-  $('#btn-gutter').click(function() {
+  $('#btn-measurements').click(function() {
     new RoofEdges().postEdges();
   });
 
   RoofEdges.prototype.setResults = function(roof) {
     document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
     document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
+    document.getElementById('homesToPower').innerHTML = roof.homes_to_power;
     document.getElementById('roofMaterial').innerHTML = roof.material;
-    document.getElementById('roofShade').innerHTML = roof.shade_value;
+    document.getElementById('roofShade').innerHTML = roof.shade;
     document.getElementById('roofAngle').innerHTML = roof.angle;
   };
 
   // POST results
   $('#user_data').submit(function(event) {
-    event.preventDefault();
+    var response;
     var title = $(this).find("input[name='title']").val();
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
-    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail });
-  });
+    event.preventDefault();
+    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
+      .then(function(data) {
+        response = $.parseJSON(data);
+        if (response.errors) {
+          $('#flashError').text(response.errors[0]);
+        } else {
+          $('#flashError').text('');
+          window.location.href = 'http://www.1010global.org/uk';
+        }
+      });
+    });
+
+  function responseHandler (response) {
+    response = $.parseJSON(data);
+    if (response.errors) {
+      $('#flashError').text(response.errors[0]);
+    } else {
+      window.location.href = 'http://www.1010global.org/uk';
+    }
+  }
 
 });

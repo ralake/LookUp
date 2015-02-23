@@ -1,60 +1,43 @@
-var browserType;
-
-function browserDetect(){
-  browserType = detect.parse(navigator.userAgent);
-  console.log(browserType.browser.family);
-}
-
-function greyOut(styleToApply) { $(styleToApply).css( { "width": $(document).width(), "height": $(document).height() })
-  .click(function() {
-    $(this).css("visibility", "hidden");
-    $(styleToApply).css("visibility", "hidden");
+function activateCamera() {
+  $('#toPageEightPointFive').click(function(){
     $('#takePictureField').click();
-    $("#submit_button").fadeIn();
-    $("#yourimage").fadeIn();
-    $("#takePictureField").on("change",gotPic);
-    if (browserType.browser.family === 'Mobile Safari') {
-      $("#takePictureField").click();
-    }
+    $("#takePictureField").on("change",gotPic)
   });
 }
 
 var files = [];
  
 function gotPic(event) {
+  var baseFile = event.target.files[0];
+  var fileToSend = {}
   if(event.target.files.length == 1 &&
-  event.target.files[0].type.indexOf("image/") === 0) {
-    
-    $("#yourimage").attr("src",URL.createObjectURL(event.target.files[0]));
-
-    $("#submit_button").click(function(event, form) {
+  baseFile.type.indexOf("image/") === 0) {
+    $('#submit_button').click(function(event) {
       event.preventDefault();
-      $.each(files, function(index, file) {
-        $.ajax({url: "/roofs/" + $("#roofId").val() + "/photo",
-          type: 'POST',
-          data: {filename: file.filename, data: file.data},
-          success: function(data, status, xhr) {}
-        });      
-      });
-      files = [];
     });
-
-    $.each(event.target.files, function(index, file) {
-      var reader = new FileReader();
-        reader.onload = function(event) {  
-        object = {};
-        object.filename = file.name;
-        object.data = event.target.result;
-        files.push(object);
-      };  
-      reader.readAsDataURL(file);
-    });
+    postImage(fileToSend);
+    readFile(fileToSend, baseFile);
   }
-
 }
 
-// function myFunction(){
-//   if (browserType.browser.family === 'Mobile Safari') {
-//     $("#takePictureField").click();
-//   }
-// }
+function postImage(fileToSend) {
+  $('#photoReady').watch('value', function() {
+    $.ajax({url: "/roofs/" + $("#roofId").val() + "/photo",
+      type: 'POST',
+      data: {filename: fileToSend.filename, data: fileToSend.data},
+      success: function(data, status, xhr) { console.log("image post successfull")}
+    });      
+    $('#submit_button').click();
+  });
+}
+
+function readFile(fileToSend, baseFile) {
+  var reader = new FileReader();
+  reader.onload = function(event) {  
+    fileToSend.filename = baseFile.name;
+    fileToSend.data = event.target.result;
+    $('#photoReady').attr('value', 'ready')
+  };  
+  reader.readAsDataURL(baseFile);
+}
+

@@ -1,7 +1,6 @@
 Given(/^I visit the homepage$/) do
   visit('/')
-  find('#page_index').should be_visible
-  page.should_not have_css('#page_information')
+  expect(page).to have_content("A rooftop treasure hunt")
 end
 
 When(/^I decide to get started$/) do
@@ -9,6 +8,5 @@ When(/^I decide to get started$/) do
 end
 
 Then(/^I should see the first introductory page$/) do
-  page.should_not have_css('#page_index')
-  find('#page_information').should be_visible
+  expect(page).to have_content("People everywhere are teaming up")
 end
