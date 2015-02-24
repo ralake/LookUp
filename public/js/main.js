@@ -99,7 +99,7 @@ $(document).ready(function(){
   });
 
   // POST material
-  $('#topage_shade').click(function() {
+  $('.material_icon').click(function() {
     $.post('/roofs/' + roofId + '/material', { material: material });
   });
 
