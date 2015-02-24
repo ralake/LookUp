@@ -104,7 +104,7 @@ $(document).ready(function(){
   });
 
   // POST shading
-  $('#topage_measurement').click(function() {
+  $('#shadePost').click(function() {
     var shade = document.getElementById('shade').innerHTML;
     $.post('/roofs/' + roofId + '/shading', { shade: shade });
   });
