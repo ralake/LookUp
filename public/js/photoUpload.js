@@ -1,13 +1,13 @@
 function activateCamera() {
   $('#activateCamera').click(function(){
     $('#takePictureField').click();
-    $("#takePictureField").on("change",gotPic)
+    $("#takePictureField").on("change",getPhoto)
   });
 }
 
 var files = [];
  
-function gotPic(event) {
+function getPhoto(event) {
   var baseFile = event.target.files[0];
   var fileToSend = {}
   if(event.target.files.length == 1 &&
@@ -40,4 +40,3 @@ function readFile(fileToSend, baseFile) {
   };  
   reader.readAsDataURL(baseFile);
 }
-
