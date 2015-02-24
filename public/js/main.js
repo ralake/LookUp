@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  initCamera();
+  activateCamera();
   orientation();
   new Gyroscope().setAngle();
   var roof;
@@ -140,11 +140,10 @@ $(document).ready(function(){
   // POST results
   $('#user_data').submit(function(event) {
     var response;
-    var title = $(this).find("input[name='title']").val();
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
     event.preventDefault();
-    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
+    $.post('/roofs/' + roofId + '/capacity', { discovered_by: discoveredBy, user_email: userEmail })
       .then(function(data) {
         response = $.parseJSON(data);
         if (response.errors) {
