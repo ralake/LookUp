@@ -28,13 +28,13 @@ $(document).ready(function(){
 
   $('#shader').change(function() {
     if ($('#shader').val() === '0') {
-      $('#shade').text('No Shade');
+      $('#shade').text('Looks clear');
     }
     else if ($('#shader').val() === '1') {
-      $('#shade').text('Half Shade');
+      $('#shade').text('Nothing major');
     }
     else {
-      $('#shade').text('Full Shade');
+      $('#shade').text('Looks shady');
     }
   });
 
@@ -150,18 +150,9 @@ $(document).ready(function(){
           $('#flashError').text(response.errors[0]);
         } else {
           $('#flashError').text('');
-          window.location.href = 'http://www.1010global.org/uk';
+          document.getElementById('user_email').innerHTML = response.user_email;
         }
       });
     });
-
-  function responseHandler (response) {
-    response = $.parseJSON(data);
-    if (response.errors) {
-      $('#flashError').text(response.errors[0]);
-    } else {
-      window.location.href = 'http://www.1010global.org/uk';
-    }
-  }
 
 });

@@ -9,9 +9,9 @@ describe Roof do
   context "Updating itself" do
 
     it "updates the relevent information from params" do
-      params = { "title" => "test title" }
+      params = { "discovered_by" => "test user" }
       @roof.params_parser(params)
-      expect(@roof.title).to eq "test title"
+      expect(@roof.discovered_by).to eq "test user"
     end
 
     it "does not update information that it doesn't need" do
