@@ -19,7 +19,6 @@ class Roof
   property :photo_url,            Text
   property :power_capacity,       Float
   property :shade,                String
-  property :title,                String
   property :user_email,           String
   
   validates_format_of :user_email, :as => :email_address, message: "The email address you've entered is not valid. Please enter another"

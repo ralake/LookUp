@@ -34,18 +34,50 @@ function reverseBearing(alpha) {
 }
 
 function roofFacing(azimuth) {
-  if($.inArray(azimuth,  _.range(0, 90)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
-  else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { 
+  if($.inArray(azimuth, _.range(0, 22)) !== -1 || $.inArray(azimuth, _.range(338, 361)) !== -1) {
     $('#page_orientation').removeClass('green').addClass('red');
     return 'north.' + '<br>' + 'Try from the other side';
   } 
-  else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) {
-    $('#page_orientation').removeClass('red').addClass('green');
-    return 'south east';
+  else if ($.inArray(azimuth, _.range(22, 68)) !== -1) {
+    $('#page_orientation').removeClass('green').addClass('red');
+    return 'north east.' + '<br>' + 'Try from the other side';
   } 
-  else {
+  else if ($.inArray(azimuth, _.range(68, 113)) !== -1) {
+    $('#page_orientation').removeClass('red').addClass('green'); 
+    return 'east';
+  }
+  else if ($.inArray(azimuth, _.range(113, 158)) !== -1) {
+    $('#page_orientation').removeClass('red').addClass('green'); 
+    return 'south east';
+  }
+  else if ($.inArray(azimuth, _.range(158, 202)) !== -1) {
+    $('#page_orientation').removeClass('red').addClass('green'); 
+    return 'south';
+  }
+  else if ($.inArray(azimuth, _.range(203, 248)) !== -1) {
     $('#page_orientation').removeClass('red').addClass('green'); 
     return 'south west';
   }
+  else if ($.inArray(azimuth, _.range(248, 293)) !== -1) {
+    $('#page_orientation').removeClass('red').addClass('green'); 
+    return 'west';
+  }
+  else if($,inArray(azimuth, _.range(293, 337)) !== -1) {
+    $('#page_orientation').removeClass('green').addClass('red');
+    return 'north west.' + '<br>' + 'Try from the other side';
+  }
+  // if($.inArray(azimuth,  _.range(0, 90)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
+  // else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { 
+  //   $('#page_orientation').removeClass('green').addClass('red');
+  //   return 'north.' + '<br>' + 'Try from the other side';
+  // } 
+  // else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) {
+  //   $('#page_orientation').removeClass('red').addClass('green');
+  //   return 'south east';
+  // } 
+  // else {
+  //   $('#page_orientation').removeClass('red').addClass('green'); 
+  //   return 'south west';
+  // }
 }
 

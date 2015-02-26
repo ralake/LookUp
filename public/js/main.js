@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  initCamera();
+  activateCamera();
   orientation();
   new Gyroscope().setAngle();
   var roof;
@@ -28,13 +28,13 @@ $(document).ready(function(){
 
   $('#shader').change(function() {
     if ($('#shader').val() === '0') {
-      $('#shade').text('No Shade');
+      $('#shade').text('Looks clear');
     }
     else if ($('#shader').val() === '1') {
-      $('#shade').text('Half Shade');
+      $('#shade').text('Nothing major');
     }
     else {
-      $('#shade').text('Full Shade');
+      $('#shade').text('Looks shady');
     }
   });
 
@@ -68,7 +68,7 @@ $(document).ready(function(){
   });
 
   // POST create roof
-  $('#btn-start').click(function() {
+  $('#page_index').click(function() {
     $.post('/roofs/new').then(function(data) {
       roofId = $.parseJSON(data).id
       $('#roofId').attr("value", roofId);
@@ -82,7 +82,7 @@ $(document).ready(function(){
   })
 
   // POST orientation
-  $('#toPageFive').click(function() {
+  $('#orientationPost').click(function() {
     var orientation = document.getElementById('compass').innerHTML
     $.post('/roofs/' + roofId + '/orientation', {orientation: orientation});
   });
@@ -99,12 +99,12 @@ $(document).ready(function(){
   });
 
   // POST material
-  $('#topage_shade').click(function() {
+  $('.material_icon').click(function() {
     $.post('/roofs/' + roofId + '/material', { material: material });
   });
 
   // POST shading
-  $('#topage_measurement').click(function() {
+  $('#shadePost').click(function() {
     var shade = document.getElementById('shade').innerHTML;
     $.post('/roofs/' + roofId + '/shading', { shade: shade });
   });
@@ -140,30 +140,20 @@ $(document).ready(function(){
   // POST results
   $('#user_data').submit(function(event) {
     var response;
-    var title = $(this).find("input[name='title']").val();
     var discoveredBy = $(this).find("input[name='discovered_by']").val();
     var userEmail = $(this).find("input[name='user_email']").val();
     event.preventDefault();
-    $.post('/roofs/' + roofId + '/capacity', { title: title, discovered_by: discoveredBy, user_email: userEmail })
+    $.post('/roofs/' + roofId + '/capacity', { discovered_by: discoveredBy, user_email: userEmail })
       .then(function(data) {
         response = $.parseJSON(data);
         if (response.errors) {
           $('#flashError').text(response.errors[0]);
         } else {
           $('#flashError').text('');
-          window.location.href = 'http://www.1010global.org/uk';
+          document.getElementById('user_email').innerHTML = response.user_email;
         }
       });
     });
-
-  function responseHandler (response) {
-    response = $.parseJSON(data);
-    if (response.errors) {
-      $('#flashError').text(response.errors[0]);
-    } else {
-      window.location.href = 'http://www.1010global.org/uk';
-    }
-  }
   
   var hammertime = new Hammer($('.slide-panels').eq(0)[0]);
   
