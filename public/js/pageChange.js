@@ -145,7 +145,6 @@ $(function() {
   }
 
   function userNavigates(el) {
-    alert(el);
     var page = el.closest('.page');
     var next_page_id = page.attr("data-next");
     userClick = true;
