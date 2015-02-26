@@ -164,5 +164,19 @@ $(document).ready(function(){
       window.location.href = 'http://www.1010global.org/uk';
     }
   }
+  
+  var hammertime = new Hammer($('.slide-panels').eq(0)[0]);
+  
+  hammertime.on("swipeleft", function(){
+    $('.slide-panels').animate({
+      left: "-=" + $(window).width() + "px"
+    }, 500);
+  });
+  
+  hammertime.on("swiperight", function(){
+    $('.slide-panels').animate({
+      left: "+=" + $(window).width() + "px"
+    }, 500);
+  });
 
 });

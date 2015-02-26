@@ -40,7 +40,7 @@ $(function() {
       });
     });
   
-    $('.page').each(function(i) {
+    $('.page, .slide-panel').each(function(i) {
       $(this).css({
         height: height + "px",
         width: width + "px"
@@ -145,6 +145,7 @@ $(function() {
   }
 
   function userNavigates(el) {
+    alert(el);
     var page = el.closest('.page');
     var next_page_id = page.attr("data-next");
     userClick = true;
