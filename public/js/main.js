@@ -154,19 +154,5 @@ $(document).ready(function(){
         }
       });
     });
-  
-  var hammertime = new Hammer($('.slide-panels').eq(0)[0]);
-  
-  hammertime.on("swipeleft", function(){
-    $('.slide-panels').animate({
-      left: "-=" + $(window).width() + "px"
-    }, 500);
-  });
-  
-  hammertime.on("swiperight", function(){
-    $('.slide-panels').animate({
-      left: "+=" + $(window).width() + "px"
-    }, 500);
-  });
 
 });

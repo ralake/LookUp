@@ -6,6 +6,22 @@
 @orange: #E2623D;
 @brown: #A5A091;
 
+.iphone4(@rules) {
+  @media screen and (max-height:400px) { @rules(); }
+}
+
+.transition {
+  -webkit-transition: all 750ms cubic-bezier(0.825, 0.000, 0.210, 1.000); 
+     -moz-transition: all 750ms cubic-bezier(0.825, 0.000, 0.210, 1.000); 
+       -o-transition: all 750ms cubic-bezier(0.825, 0.000, 0.210, 1.000); 
+          transition: all 750ms cubic-bezier(0.825, 0.000, 0.210, 1.000);
+
+  -webkit-transition-timing-function: cubic-bezier(0.825, 0.000, 0.210, 1.000); 
+     -moz-transition-timing-function: cubic-bezier(0.825, 0.000, 0.210, 1.000); 
+       -o-transition-timing-function: cubic-bezier(0.825, 0.000, 0.210, 1.000); 
+          transition-timing-function: cubic-bezier(0.825, 0.000, 0.210, 1.000);
+}
+
 body {
   font-family: "Raleway";
   background: #333;
@@ -14,11 +30,28 @@ body {
   -webkit-transform:translate3d(0,0,0);
   overflow: hidden;
   
-  .red { background-color: @red; }
-  .blue { background-color: @blue; }
-  .green { background-color: @green; }
+  .red { 
+    background-image: url('/images/img_bg_red.png');
+    background-size: cover;
+  }
+  .blue { 
+    background-image: url('/images/img_bg_blue.png');
+    background-size: cover;
+  }
+  .green { 
+    background-image: url('/images/img_bg_green.png');
+    background-size: cover;
+  }
   .orange { background-color: @orange; }
   .brown { background-color: @brown; }
+  
+  #log {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    color: #000;
+    font-size: 9px;
+  }
   
   .box {
     position: fixed;
@@ -28,12 +61,12 @@ body {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-animation-duration: 1.5s;
     color: rgba(255,255,255,1);
-    text-align: center;
     cursor: pointer;
     -webkit-box-shadow: 0px 0px 62px 2px rgba(0,0,0,0.43);
     -moz-box-shadow: 0px 0px 62px 2px rgba(0,0,0,0.43);
     box-shadow: 0px 0px 62px 2px rgba(0,0,0,0.43);
     font-weight: 300;
+    overflow: hidden;
   }
   
   .box-1 {
@@ -56,7 +89,7 @@ body {
     
     h1 {
       &.middle { margin-top: 80px; }
-      margin-top: 20px;
+      margin-top: 0px;
     }
     
     p { 
@@ -73,28 +106,34 @@ body {
       letter-spacing: 4px;
     }
     
-    .button {
-      font-size: 16px;
-      padding: 20px 15px;
-      border: 1px solid rgba(255,255,255,0.75);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin: 15px;
-      color: #FFF;
-      
-      &:active {
-        background-color: #FFF;
-        color: #5F769B;
-      }
-    }
-    
     .button-holder {
       position: absolute;
       bottom: 0px;
       width: 100%;
-      height: 85px;
-      line-height: 0px;
+      
+      .button {
+        padding: 20px 15px;
+        border: 1px solid rgba(255,255,255,0.75);
+        border-bottom: 5px solid rgba(255,255,255,0.75);
+        margin: 20px;
+        color: #FFF;
+        font-family: "baron_neueregular";
+        text-transform: lowercase;
+        font-size: 20px;
+        letter-spacing: 3px;
+        line-height: 20px;
+        opacity:0.99;
+        cursor: pointer;
+        text-shadow: 0 3px 0 rgba(0,0,0,0.02);
+        text-align: center;
+      
+        &:active {
+          background-color: #FFF;
+          color: #5F769B;
+        }
+      }
     }
+    
     
     &#page_orientation {
       .compass {
@@ -171,42 +210,145 @@ body {
     
     &#page_index {
       
-      .arrow {
-        opacity: 0.7;
-        font-size: 15px;
-        position: absolute;
-        bottom: 0px;
+      .page-slides-mask {
         width: 100%;
-        height: 80px;
-        line-height: 0px;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
         
-        i {
-          -webkit-animation-duration: 3s;
-          -webkit-animation-delay: 1s;
-          font-size: 40px;
-          margin: auto;
-          position: relative;
-          top: 20px;
+        .city {
+          background-size: contain;
+          background-position-y: bottom;
+          background-repeat: no-repeat;
+          height: 80px;
+          width: 100%;
+          position: absolute;
+          bottom: 111px;
+          left: 0;
+          
+          .transition
+        }
+        
+        .cloud {
+          background-image: url('/images/img_cloud.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+          position: absolute;
+          opacity: 0.8;
+          
+          .transition
         }
       }
-    }
-    
-    &#page_intro {
-      .slide-panels {
+      
+      .page-slides {
         overflow: auto;
         width: 3000px;
         position: relative;
         left: 0;
+        
+        .transition
       }
-      .slide-panel {
-        &:nth-child(1) { padding-top: 50px; }
-        &:nth-child(2) { padding-top: 125px; }
-        &:nth-child(3) { padding-top: 200px; }
+      
+      .page-slide {
         color: white;
         float: left;
         position: relative;
         left: 0;
+        overflow: visible;
       }
+      
+      .content {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0px;
+        padding: 25px;
+        
+        h1 {
+          font-family: "baron_neueregular";
+          text-transform: lowercase;
+          font-size: 50px;
+          letter-spacing: 2px;
+        }
+        
+        .sun {
+          position: absolute;
+          left: 0;
+          top: 15px;
+          width: 100%;
+          height: 25%;
+          background-repeat: no-repeat;
+          background-size: 110%;
+          background-position: center -15px;
+          text-align: center;
+          img { height: 100%; }
+        }
+      
+        .logo {
+          margin: auto;
+          margin-top: 35%;
+          .iphone4({ margin-top: 15%; });
+          width: 70%;
+          img { width: 100%; }
+        }
+      
+        .house, .library, .snappy, .signpost {
+          border-bottom: 1px solid #fff;
+          width: 100%;
+          height: 100%;
+          background-size: 175%;
+          background-position: 50% bottom;
+          background-repeat: no-repeat;
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+          overflow: visible;
+        }
+        
+        .library {
+          background-size: 55%;
+          .iphone4({ 
+            background-size: 35%;
+            background-position: 70% bottom;
+          });
+        }
+        
+        .snappy {
+          background-position: right bottom;
+          background-size: 60%;
+          .iphone4({ background-size: 35%; });
+        }
+        
+        .signpost {
+          background-position: 95% bottom;
+          background-size: 35%;
+          .iphone4({ background-size: 25%; });
+        }
+      }
+      
+      h3 {
+        font-family: "baron_neueregular";
+        text-transform: lowercase;
+        font-size: 12px;
+        letter-spacing: 2px;
+        line-height: 20px;
+        opacity:0.99;
+        margin-top: -10px;
+        text-align: center;
+      }
+      
+      .main {
+        width: 100%;
+        max-width: 400px;
+        height:385px;
+        background-size: 118%;
+        background-position: 38% 0;
+        margin: auto;
+      }
+    }
+    
+    &#page_intro {
+
     }
     
     #map-canvas {
@@ -279,4 +421,30 @@ body {
     }
   }
   
+}
+
+@font-face {
+    font-family: 'baron_neue_boldbold';
+    src: url('/fonts/Baron Neue Bold-webfont.eot');
+    src: url('/fonts/Baron Neue Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Baron Neue Bold-webfont.woff2') format('woff2'),
+         url('/fonts/Baron Neue Bold-webfont.woff') format('woff'),
+         url('/fonts/Baron Neue Bold-webfont.ttf') format('truetype'),
+         url('/fonts/Baron Neue Bold-webfont.svg#baron_neue_boldbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'baron_neueregular';
+    src: url('/fonts/Baron Neue-webfont.eot');
+    src: url('/fonts/Baron Neue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Baron Neue-webfont.woff2') format('woff2'),
+         url('/fonts/Baron Neue-webfont.woff') format('woff'),
+         url('/fonts/Baron Neue-webfont.ttf') format('truetype'),
+         url('/fonts/Baron Neue-webfont.svg#baron_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }

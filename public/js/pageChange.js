@@ -26,7 +26,13 @@ $(function() {
   init();
   $(window).resize(init);
   
+  function log(msg) {
+    $('#log').text(msg);
+  }
+  
   function init() {
+    $('body').append('<div id="log"></div>');
+    
     var height = $(window).height();
     var width = $(window).width();
   
@@ -40,11 +46,39 @@ $(function() {
       });
     });
   
-    $('.page, .slide-panel').each(function(i) {
+    $('.expand').each(function(i) {
       $(this).css({
         height: height + "px",
         width: width + "px"
       });
+    });
+    
+    $('.content').css("height", (height-100) +"px");
+    
+    $('.next').click(function() {
+      $(this).closest(".page-slides").css("left", "-=" + width + "px");
+      $('.cloud').css("left", "-=" + (width*0.2) + "px");
+      $('.city').css("left", "-=" + (width*0.1) + "px");
+    });
+    
+    var clouds = [
+      {x:35, y:70, depth:2},
+      {x:300, y:50, depth:1},
+      {x:240, y:50, depth:3},
+      {x:25, y:190, depth:3},
+      {x:290, y:140, depth:3}
+    ];
+  
+    $.each(clouds,function(i, cloud) {
+      $('<div />').addClass('cloud')
+        .css({ 
+          left: cloud.x,
+          top: cloud.y,
+          width: (50*(cloud.depth*0.5)) + "px",
+          height:  (50*(cloud.depth*0.5)) + "px"
+        })
+        .data('depth', cloud.depth)
+        .appendTo('.page-slides-mask');
     });
   }
   
