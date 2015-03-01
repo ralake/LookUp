@@ -92,6 +92,17 @@ body {
       margin-top: 0px;
     }
     
+    h3 {
+      font-family: "baron_neueregular";
+      text-transform: lowercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      line-height: 20px;
+      opacity:0.99;
+      margin-top: -10px;
+      text-align: center;
+    }
+    
     p { 
       font-size: 20px;
       line-height:30px;
@@ -136,10 +147,46 @@ body {
     
     
     &#page_orientation {
+      
+      h4 {
+        text-align: center;
+        line-height: 22px;
+        padding: 25px 20px 15px;
+        font-size: 15px;
+        margin: auto;
+        width: 85%;
+        .iphone4({ 
+          padding: 25px 30px 10px;
+          font-size: 12px;
+          line-height: 16px;
+        });
+      }
+      
+      h3 {
+        padding: 0 15px;
+        margin: 0;
+        .iphone4({ position: relative; top: -35px; });
+      }
+      
       .compass {
-        font-size: 50px; 
-        color:rgba(255,255,255,0.5); 
-        margin-bottom:30px;
+        height: 50%;
+        width: 60%;
+        .iphone4({ width: 45%; });
+        text-align: center;
+        position: relative;
+        margin: auto;
+        
+        .needle {
+          width: 100%;
+          position: absolute;
+          top: 0; left: 0;
+        }
+        
+        .bg {
+          width: 100%;
+          position: absolute;
+          top: 0; left: 0;
+        }
       }
     }
     
@@ -326,17 +373,6 @@ body {
         }
       }
       
-      h3 {
-        font-family: "baron_neueregular";
-        text-transform: lowercase;
-        font-size: 12px;
-        letter-spacing: 2px;
-        line-height: 20px;
-        opacity:0.99;
-        margin-top: -10px;
-        text-align: center;
-      }
-      
       .main {
         width: 100%;
         max-width: 400px;
@@ -345,10 +381,6 @@ body {
         background-position: 38% 0;
         margin: auto;
       }
-    }
-    
-    &#page_intro {
-
     }
     
     #map-canvas {
@@ -379,7 +411,7 @@ body {
       color: #FFF;
       font-size: 35px;
       line-height: 30px;
-      margin: 15px;
+      margin: 10px;
       opacity: 0.6;
       
       &:hover, &:active {

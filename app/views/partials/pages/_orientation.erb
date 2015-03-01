@@ -1,18 +1,17 @@
 <div class="page red expand" id="<%= page_id %>" data-next="page_roof_type">
   
-  <p>
-    Snitch way does your roof face? Angle your phone square-on to the gutter to check.
-  </p>
+  <h4>Which way does your roof face? Angle your phone square-on to the gutter to check.</h4>
   
-  <img class="compass" src="/images/img_compass.png">
+  <div class="compass">
+    <img class="bg" src="/images/img_compass.png">
+    <img class="needle" src="/images/img_compass_needle.png">
+  </div>
 
-  <p>
-    Compass bearing is <strong><span id="compass"></span><span>&deg;</span></strong>.
-    Roof is facing <strong><span id="facing"></span></strong>
-  </p>
+  <!--Compass bearing is <strong><span id="compass"></span><span>&deg;</span></strong>.-->
+  <h3>Roof faces <span id="facing"></span></h3>
   
   <div class="button-holder">
-    <div class="button nav" id="orientationPost">Next</div>
+    <div class="button nav" id="orientationPost">Capture!</div>
   </div>
 
   <div class="help-open"><i class="icon-question-circle"></i></div>

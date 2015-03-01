@@ -26,10 +26,6 @@ $(function() {
   init();
   $(window).resize(init);
   
-  function log(msg) {
-    $('#log').text(msg);
-  }
-  
   function init() {
     $('body').append('<div id="log"></div>');
     
@@ -198,3 +194,7 @@ $(function() {
   }
   
 });
+
+function log(msg) {
+  $('#log').text(msg);
+}

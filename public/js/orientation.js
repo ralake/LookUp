@@ -1,15 +1,16 @@
 function orientation() {
   var alpha;
   var compassBearing;
-  var compass = document.getElementById('compass');
-  var facing = document.getElementById('facing');
+  //var compass = document.getElementById('compass');
+  var facing = $('#facing');
   
   if(window.DeviceOrientationEvent) {
     window.addEventListener('deviceorientation', function(event) {
+      
       if(event.webkitCompassHeading) {
         alpha = Math.round(event.webkitCompassHeading);
         compassBearing = reverseBearing(alpha);
-        compass.innerHTML = compassBearing;
+        //compass.innerHTML = compassBearing;
         roofFacing.innerHTML = roofFacing(compassBearing);
       }
       else {
@@ -21,8 +22,8 @@ function orientation() {
         }
       }
       
-      compass.innerHTML = compassBearing;
-      facing.innerHTML = roofFacing(compassBearing);
+      //compass.innerHTML = compassBearing;
+      facing.html(roofFacing(compassBearing));
       
     }, false);
   }
@@ -34,6 +35,12 @@ function reverseBearing(alpha) {
 }
 
 function roofFacing(azimuth) {
+  $('.compass .needle').css({
+    '-ms-transform': 'rotate('+ azimuth +'deg)',
+    '-webkit-transform': 'rotate('+ azimuth +'deg)',
+    'transform': 'rotate('+ azimuth +'deg)',
+  });
+  
   if($.inArray(azimuth, _.range(0, 22)) !== -1 || $.inArray(azimuth, _.range(338, 361)) !== -1) {
     $('#page_orientation').removeClass('green').addClass('red');
     return 'north.' + '<br>' + 'Try from the other side';
@@ -66,18 +73,5 @@ function roofFacing(azimuth) {
     $('#page_orientation').removeClass('green').addClass('red');
     return 'north west.' + '<br>' + 'Try from the other side';
   }
-  // if($.inArray(azimuth,  _.range(0, 90)) !== -1) { return 'north.' + '<br>' + 'Try from the other side';} 
-  // else if ($.inArray(azimuth,  _.range(270, 361)) !== -1) { 
-  //   $('#page_orientation').removeClass('green').addClass('red');
-  //   return 'north.' + '<br>' + 'Try from the other side';
-  // } 
-  // else if ($.inArray(azimuth,  _.range(90, 180)) !== -1) {
-  //   $('#page_orientation').removeClass('red').addClass('green');
-  //   return 'south east';
-  // } 
-  // else {
-  //   $('#page_orientation').removeClass('red').addClass('green'); 
-  //   return 'south west';
-  // }
 }
 
