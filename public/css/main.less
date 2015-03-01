@@ -337,13 +337,33 @@ body {
     }
     
     &#page_material {
-      .material_icon {
-        width: 100px;
+      h3 {
+        padding-top: 30px;
+      }
+      .material {
+        width: 50%;
         height: 60px;
+        .iphone4({ 
+          height: 50px;
+          line-height: 40px;
+        });
         font-size: 15px;
         float: left;
-        line-height: 60px;
-        margin: 15px;
+        line-height: 50px;
+        text-align: center;
+        font-family: "baron_neueregular";
+        text-transform: lowercase;
+        letter-spacing: 3px;
+        color: rgba(255,255,255,0.8);
+        border: 5px solid transparent;
+        background-origin: border-box;
+        text-shadow: 0 1px 0px rgba(0,0,0,0.3);
+        background-position: center;
+        
+        &.selected {
+          color: rgba(255,255,255,1);
+          border: 5px solid rgba(255,255,255,0.8);
+        }
       }
     }
     

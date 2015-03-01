@@ -109,8 +109,14 @@ $(document).ready(function(){
   });
 
   // POST material
-  $('.material_icon').click(function() {
+  $('#roofMaterialPost').click(function() {
+    var material = $('.material.selected').attr('id');
     $.post('/roofs/' + roofId + '/material', { material: material });
+  });
+  
+  $('.material').click(function() {
+    $('.material').removeClass('selected');
+    $(this).addClass('selected');
   });
 
   // POST shading
