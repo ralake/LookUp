@@ -1,15 +1,10 @@
 $(document).ready(function(){
-
-  activateCamera();
+  
   orientation();
+  
   new Gyroscope().setAngle();
-  var roof;
-  var roofId;
-  var lat;
-  var long;
-  var angle;
-  var material;
-  var shader_interval;
+  var roof, roofId, lat, long,
+  angle, material, shader_interval;
 
   function geoSuccess(position) {
     lat = position.coords.latitude;
@@ -18,8 +13,6 @@ $(document).ready(function(){
     $('#geoSuccess').attr("data-longitude", long);
   }
 
-  // Add selected class to 
-  // clicked material icons
   $('.material_icon').click(function() {
     $('.material_icon').removeClass('selected');
     $(this).addClass('selected');
@@ -37,6 +30,10 @@ $(document).ready(function(){
       $('#shade').text('Looks shady');
     }
   });
+  
+  $('.button').click(function() {
+    $(this).addClass('clicked');
+  })
 
   $('body').on("touchend", "#shader", function() {
     clearInterval(shader_interval);
@@ -72,6 +69,7 @@ $(document).ready(function(){
     $.post('/roofs/new').then(function(data) {
       roofId = $.parseJSON(data).id
       $('#roofId').attr("value", roofId);
+      $('body').data('roof-id', roofId);
       navigator.geolocation.getCurrentPosition(geoSuccess);
     });
   });
@@ -156,19 +154,48 @@ $(document).ready(function(){
     var userEmail = $(this).find("input[name='user_email']").val();
     event.preventDefault();
     $.post('/roofs/' + roofId + '/capacity', { discovered_by: discoveredBy, user_email: userEmail })
-      .then(function(data) {
-        response = $.parseJSON(data);
-        if (response.errors) {
-          $('#flashError').text(response.errors[0]);
-        } else {
-          $('#flashError').text('');
-          document.getElementById('user_email').innerHTML = response.user_email;
-        }
-      });
+    .then(function(data) {
+      response = $.parseJSON(data);
+      if (response.errors) {
+        $('#flashError').text(response.errors[0]);
+      } else {
+        $('#flashError').text('');
+        document.getElementById('user_email').innerHTML = response.user_email;
+      }
     });
+  });
     
-  // PAGE CHANGE LOGIC  
+  // Camera logic
+  $('#takePictureField').on("touchstart click", function() {
+    $('#choosePhoto')
+      .html('<i class="icon-sync animated infinite "></i>')
+      .addClass('loading');
+  });
   
+  $('#takePictureField').change(function(e) {
+    
+    var file = e.target.files[0];
+    
+    var reader = new FileReader();
+  
+    reader.onload = function(event) {
+      var filename = file.name;
+      var data = event.target.result;
+    
+      $.ajax({url: "/roofs/" + $('body').data('roof-id') + "/photo",
+        type: 'POST',
+        data: { filename: filename, data: data },
+        success: function(data, status, xhr) { console.log("Image posted.") }
+      });
+    
+      $('#choosePhoto').click();
+    
+    };
+    
+    reader.readAsDataURL(file);
+  });
+    
+  // Page logic
   var userClick = false;
   var fresh = true;
   var default_page_id = "page_index";
