@@ -1,14 +1,20 @@
-<div class="page orange" id="<%= page_id %>" data-next="page_photo">
-  <h1>Is the roof sloped or flat?</h1>
+<div class="page orange expand" id="<%= page_id %>" data-next="page_photo">
+  <h3>What kind of roof?</h3>
   
-  <div class="roof_type nav submit_form" id="flatRoof" data-form="flat-form">
+  <div class="roof_type selected" id="flatRoof">
     <div class="img"></div>
-    <div class="label">Flat</div>
+    <h3>Flat</h3>
   </div>
   
-  <div class="roof_type nav submit_form" id="slopedRoof" data-form="floped-form">
+  <div style="clear:left;"></div>
+  
+  <div class="roof_type" id="slopedRoof">
     <div class="img"></div>
-    <div class="label">Sloped</div>
+    <h3>Sloped</h3>
+  </div>
+  
+  <div class="button-holder">
+    <div class="button nav" id="roofTypePost">Done</div>
   </div>
   
   <div class="help-open"><i class="icon-question-circle"></i></div>

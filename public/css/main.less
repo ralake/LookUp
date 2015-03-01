@@ -32,18 +32,19 @@ body {
   
   .red { 
     background-image: url('/images/img_bg_red.png');
-    background-size: cover;
   }
   .blue { 
     background-image: url('/images/img_bg_blue.png');
-    background-size: cover;
   }
   .green { 
     background-image: url('/images/img_bg_green.png');
-    background-size: cover;
   }
-  .orange { background-color: @orange; }
-  .brown { background-color: @brown; }
+  .orange { 
+    background-image: url('/images/img_bg_orange.png');
+  }
+  .brown { 
+    background-color: @brown;
+  }
   
   #log {
     position: fixed;
@@ -86,6 +87,7 @@ body {
     width: 0px;
     position: relative;
     font-size: 16px;
+    background-size: cover;
     
     h1 {
       &.middle { margin-top: 80px; }
@@ -200,36 +202,63 @@ body {
         padding-bottom: 20px;
       }
       
+      h3 {
+        padding-top: 30px;
+        margin: 0;
+      }
+      
       .roof_type {
         line-height: 20px;
         margin-bottom: 30px;
-        
-        &:active {
-          .img {
-            border: 8px solid white;
-          }
-        }
+        margin-left: 20px;
+        margin-top: 10px;
+        .iphone4({
+          -ms-transform: scale(0.8,0.8);
+          -webkit-transform: scale(0.8,0.8);
+          transform: scale(0.8,0.8);
+        });
         
         .img {
-          width: 100px;
-          height: 100px;
-          -webkit-border-radius: 50px;
-          -moz-border-radius: 50px;
-          border-radius: 50px;
-          border: 8px solid #E2623D;
-          background-size: cover;
+          background-size: 100%;
+          background-repeat: no-repeat;
           margin:auto;
+          float: left;
+        }
+        
+        h3 {
+          margin-left: 20px;
+          float: left;
         }
         
         &#flatRoof { 
+          h3 { line-height: 50px; }
+          
           .img {
+            width: 160px;
+            height: 100px; 
             background-image: url('/images/img_roof_flat.png');
+          }
+          
+          &.selected {
+            .img {
+              background-position: 0 -100px;
+            }
           }
         }
         
         &#slopedRoof { 
+          h3 { line-height: 60px; }
+          
           .img {
+            width: 167px;
+            height: 117px;
             background-image: url('/images/img_roof_sloped.png');
+          }
+          
+          &.selected {
+            .img {
+              background-position: 0 -117px;
+            }
           }
         }
         
@@ -438,12 +467,15 @@ body {
       .button {
         border: 1px solid rgba(0,0,0,0.75);
         color: #333;
-        font-size: 16px;
         padding: 25px 15px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
         margin-top: 20px;
         line-height: 0;
+        text-align: center;
+        font-family: "baron_neueregular";
+        text-transform: lowercase;
+        font-size: 20px;
+        letter-spacing: 3px;
+        border-bottom: 5px solid rgba(0,0,0,0.75);
         
         &:active {
           background-color: #FFF;

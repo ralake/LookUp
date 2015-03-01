@@ -41,6 +41,8 @@ function roofFacing(azimuth) {
     'transform': 'rotate('+ azimuth +'deg)',
   });
   
+  $('body').data('orientation', reverseBearing(azimuth));
+  
   if($.inArray(azimuth, _.range(0, 22)) !== -1 || $.inArray(azimuth, _.range(338, 361)) !== -1) {
     $('#page_orientation').removeClass('green').addClass('red');
     return 'north.' + '<br>' + 'Try from the other side';
