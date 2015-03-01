@@ -105,8 +105,8 @@ $(document).ready(function(){
   });
 
   // POST roof-angle
-  $('#topage_photo').click(function() {
-    angle = document.getElementById('setRoofAngle').innerHTML.slice(0, -1);
+  $('#roofAnglePost').click(function() {
+    angle = $('body').data('angle');
     $.post('/roofs/' + roofId + '/angle', { angle: angle });
   });
 
@@ -362,9 +362,9 @@ $(document).ready(function(){
     box2.append($('#' + page_id).show());
     box1.find('.page').attr('data-next', page_id);
   }
-  
-  function log(msg) {
-    $('#log').text(msg);
-  }
 
 });
+
+function log(msg) {
+  $('#log').text(msg);
+}
