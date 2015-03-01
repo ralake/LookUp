@@ -45,6 +45,9 @@ body {
   .brown { 
     background-color: @brown;
   }
+  .purple {
+    background-image: url('/images/img_bg_purple.png');
+  }
   
   #log {
     position: fixed;
@@ -101,7 +104,7 @@ body {
       letter-spacing: 2px;
       line-height: 20px;
       opacity:0.99;
-      margin-top: -10px;
+      margin-top: 0px;
       text-align: center;
     }
     
@@ -267,6 +270,21 @@ body {
     }
     
     &#page_photo {
+      h3 {
+        padding-top: 30px;
+      }
+      
+      .snappy {
+        width: 100%;
+        background-image: url('/images/img_snappy_big.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom right;
+        position: absolute;
+        bottom: 110px; left: 0;
+        height: 83%;
+        border-bottom: 1px solid;
+      }
       .offscreen {
         position: absolute;
         bottom: 2000px;

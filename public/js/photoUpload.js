@@ -1,7 +1,8 @@
 function activateCamera() {
   $('#activateCamera').click(function(){
+    log("cam activated");
     $('#takePictureField').click();
-    $("#takePictureField").on("change",getPhoto)
+    $("#takePictureField").on("change", getPhoto);
   });
 }
 

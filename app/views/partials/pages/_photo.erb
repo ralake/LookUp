@@ -1,16 +1,23 @@
-<div class="page brown expand" id="<%= page_id %>" data-next="page_material">
+<div class="page purple expand" id="<%= page_id %>" data-next="page_material">
+  
   <div id="screen">
     <input type="hidden" id="photoReady" value="">
-    <p>
-      Snap a picture of the building. Make sure the roof is visible!
-    </p>
+    <h3>
+      Snap a picture of the building.<br>
+      Make sure the roof is visible!
+    </h3>
     
-    <div>
-      <div class="button" id="activateCamera">Ok, ready</div>
+    <div class="snappy"></div>
+    
+    <div class="button-holder">
+      <div class="button" id="activateCamera">Take photo</div>
     </div>
+    
   </div>
+  
   <form style="visibility:hidden;" enctype="multipart/form-data" id="photoForm">
     <input type="file" name="file" capture="camera" accept="image/*" id="takePictureField">
     <button class="button nav" id="submit_button">OK...</button>
   </form>
+  
 </div>
