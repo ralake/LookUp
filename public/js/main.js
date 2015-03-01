@@ -121,8 +121,13 @@ $(document).ready(function(){
 
   // POST shading
   $('#shadePost').click(function() {
-    var shade = document.getElementById('shade').innerHTML;
+    var shade = $('.roof_shade.selected').data('value');
     $.post('/roofs/' + roofId + '/shading', { shade: shade });
+  });
+  
+  $('.roof_shade').click(function() {
+    $('.roof_shade').removeClass('selected');
+    $(this).addClass('selected');
   });
 
   // POST measurements

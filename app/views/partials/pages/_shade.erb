@@ -1,19 +1,33 @@
-<div class="page blue expand" id="<%= page_id %>" data-next="page_measurement">
+<div class="page pink expand" id="<%= page_id %>" data-next="page_measurement">
 
-  <p>
-    Is there anything around that could cast a shadow on the roof? 
-    Use the slider to record the shading. 
-  </p>
-
-  <p class="chunky" id="shade">Half Shade</p>
-
-  <p>
-    <img src="/images/img_shade.png" style="width:100%">
-    <input type="range" class="slider-properties" id="shader" min="0" max="2" step="1" name="shade">
-  </p>
+  <h3>
+    Is there anything around that could<br>
+    cast a shadow on the roof?
+  </h3>
+  
+  <div class="roof_shade selected" data-value="0">
+    <div class="roof"></div>
+    <h3>None</h3>
+  </div>
+  
+  <div style="clear:left;"></div>
+  
+  <div class="roof_shade" data-value="1">
+    <div class="shade half"></div>
+    <div class="roof"></div>
+    <h3>Partial</h3>
+  </div>
+  
+  <div style="clear:left;"></div>
+  
+  <div class="roof_shade" data-value="2">
+    <div class="shade full"></div>
+    <div class="roof"></div>
+    <h3>Full</h3>
+  </div>
   
   <div class="button-holder">
-    <div class="button nav" id="shadePost">Next</div>
+    <div class="button nav" id="shadePost">Done</div>
   </div>
   
   <div class="help-open"><i class="icon-question-circle"></i></div>
