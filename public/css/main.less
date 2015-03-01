@@ -599,25 +599,52 @@ body {
       }
     }
     
-    #map-canvas {
-      height: 400px;
-      width: 100%;
-    }
+    &#page_measurement {
+      
+      .step {
+        h3 {
+          margin: 20px;
+          font-size: 15px;
+          line-height: 22px;
+          text-shadow: 0 0 5px rgba(0,0,0,1);
+        }
+        display: none;
+        
+        &.open {
+          display: block;
+        }
+      }
+      
+      .button-holder {
+        background-image: url('/images/bg_grad.png');
+        background-position: center bottom;
+        background-size: 100%;
+        bottom: 15px;
+        .button {
+          background: rgba(255,255,255,0.5);
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          position: relative;
+          z-index: 9999;
+        }
+      }
+      
+      #map {}
 
-    #mapInfo {
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      opacity: 0.7;
-    }
+      .map-info {
+        display: none;
+        position: absolute;
+        top: 0; left: 0;
+        background: rgba(0,0,0,0.5);
+      }
 
-    #mapText {
-      top: 50%;
-      text-align: center;
-      color: white;
-      margin: 20%;
+      #mapText {
+        top: 50%;
+        text-align: center;
+        color: white;
+        margin: 20%;
+      }
     }
     
     .help-open {

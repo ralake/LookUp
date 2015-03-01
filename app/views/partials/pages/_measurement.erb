@@ -1,40 +1,21 @@
 <div class="page blue expand" id="<%= page_id %>" data-next="page_results">
+  <div id="map" class="expand"></div>
 
-  <style>
-    html, body, #map-canvas {
-      height: 400px;
-      width: 100%;
-    }
-
-    #mapInfo {
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #000;
-      opacity: 0.7;
-    }
-
-    #mapText {
-      top: 50%;
-      text-align: center;
-      color: white;
-      margin: 20%;
-    }
-  </style>
-
- <div id="mapInfo">
-   <p id="mapText">Here’s your roof – let’s measure it!
-     First, drag the the pins to draw a line down the angled egde of the roof.</div>
-   <div class="button-holder" id="getMap">
-     <div>OK, got it.</div>
-   </div>
- </p>
- 
- <div id="mapPage">
-   <div id="map-canvas"></div>
-     <input type="hidden" id="angled" name="angled_edge" value="0">
-     <input type="hidden" id="gutter" name="gutter_edge" value="0">
-     <input id="btn-measurements" class="button nav button-holder" value="Submit roof measurements">
+  <div class="map-info">
+    <h3 id="mapText">Here’s your roof – let’s measure it!</h3>
+    <p>First, drag the the pins to draw a line down the angled egde of the roof.</p>
   </div>
+  
+  <div class="button-holder">
+    <div class="step open">
+      <h3>Let's measure your roof. Drag the points to each corner.</h3>
+    </div>
+    <div class="step">
+      <h3>Great, now click the edge that has the gutter.</h3>
+    </div>
+    <div class="step">
+      <div class="button nav" id="measurementsPost">All done.</div>
+    </div>
+  </div>
+
 </div>

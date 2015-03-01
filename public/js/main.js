@@ -1,17 +1,32 @@
 $(document).ready(function(){
   
   orientation();
-  
   new Gyroscope().setAngle();
   var roof, roofId, lat, long,
   angle, material, shader_interval;
-
-  function geoSuccess(position) {
-    lat = position.coords.latitude;
-    long = position.coords.longitude;
-    $('#geoSuccess').attr("data-latitude", lat);
-    $('#geoSuccess').attr("data-longitude", long);
-  }
+  
+  // Create roof, then fetch lat lon
+  $('#createRoof').click(function() {
+    $.post('/roofs/new').then(function(data) {
+      
+      // Store roof id to body
+      roofId = $.parseJSON(data).id
+      $('body').attr('data-roof-id', roofId);
+      
+      // Fetch lat and lon, store in body
+      navigator.geolocation.getCurrentPosition(function(pos,err) {
+        if (err) { log(err); };
+        
+        var lat = pos.coords.latitude;
+        var lon = pos.coords.longitude
+        
+        $('body').attr("data-lat", lat);
+        $('body').attr("data-lon", lon);
+        
+        $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: lon });
+      });
+    });
+  });
 
   $('.material_icon').click(function() {
     $('.material_icon').removeClass('selected');
@@ -64,21 +79,6 @@ $(document).ready(function(){
       });
   });
 
-  // POST create roof
-  $('#page_index').click(function() {
-    $.post('/roofs/new').then(function(data) {
-      roofId = $.parseJSON(data).id
-      $('#roofId').attr("value", roofId);
-      $('body').data('roof-id', roofId);
-      navigator.geolocation.getCurrentPosition(geoSuccess);
-    });
-  });
-
-  // POST geolocation
-  $('#geoSuccess').watch('data-latitude', function() {
-    $.post('/roofs/' + roofId + '/geolocation', { latitude: lat, longitude: long })
-  })
-
   // POST orientation
   $('#orientationPost').click(function() {
     var orientation = $('body').data('orientation');
@@ -123,6 +123,7 @@ $(document).ready(function(){
   $('#shadePost').click(function() {
     var shade = $('.roof_shade.selected').data('value');
     $.post('/roofs/' + roofId + '/shading', { shade: shade });
+    initMap();
   });
   
   $('.roof_shade').click(function() {
@@ -130,33 +131,23 @@ $(document).ready(function(){
     $(this).addClass('selected');
   });
 
-  // POST measurements
-  function RoofEdges() {
-    this.angled = $('#angled').val().slice(0, -1);
-    this.gutter = $('#gutter').val().slice(0, -1);
-  }
-
-  RoofEdges.prototype.postEdges = function() {
-    var _this = this;
-    $.post('/roofs/' + roofId + '/measurements', { angled_edge: this.angled, gutter_edge: this.gutter })
-      .then(function(data) {
-        roof = $.parseJSON(data);
-        _this.setResults(roof);
-      });
-  };
-
-  $('#btn-measurements').click(function() {
-    new RoofEdges().postEdges();
+  $('#measurementsPost').click(function() {
+    console.log('yes');
+    
+    var angled = $('body').attr('data-angled');
+    var gutter = $('body').attr('data-gutter');
+    
+    $.post('/roofs/' + roofId + '/measurements', { angled_edge: angled, gutter_edge: gutter })
+    .then(function(data) {
+      roof = $.parseJSON(data);
+      $('#panelCapacity').html(roof.panel_capacity);
+      $('#powerCapacity').html(roof.power_capacity);
+      $('#homesToPower').html(roof.homes_to_power);
+      $('#roofMaterial').html(roof.material);
+      $('#roofShade').html(roof.shade);
+      $('#roofAngle').html(roof.angle);
+    });
   });
-
-  RoofEdges.prototype.setResults = function(roof) {
-    document.getElementById('panelCapacity').innerHTML = roof.panel_capacity;
-    document.getElementById('powerCapacity').innerHTML = roof.power_capacity;
-    document.getElementById('homesToPower').innerHTML = roof.homes_to_power;
-    document.getElementById('roofMaterial').innerHTML = roof.material;
-    document.getElementById('roofShade').innerHTML = roof.shade;
-    document.getElementById('roofAngle').innerHTML = roof.angle;
-  };
 
   // POST results
   $('#user_data').submit(function(event) {
