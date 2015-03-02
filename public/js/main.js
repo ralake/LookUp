@@ -150,19 +150,17 @@ $(document).ready(function(){
   });
 
   // POST results
-  $('#user_data').submit(function(event) {
-    var response;
-    var discoveredBy = $(this).find("input[name='discovered_by']").val();
-    var userEmail = $(this).find("input[name='user_email']").val();
-    event.preventDefault();
-    $.post('/roofs/' + roofId + '/capacity', { discovered_by: discoveredBy, user_email: userEmail })
+  $('#userPost').click(function(event) {
+    var userEmail = $('#user_email').val();
+    
+    $.post('/roofs/' + roofId + '/capacity', { user_email: userEmail })
     .then(function(data) {
       response = $.parseJSON(data);
       if (response.errors) {
-        $('#flashError').text(response.errors[0]);
+        log(response.errors[0]);
       } else {
-        $('#flashError').text('');
-        document.getElementById('user_email').innerHTML = response.user_email;
+        log('');
+        $('#user_email').val('');
       }
     });
   });
