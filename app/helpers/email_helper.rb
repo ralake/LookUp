@@ -38,13 +38,13 @@ def first_time_user_email_body(roof)
   "Hi #{roof.user_email}, congratulations on your first Look Up discovery!\n 
   Here’s the full report – you should probably print it out and frame it or something.\n
   - #{roof.panel_capacity} panels should fit on the roof.\n
-  - This could generate #{roof.power_capacity}, enough to power #{roof.homes_to_power} homes!\n
+  - This could generate #{roof.power_capacity} kWp, enough to power #{roof.homes_to_power} homes!\n
   What next?\n
   You've found a good-looking roof - now let's put some solar panels on it!\n
   If there's a community energy group nearby, they'll be able to see your report, and maybe host their next solar rig on the roof you found!\n
   No groups near you? Get tips on starting one here: xxxx
   Not your thing? Keep snapping those roofs anyway. The more there are in the database, the easier it'll be for someone else to get something going later on.\n
-  10:10 Team"
+  The Look Up team"
 end
 
 def repeat_user_email_body(roof)
