@@ -8,6 +8,16 @@ def send_email_with_link(roof)
   mg_client.send_message "#{ENV['MAILGUN_SANDBAG']}", message_params
 end
 
+def send_feedback_email(msg)
+  mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
+  message_params = {from: ENV['MAILGUN_FROM_ADDRESS'], 
+                    to: ENV['MAILGUN_FROM_ADDRESS'],
+                    subject: "Lookup.solar Feedback",
+                    text: msg
+  }
+  mg_client.send_message "#{ENV['MAILGUN_SANDBAG']}", message_params
+end
+
 def email_body(roof)
   "Hi #{roof.discovered_by}!\n
   Based on the information that we gathered during your survey,\n

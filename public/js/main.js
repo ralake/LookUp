@@ -48,7 +48,11 @@ $(document).ready(function(){
   
   $('.button').click(function() {
     $(this).addClass('clicked');
-  })
+  });
+  
+  $('.beta .button').click(function() {
+    $('.beta').hide();
+  });
 
   $('body').on("touchend", "#shader", function() {
     clearInterval(shader_interval);
@@ -164,6 +168,31 @@ $(document).ready(function(){
       }
     });
   });
+  
+  // POST feedback
+  $('#feedbackPost').click(function() {
+    var msg = "Feedback\n\n";
+    msg += "User agent: " + navigator.userAgent + "\n\n";
+    
+    $('.feedback select').each(function() {
+      if ($(this).find('option:selected').index() > 1) {
+        msg += $(this).find('option').eq(0).text() + ": \n";
+        msg += $(this).find('option:selected').text() + "\n\n";
+      }
+    });
+    
+    if ($('.thoughts').val().length > 0) {
+      msg += "Thoughts: " + $('.thoughts').val() + "\n\n";
+    }
+    
+    msg += "Current page: " + $('.box-1 .page').attr('id');
+    
+    $.post('/emails/feedback', { msg: msg })
+    .then(function(data) {
+      response = $.parseJSON(data);
+      console.log(response.msg);
+    });
+  });
     
   // Camera logic
   $('#takePictureField').on("touchstart click", function() {
@@ -222,6 +251,14 @@ $(document).ready(function(){
   
     var height = $(window).height();
     var width = $(window).width();
+    
+    if(height < width){
+      $('.feedback').show();
+      $('body').css('overflow', 'visible');
+    } else {
+      $('.feedback').hide();
+      $('body').css('overflow', 'hidden');
+    }
 
     $('body').css('height', height + "px");
 
@@ -241,6 +278,7 @@ $(document).ready(function(){
     });
   
     $('.content').css("height", (height-100) +"px");
+    $('.beta .content').css('height', height-40 + 'px');
   
     $('.next').click(function() {
       $(this).closest(".page-slides").css("left", "-=" + width + "px");

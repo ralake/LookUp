@@ -15,5 +15,10 @@ class LookUp < Sinatra::Base
     roof.params_parser(params)
     roof.to_json
   end
+  
+  post '/emails/feedback' do
+    send_feedback_email(params[:msg])
+    {:msg => "sent"}.to_json
+  end
 
 end
