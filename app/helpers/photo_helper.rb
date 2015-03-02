@@ -7,7 +7,7 @@ def decode_image(incoming_file)
 end
 
 def write_image_to_file(image, filename)
-  file = File.new("public/images/user_images/#{filename}", "w+")
+  file = File.new("./tmp/user_images/#{filename}", "w+")
   file.write(image)
   file
 end
@@ -33,7 +33,7 @@ end
 def store_image(name)
   AWS::S3::S3Object.store(
     name,
-    open("public/images/user_images/#{name}"),
+    open("./tmp/user_images/#{name}"),
     ENV['S3_BUCKET_NAME'],
     :access => :public_read
   )
