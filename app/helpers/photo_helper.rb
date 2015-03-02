@@ -7,7 +7,7 @@ def decode_image(incoming_file)
 end
 
 def write_image_to_file(image, filename)
-  file = File.new("./public/images/user_images/#{filename}", "w+")
+  file = File.new("public/images/user_images/#{filename}", "w+")
   file.write(image)
   file
 end
