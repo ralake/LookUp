@@ -11,7 +11,7 @@ end
 def send_feedback_email(msg)
   mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
   message_params = {from: ENV['MAILGUN_FROM_ADDRESS'], 
-                    to: 'ralake1985@gmail.com',
+                    to: ENV['LOOKUP_EMAIL_ADDRESS'],
                     subject: "Lookup.solar Feedback",
                     text: msg
   }
